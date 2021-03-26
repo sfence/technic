@@ -15,11 +15,11 @@ local S = technic.getter
 local cable_entry = "^technic_cable_connection_overlay.png"
 
 minetest.register_craft({
-	output = "technic:forcefield_emitter_off",
+	output = "hades_technic:forcefield_emitter_off",
 	recipe = {
-		{"default:mese",         "basic_materials:motor",          "default:mese"        },
-		{"technic:deployer_off", "technic:machine_casing", "technic:deployer_off"},
-		{"default:mese",         "technic:hv_cable",       "default:mese"        },
+		{"hades_core:mese",         "hades_extramaterials:motor",          "hades_core:mese"        },
+		{"hades_technic:deployer_off", "hades_technic:machine_casing", "hades_technic:deployer_off"},
+		{"hades_core:mese",         "hades_technic:hv_cable",       "hades_core:mese"        },
 	}
 })
 
@@ -52,7 +52,7 @@ local function update_forcefield(pos, meta, active)
 	local data = vm:get_data()
 
 	local c_air = minetest.get_content_id("air")
-	local c_field = minetest.get_content_id("technic:forcefield")
+	local c_field = minetest.get_content_id("hades_technic:forcefield")
 
 	for z = -range, range do
 	for y = -range, range do
@@ -258,9 +258,9 @@ local function run(pos, node)
 	power_requirement = power_requirement * forcefield_power_drain
 
 	if not enabled then
-		if node.name == "technic:forcefield_emitter_on" then
+		if node.name == "hades_technic:forcefield_emitter_on" then
 			update_forcefield(pos, meta, false)
-			technic.swap_node(pos, "technic:forcefield_emitter_off")
+			technic.swap_node(pos, "hades_technic:forcefield_emitter_off")
 			meta:set_string("infotext", S("%s Disabled"):format(machine_name))
 		end
 		meta:set_int("HV_EU_demand", 0)
@@ -269,20 +269,20 @@ local function run(pos, node)
 	meta:set_int("HV_EU_demand", power_requirement)
 	if eu_input < power_requirement then
 		meta:set_string("infotext", S("%s Unpowered"):format(machine_name))
-		if node.name == "technic:forcefield_emitter_on" then
+		if node.name == "hades_technic:forcefield_emitter_on" then
 			update_forcefield(pos, meta, false)
-			technic.swap_node(pos, "technic:forcefield_emitter_off")
+			technic.swap_node(pos, "hades_technic:forcefield_emitter_off")
 		end
 	elseif eu_input >= power_requirement then
-		if node.name == "technic:forcefield_emitter_off" then
-			technic.swap_node(pos, "technic:forcefield_emitter_on")
+		if node.name == "hades_technic:forcefield_emitter_off" then
+			technic.swap_node(pos, "hades_technic:forcefield_emitter_on")
 			meta:set_string("infotext", S("%s Active"):format(machine_name))
 		end
 		update_forcefield(pos, meta, true)
 	end
 end
 
-minetest.register_node("technic:forcefield_emitter_off", {
+minetest.register_node("hades_technic:forcefield_emitter_off", {
 	description = S("%s Forcefield Emitter"):format("HV"),
 	tiles = {
 		"technic_forcefield_emitter_off.png",
@@ -313,7 +313,7 @@ minetest.register_node("technic:forcefield_emitter_off", {
 	technic_run = run,
 })
 
-minetest.register_node("technic:forcefield_emitter_on", {
+minetest.register_node("hades_technic:forcefield_emitter_on", {
 	description = S("%s Forcefield Emitter"):format("HV"),
 	tiles = {
 		"technic_forcefield_emitter_on.png",
@@ -325,7 +325,7 @@ minetest.register_node("technic:forcefield_emitter_on", {
 	},
 	groups = {cracky = 1, technic_machine = 1, technic_hv = 1,
 			not_in_creative_inventory=1},
-	drop = "technic:forcefield_emitter_off",
+	drop = "hades_technic:forcefield_emitter_off",
 	on_receive_fields = forcefield_receive_fields,
 	on_destruct = function(pos)
 		local meta = minetest.get_meta(pos)
@@ -337,15 +337,15 @@ minetest.register_node("technic:forcefield_emitter_on", {
 	technic_on_disable = function (pos, node)
 		local meta = minetest.get_meta(pos)
 		update_forcefield(pos, meta, false)
-		technic.swap_node(pos, "technic:forcefield_emitter_off")
+		technic.swap_node(pos, "hades_technic:forcefield_emitter_off")
 	end,
 	on_blast = function(pos, intensity)
 		minetest.dig_node(pos)
-		return {"technic:forcefield_emitter_off"}
+		return {"hades_technic:forcefield_emitter_off"}
 	end,
 })
 
-minetest.register_node("technic:forcefield", {
+minetest.register_node("hades_technic:forcefield", {
 	description = S("%s Forcefield"):format("HV"),
 	sunlight_propagates = true,
 	drawtype = "glasslike",
@@ -369,9 +369,9 @@ minetest.register_node("technic:forcefield", {
 
 
 if minetest.get_modpath("mesecons_mvps") then
-	mesecon.register_mvps_stopper("technic:forcefield")
+	mesecon.register_mvps_stopper("hades_technic:forcefield")
 end
 
-technic.register_machine("HV", "technic:forcefield_emitter_on",  technic.receiver)
-technic.register_machine("HV", "technic:forcefield_emitter_off", technic.receiver)
+technic.register_machine("HV", "hades_technic:forcefield_emitter_on",  technic.receiver)
+technic.register_machine("HV", "hades_technic:forcefield_emitter_off", technic.receiver)
 

@@ -11,7 +11,7 @@ intact the reactor will melt down!
 
 local burn_ticks = 7 * 24 * 60 * 60  -- Seconds
 local power_supply = 100000  -- EUs
-local fuel_type = "technic:uranium_fuel"  -- The reactor burns this
+local fuel_type = "hades_technic:uranium_fuel"  -- The reactor burns this
 local digiline_meltdown = technic.config:get_bool("enable_nuclear_reactor_digiline_selfdestruct")
 local digiline_remote_path = minetest.get_modpath("digiline_remote")
 
@@ -22,11 +22,11 @@ local cable_entry = "^technic_cable_connection_overlay.png"
 
 -- FIXME: Recipe should make more sense like a rod recepticle, steam chamber, HV generator?
 minetest.register_craft({
-	output = 'technic:hv_nuclear_reactor_core',
+	output = 'hades_technic:hv_nuclear_reactor_core',
 	recipe = {
-		{'technic:carbon_plate',          'default:obsidian_glass', 'technic:carbon_plate'},
-		{'technic:composite_plate',       'technic:machine_casing', 'technic:composite_plate'},
-		{'technic:stainless_steel_ingot', 'technic:hv_cable',       'technic:stainless_steel_ingot'},
+		{'hades_technic:carbon_plate',          'hades_core:obsidian_glass', 'hades_technic:carbon_plate'},
+		{'hades_technic:composite_plate',       'hades_technic:machine_casing', 'hades_technic:composite_plate'},
+		{'hades_technic:stainless_steel_ingot', 'hades_technic:hv_cable',       'hades_technic:stainless_steel_ingot'},
 	}
 })
 
@@ -146,11 +146,11 @@ local function reactor_structure_badness(pos)
 	local data = vm:get_data()
 	local area = VoxelArea:new({MinEdge=MinEdge, MaxEdge=MaxEdge})
 
-	local c_blast_concrete = minetest.get_content_id("technic:blast_resistant_concrete")
-	local c_lead = minetest.get_content_id("technic:lead_block")
-	local c_steel = minetest.get_content_id("technic:stainless_steel_block")
-	local c_water_source = minetest.get_content_id("default:water_source")
-	local c_water_flowing = minetest.get_content_id("default:water_flowing")
+	local c_blast_concrete = minetest.get_content_id("hades_technic:blast_resistant_concrete")
+	local c_lead = minetest.get_content_id("hades_technic:lead_block")
+	local c_steel = minetest.get_content_id("hades_technic:stainless_steel_block")
+	local c_water_source = minetest.get_content_id("hades_core:water_source")
+	local c_water_flowing = minetest.get_content_id("hades_core:water_flowing")
 
 	local blast_layer, steel_layer, lead_layer, water_layer = 0, 0, 0, 0
 
@@ -212,12 +212,12 @@ end
 
 local function melt_down_reactor(pos)
 	minetest.log("action", "A reactor melted down at "..minetest.pos_to_string(pos))
-	minetest.set_node(pos, {name = "technic:corium_source"})
+	minetest.set_node(pos, {name = "hades_technic:corium_source"})
 end
 
 
 local function start_reactor(pos, meta)
-	if minetest.get_node(pos).name ~= "technic:hv_nuclear_reactor_core" then
+	if minetest.get_node(pos).name ~= "hades_technic:hv_nuclear_reactor_core" then
 		return false
 	end
 	local inv = meta:get_inventory()
@@ -236,7 +236,7 @@ local function start_reactor(pos, meta)
 		return false
 	end
 	meta:set_int("burn_time", 1)
-	technic.swap_node(pos, "technic:hv_nuclear_reactor_core_active")
+	technic.swap_node(pos, "hades_technic:hv_nuclear_reactor_core_active")
 	meta:set_int("HV_EU_supply", power_supply)
 	for idx, src_stack in pairs(src_list) do
 		src_stack:take_item()
@@ -248,7 +248,7 @@ end
 
 minetest.register_abm({
 	label = "Machines: reactor melt-down check",
-	nodenames = {"technic:hv_nuclear_reactor_core_active"},
+	nodenames = {"hades_technic:hv_nuclear_reactor_core_active"},
 	interval = 4,
 	chance = 1,
 	action = function (pos, node)
@@ -288,7 +288,7 @@ local function run(pos, node)
 		meta:set_int("HV_EU_supply", 0)
 		meta:set_int("burn_time", 0)
 		meta:set_string("infotext", S("%s Idle"):format(reactor_desc))
-		technic.swap_node(pos, "technic:hv_nuclear_reactor_core")
+		technic.swap_node(pos, "hades_technic:hv_nuclear_reactor_core")
 		meta:set_int("structure_accumulated_badness", 0)
 		siren_clear(pos, meta)
 	elseif burn_time > 0 then
@@ -377,7 +377,7 @@ local digiline_remote_def = function(pos, channel, msg)
 			rods = invtable
 		}, 6, true)
 	elseif digiline_meltdown and msg.command == "self_destruct" and
-			minetest.get_node(pos).name == "technic:hv_nuclear_reactor_core_active" then
+			minetest.get_node(pos).name == "hades_technic:hv_nuclear_reactor_core_active" then
 		if msg.timer ~= 0 and type(msg.timer) == "number" then
 			siren_danger(pos, meta)
 			minetest.after(msg.timer, melt_down_reactor, pos)
@@ -394,7 +394,7 @@ local digiline_remote_def = function(pos, channel, msg)
 	end
 end
 
-minetest.register_node("technic:hv_nuclear_reactor_core", {
+minetest.register_node("hades_technic:hv_nuclear_reactor_core", {
 	description = reactor_desc,
 	tiles = {
 		"technic_hv_nuclear_reactor_core.png",
@@ -404,7 +404,7 @@ minetest.register_node("technic:hv_nuclear_reactor_core", {
 	mesh = "technic_reactor.obj",
 	groups = {cracky = 1, technic_machine = 1, technic_hv = 1, digiline_remote_receive = 1},
 	legacy_facedir_simple = true,
-	sounds = default.node_sound_wood_defaults(),
+	sounds = hades_sounds.node_sound_wood_defaults(),
 	paramtype = "light",
 	paramtype2 = "facedir",
 	stack_max = 1,
@@ -429,7 +429,7 @@ minetest.register_node("technic:hv_nuclear_reactor_core", {
 	technic_run = run,
 })
 
-minetest.register_node("technic:hv_nuclear_reactor_core_active", {
+minetest.register_node("hades_technic:hv_nuclear_reactor_core_active", {
 	tiles = {
 		"technic_hv_nuclear_reactor_core.png",
 		"technic_hv_nuclear_reactor_core.png"..cable_entry
@@ -439,8 +439,8 @@ minetest.register_node("technic:hv_nuclear_reactor_core_active", {
 	groups = {cracky = 1, technic_machine = 1, technic_hv = 1, radioactive = 4,
 		not_in_creative_inventory = 1, digiline_remote_receive = 1},
 	legacy_facedir_simple = true,
-	sounds = default.node_sound_wood_defaults(),
-	drop = "technic:hv_nuclear_reactor_core",
+	sounds = hades_sounds.node_sound_wood_defaults(),
+	drop = "hades_technic:hv_nuclear_reactor_core",
 	light_source = 14,
 	paramtype = "light",
 	paramtype2 = "facedir",
@@ -468,7 +468,7 @@ minetest.register_node("technic:hv_nuclear_reactor_core_active", {
 		if burn_time >= burn_ticks or burn_time == 0 then
 			meta:set_int("HV_EU_supply", 0)
 			meta:set_int("burn_time", 0)
-			technic.swap_node(pos, "technic:hv_nuclear_reactor_core")
+			technic.swap_node(pos, "hades_technic:hv_nuclear_reactor_core")
 			meta:set_int("structure_accumulated_badness", 0)
 			siren_clear(pos, meta)
 			return false
@@ -479,6 +479,6 @@ minetest.register_node("technic:hv_nuclear_reactor_core_active", {
 	end,
 })
 
-technic.register_machine("HV", "technic:hv_nuclear_reactor_core",        technic.producer)
-technic.register_machine("HV", "technic:hv_nuclear_reactor_core_active", technic.producer)
+technic.register_machine("HV", "hades_technic:hv_nuclear_reactor_core",        technic.producer)
+technic.register_machine("HV", "hades_technic:hv_nuclear_reactor_core_active", technic.producer)
 

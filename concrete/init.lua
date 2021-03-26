@@ -17,10 +17,10 @@ for i = 32, 63 do
 end
 
 local steel_ingot
-if minetest.get_modpath("technic_worldgen") then
+if minetest.get_modpath("hades_technic_worldgen") then
 	steel_ingot = "technic:carbon_steel_ingot"
 else
-	steel_ingot = "default:steel_ingot"
+	steel_ingot = "hades_core:steel_ingot"
 end
 
 minetest.register_craft({
@@ -33,9 +33,9 @@ minetest.register_craft({
 minetest.register_craft({
 	output = 'technic:concrete_post 12',
 	recipe = {
-		{'default:stone','basic_materials:steel_bar','default:stone'},
-		{'default:stone','basic_materials:steel_bar','default:stone'},
-		{'default:stone','basic_materials:steel_bar','default:stone'},
+		{'hades_core:stone','hades_extramaterials:steel_bar','hades_core:stone'},
+		{'hades_core:stone','hades_extramaterials:steel_bar','hades_core:stone'},
+		{'hades_core:stone','hades_extramaterials:steel_bar','hades_core:stone'},
 	}
 })
 
@@ -52,7 +52,7 @@ minetest.register_node(":technic:blast_resistant_concrete", {
 	description = S("Blast-resistant Concrete Block"),
 	tiles = {"technic_blast_resistant_concrete_block.png",},
 	groups = {cracky=1, level=3, concrete=1},
-	sounds = default.node_sound_stone_defaults(),
+	sounds = hades_sounds.node_sound_stone_defaults(),
 	on_blast = function(pos, intensity)
 		if intensity > 9 then
 			minetest.remove_node(pos)
@@ -61,12 +61,12 @@ minetest.register_node(":technic:blast_resistant_concrete", {
 	end,
 })
 
-if minetest.get_modpath("moreblocks") then
+if minetest.get_modpath("hades_moreblocks") then
 	stairsplus:register_all("technic","blast_resistant_concrete","technic:blast_resistant_concrete",{
 		description = "Blast-resistant Concrete",
 		tiles = {"technic_blast_resistant_concrete_block.png",},
 		groups = {cracky=1, level=3, concrete=1},
-		sounds = default.node_sound_stone_defaults(),
+		sounds = hades_sounds.node_sound_stone_defaults(),
 		on_blast = function(pos, intensity)
 			if intensity > 1 then
 				minetest.remove_node(pos)
@@ -87,7 +87,7 @@ minetest.register_node(":technic:concrete_post_platform", {
 	description = S("Concrete Post Platform"),
 	tiles = {"basic_materials_concrete_block.png",},
 	groups={cracky=1, level=2},
-	sounds = default.node_sound_stone_defaults(),
+	sounds = hades_sounds.node_sound_stone_defaults(),
 	paramtype = "light",
 	drawtype = "nodebox",
 	node_box = {
@@ -119,7 +119,7 @@ for platform = 0, 1 do
 		description = S("Concrete Post"),
 		tiles = {"basic_materials_concrete_block.png"},
 		groups = {cracky=1, level=2, concrete_post=1, not_in_creative_inventory=platform},
-		sounds = default.node_sound_stone_defaults(),
+		sounds = hades_sounds.node_sound_stone_defaults(),
 		drop = (platform == 1 and "technic:concrete_post_platform" or
 				"technic:concrete_post"),
 		paramtype = "light",

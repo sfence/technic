@@ -63,7 +63,7 @@ local function clear_networks(pos)
 				-- This is similar to check_node_subp
 				technic.cables[minetest.hash_node_position(pos)] = network_id
 				pos.visited = 1
-				if technic.is_tier_cable(name, tier) then
+				if technic.is_tier_cable(node.name, tier) then
 					table.insert(network.all_nodes,pos)
 				elseif technic.machines[tier][node.name] then
 					meta:set_string(tier.."_network",minetest.pos_to_string(sw_pos))
@@ -132,7 +132,7 @@ end
 
 function technic.register_cable(tier, size)
 	local ltier = string.lower(tier)
-	cable_tier["technic:"..ltier.."_cable"] = tier
+	cable_tier["hades_technic:"..ltier.."_cable"] = tier
 
 	local groups = {snappy=2, choppy=2, oddly_breakable_by_hand=2,
 			["technic_"..ltier.."_cable"] = 1}
@@ -148,14 +148,14 @@ function technic.register_cable(tier, size)
 		connect_right  = {-size, -size, -size, 0.5,   size, size}, -- x+
 	}
 
-	minetest.register_node("technic:"..ltier.."_cable", {
+	minetest.register_node("hades_technic:"..ltier.."_cable", {
 		description = S("%s Cable"):format(tier),
 		tiles = {"technic_"..ltier.."_cable.png"},
 		inventory_image = "technic_"..ltier.."_cable_wield.png",
 		wield_image = "technic_"..ltier.."_cable_wield.png",
 		groups = groups,
-		sounds = default.node_sound_wood_defaults(),
-		drop = "technic:"..ltier.."_cable",
+		sounds = hades_sounds.node_sound_wood_defaults(),
+		drop = "hades_technic:"..ltier.."_cable",
 		paramtype = "light",
 		sunlight_propagates = true,
 		drawtype = "nodebox",
@@ -194,8 +194,8 @@ function technic.register_cable(tier, size)
 			description = S("%s Cable Plate"):format(tier),
 			tiles = {"technic_"..ltier.."_cable.png"},
 			groups = table.copy(groups),
-			sounds = default.node_sound_wood_defaults(),
-			drop = "technic:"..ltier.."_cable_plate_1",
+			sounds = hades_sounds.node_sound_wood_defaults(),
+			drop = "hades_technic:"..ltier.."_cable_plate_1",
 			paramtype = "light",
 			sunlight_propagates = true,
 			drawtype = "nodebox",
@@ -243,7 +243,7 @@ function technic.register_cable(tier, size)
 				end
 				return item_place_override_node(
 					itemstack, placer, pointed_thing,
-					{name = "technic:"..ltier.."_cable_plate_"..num}
+					{name = "hades_technic:"..ltier.."_cable_plate_"..num}
 				)
 			end
 		else
@@ -260,15 +260,15 @@ function technic.register_cable(tier, size)
 			num = num + dir
 			num = (num >= 1 and num) or num + 6
 			num = (num <= 6 and num) or num - 6
-			minetest.swap_node(pos, {name = "technic:"..ltier.."_cable_plate_"..num})
+			minetest.swap_node(pos, {name = "hades_technic:"..ltier.."_cable_plate_"..num})
 		end
-		minetest.register_node("technic:"..ltier.."_cable_plate_"..i, def)
-		cable_tier["technic:"..ltier.."_cable_plate_"..i] = tier
+		minetest.register_node("hades_technic:"..ltier.."_cable_plate_"..i, def)
+		cable_tier["hades_technic:"..ltier.."_cable_plate_"..i] = tier
 	end
 
-	local c = "technic:"..ltier.."_cable"
+	local c = "hades_technic:"..ltier.."_cable"
 	minetest.register_craft({
-		output = "technic:"..ltier.."_cable_plate_1 5",
+		output = "hades_technic:"..ltier.."_cable_plate_1 5",
 		recipe = {
 			{"", "", c},
 			{c , c , c},
@@ -279,7 +279,7 @@ function technic.register_cable(tier, size)
 	minetest.register_craft({
 		output = c,
 		recipe = {
-			{"technic:"..ltier.."_cable_plate_1"},
+			{"hades_technic:"..ltier.."_cable_plate_1"},
 		}
 	})
 end

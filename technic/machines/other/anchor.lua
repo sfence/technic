@@ -51,7 +51,7 @@ local function set_display(pos, meta)
 	meta:set_string("infotext", S(meta:get_int("enabled") ~= 0 and "%s Enabled" or "%s Disabled"):format(desc))
 	meta:set_string("formspec",
 		"size[5,3.5]"..
-		"item_image[0,0;1,1;technic:admin_anchor]"..
+		"item_image[0,0;1,1;hades_technic:admin_anchor]"..
 		"label[1,0;"..minetest.formspec_escape(desc).."]"..
 		"label[0,1;"..minetest.formspec_escape(S("Owner:").." "..meta:get_string("owner")).."]"..
 		(meta:get_int("locked") == 0 and
@@ -64,13 +64,13 @@ local function set_display(pos, meta)
 		"label[0,3;"..minetest.formspec_escape(S("Keeping %d/%d map blocks loaded"):format(#currently_forceloaded_positions(meta), #compute_forceload_positions(pos, meta))).."]")
 end
 
-minetest.register_node("technic:admin_anchor", {
+minetest.register_node("hades_technic:admin_anchor", {
 	description = desc,
 	drawtype = "normal",
 	tiles = {"technic_admin_anchor.png"},
 	is_ground_content = true,
 	groups = {cracky=3, not_in_creative_inventory=1},
-	sounds = default.node_sound_stone_defaults(),
+	sounds = hades_sounds.node_sound_stone_defaults(),
 	after_place_node = function (pos, placer)
 		local meta = minetest.get_meta(pos)
 		if placer and placer:is_player() then

@@ -3,24 +3,24 @@
 -- The machine is only producing LV EUs and can thus not drive more advanced equipment
 -- The output is a little more than the coal burning generator (max 300EUs)
 
-minetest.register_alias("geothermal", "technic:geothermal")
+minetest.register_alias("geothermal", "hades_technic:geothermal")
 
 local S = technic.getter
 
 minetest.register_craft({
-	output = 'technic:geothermal',
+	output = 'hades_technic:geothermal',
 	recipe = {
-		{'technic:granite',          'default:diamond',        'technic:granite'},
-		{'basic_materials:copper_wire', 'technic:machine_casing', 'basic_materials:copper_wire'},
-		{'technic:granite',          'technic:lv_cable',       'technic:granite'},
+		{'hades_technic:granite',          'hades_core:diamond',        'hades_technic:granite'},
+		{'hades_extramaterials:copper_wire', 'hades_technic:machine_casing', 'hades_extramaterials:copper_wire'},
+		{'hades_technic:granite',          'hades_technic:lv_cable',       'hades_technic:granite'},
 	},
 	replacements = {
-		{"basic_materials:copper_wire", "basic_materials:empty_spool"},
-		{"basic_materials:copper_wire", "basic_materials:empty_spool"}
+		{"hades_extramaterials:copper_wire", "hades_extramaterials:empty_spool"},
+		{"hades_extramaterials:copper_wire", "hades_extramaterials:empty_spool"}
 	},
 })
 
-minetest.register_craftitem("technic:geothermal", {
+minetest.register_craftitem("hades_technic:geothermal", {
 	description = S("Geothermal %s Generator"):format("LV"),
 })
 
@@ -72,17 +72,17 @@ local run = function(pos, node)
 	meta:set_string("infotext",
 		S("Geothermal %s Generator"):format("LV").." ("..production_level.."%)")
 
-	if production_level > 0 and minetest.get_node(pos).name == "technic:geothermal" then
-		technic.swap_node (pos, "technic:geothermal_active")
+	if production_level > 0 and minetest.get_node(pos).name == "hades_technic:geothermal" then
+		technic.swap_node (pos, "hades_technic:geothermal_active")
 		return
 	end
 	if production_level == 0 then
-		technic.swap_node(pos, "technic:geothermal")
+		technic.swap_node(pos, "hades_technic:geothermal")
 		meta:set_int("LV_EU_supply", 0)
 	end
 end
 
-minetest.register_node("technic:geothermal", {
+minetest.register_node("hades_technic:geothermal", {
 	description = S("Geothermal %s Generator"):format("LV"),
 	tiles = {"technic_geothermal_top.png", "technic_machine_bottom.png", "technic_geothermal_side.png",
 	         "technic_geothermal_side.png", "technic_geothermal_side.png", "technic_geothermal_side.png"},
@@ -90,7 +90,7 @@ minetest.register_node("technic:geothermal", {
 		technic_machine=1, technic_lv=1},
 	paramtype2 = "facedir",
 	legacy_facedir_simple = true,
-	sounds = default.node_sound_wood_defaults(),
+	sounds = hades_sounds.node_sound_wood_defaults(),
 	on_construct = function(pos)
 		local meta = minetest.get_meta(pos)
 		meta:set_string("infotext", S("Geothermal %s Generator"):format("LV"))
@@ -99,7 +99,7 @@ minetest.register_node("technic:geothermal", {
 	technic_run = run,
 })
 
-minetest.register_node("technic:geothermal_active", {
+minetest.register_node("hades_technic:geothermal_active", {
 	description = S("Geothermal %s Generator"):format("LV"),
 	tiles = {"technic_geothermal_top_active.png", "technic_machine_bottom.png", "technic_geothermal_side.png",
 	         "technic_geothermal_side.png", "technic_geothermal_side.png", "technic_geothermal_side.png"},
@@ -107,11 +107,11 @@ minetest.register_node("technic:geothermal_active", {
 	groups = {snappy=2, choppy=2, oddly_breakable_by_hand=2,
 		technic_machine=1, technic_lv=1, not_in_creative_inventory=1},
 	legacy_facedir_simple = true,
-	sounds = default.node_sound_wood_defaults(),
-	drop = "technic:geothermal",
+	sounds = hades_sounds.node_sound_wood_defaults(),
+	drop = "hades_technic:geothermal",
 	technic_run = run,
 })
 
-technic.register_machine("LV", "technic:geothermal",        technic.producer)
-technic.register_machine("LV", "technic:geothermal_active", technic.producer)
+technic.register_machine("LV", "hades_technic:geothermal",        technic.producer)
+technic.register_machine("LV", "hades_technic:geothermal_active", technic.producer)
 

@@ -66,7 +66,8 @@ function technic.register_can(d)
 				minetest.log("action", user:get_player_name().." tried to place "..data.liquid_source_name.." at protected position "..minetest.pos_to_string(pos).." with a "..data.can_name)
 				return
 			end
-			minetest.set_node(pos, {name=data.liquid_source_name})
+			minetest.set_node(pos, {name=data.liquid_flowing_name})
+      minetest.set_node_level(pos, minetest.get_node_max_level(pos));
 			charge = charge - 1
 			itemstack:set_metadata(tostring(charge))
 			set_can_wear(itemstack, charge, data.can_capacity)
@@ -81,43 +82,44 @@ function technic.register_can(d)
 end
 
 technic.register_can({
-	can_name = "technic:water_can",
+	can_name = "hades_technic:water_can",
 	can_description = S("Water Can"),
 	can_inventory_image = "technic_water_can.png",
 	can_capacity = 16,
-	liquid_source_name = "default:water_source",
-	liquid_flowing_name = "default:water_flowing",
+	liquid_source_name = "hades_core:water_source",
+	liquid_flowing_name = "hades_core:water_flowing",
 })
 
 minetest.register_craft({
-	output = 'technic:water_can 1',
+	output = 'hades_technic:water_can 1',
 	recipe = {
-		{'technic:zinc_ingot', 'technic:rubber','technic:zinc_ingot'},
-		{'technic:carbon_steel_ingot', '', 'technic:carbon_steel_ingot'},
-		{'technic:zinc_ingot', 'technic:carbon_steel_ingot', 'technic:zinc_ingot'},
+		{'hades_extraores:titanium_ingot', 'hades_technic:rubber','hades_extraores:titanium_ingot'},
+		{'hades_technic:carbon_steel_ingot', '', 'hades_technic:carbon_steel_ingot'},
+		{'hades_extraores:titanium_ingot', 'hades_technic:carbon_steel_ingot', 'hades_extraores:titanium_ingot'},
 	}
 })
 
 technic.register_can({
-	can_name = "technic:lava_can",
+	can_name = "hades_technic:lava_can",
 	can_description = S("Lava Can"),
 	can_inventory_image = "technic_lava_can.png",
 	can_capacity = 8,
-	liquid_source_name = "default:lava_source",
-	liquid_flowing_name = "default:lava_flowing",
+	liquid_source_name = "hades_core:lava_source",
+	liquid_flowing_name = "hades_core:lava_flowing",
 })
 
 minetest.register_craft({
-	output = 'technic:lava_can 1',
+	output = 'hades_technic:lava_can 1',
 	recipe = {
-		{'technic:zinc_ingot', 'technic:stainless_steel_ingot','technic:zinc_ingot'},
-		{'technic:stainless_steel_ingot', '', 'technic:stainless_steel_ingot'},
-		{'technic:zinc_ingot', 'technic:stainless_steel_ingot', 'technic:zinc_ingot'},
+		{'hades_extraores:tungsten_ingot', 'hades_technic:stainless_steel_ingot','hades_extraores:tungsten_ingot'},
+		{'hades_technic:stainless_steel_ingot', '', 'hades_technic:stainless_steel_ingot'},
+		{'hades_extraores:tungsten_ingot', 'hades_technic:stainless_steel_ingot', 'hades_extraores:tungsten_ingot'},
 	}
 })
 
+--[[
 technic.register_can({
-	can_name = 'technic:river_water_can',
+	can_name = 'hades_technic:river_water_can',
 	can_description = S("River Water Can"),
 	can_inventory_image = "technic_river_water_can.png",
 	can_capacity = 16,
@@ -126,10 +128,12 @@ technic.register_can({
 })
 
 minetest.register_craft({
-	output = 'technic:river_water_can 1',
+	output = 'hades_technic:river_water_can 1',
 	recipe = {
-		{'technic:zinc_ingot', 'technic:rubber', 'technic:zinc_ingot'},
-		{'default:steel_ingot', '', 'default:steel_ingot'},
-		{'technic:zinc_ingot', 'default:steel_ingot', 'technic:zinc_ingot'},
+		{'hades_technic:zinc_ingot', 'hades_technic:rubber', 'hades_technic:zinc_ingot'},
+		{'hades_core:steel_ingot', '', 'hades_core:steel_ingot'},
+		{'hades_technic:zinc_ingot', 'hades_core:steel_ingot', 'hades_technic:zinc_ingot'},
 	}
 })
+--]]
+

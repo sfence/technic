@@ -7,30 +7,35 @@ local cable_entry = "^technic_cable_connection_overlay.png"
 
 local fs_helpers = pipeworks.fs_helpers
 
-technic.register_power_tool("technic:battery", 10000)
-technic.register_power_tool("technic:red_energy_crystal", 50000)
-technic.register_power_tool("technic:green_energy_crystal", 150000)
-technic.register_power_tool("technic:blue_energy_crystal", 450000)
+for key, data in pairs(technic.battery_types) do
+  technic.register_power_tool("hades_technic:battery_"..data.name, data.max_charge)
+end
+technic.register_power_tool("hades_technic:red_energy_crystal", 50000)
+technic.register_power_tool("hades_technic:green_energy_crystal", 150000)
+technic.register_power_tool("hades_technic:blue_energy_crystal", 450000)
 
 -- Battery recipes:
+--[[
 -- Tin-copper recipe:
 minetest.register_craft({
-	output = "technic:battery",
+	output = "hades_technic:battery",
 	recipe = {
-		{"group:wood", "default:copper_ingot", "group:wood"},
-		{"group:wood", "default:tin_ingot",    "group:wood"},
-		{"group:wood", "default:copper_ingot", "group:wood"},
+		{"group:wood", "hades_core:copper_ingot", "group:wood"},
+		{"group:wood", "hades_core:tin_ingot",    "group:wood"},
+		{"group:wood", "hades_core:copper_ingot", "group:wood"},
 	}
 })
+--]]
 -- Sulfur-lead-water recipes:
 -- With sulfur lumps:
 -- With water:
+--[[
 minetest.register_craft({
-	output = "technic:battery",
+	output = "hades_technic:battery_lead",
 	recipe = {
-		{"group:wood",         "technic:sulfur_lump", "group:wood"},
-		{"technic:lead_ingot", "bucket:bucket_water", "technic:lead_ingot"},
-		{"group:wood",         "technic:sulfur_lump", "group:wood"},
+		{"group:wood",         "hades_technic:sulfur_lump", "group:wood"},
+		{"hades_technic:lead_ingot", "bucket:bucket_water", "hades_technic:lead_ingot"},
+		{"group:wood",         "hades_technic:sulfur_lump", "group:wood"},
 	},
 	replacements = {
 		{"bucket:bucket_water", "bucket:bucket_empty"}
@@ -38,21 +43,22 @@ minetest.register_craft({
 })
 -- With oil extract:
 minetest.register_craft({
-	output = "technic:battery",
+	output = "hades_technic:battery_lead",
 	recipe = {
-		{"group:wood",         "technic:sulfur_lump",   "group:wood"},
-		{"technic:lead_ingot", "homedecor:oil_extract", "technic:lead_ingot"},
-		{"group:wood",         "technic:sulfur_lump",   "group:wood"},
+		{"group:wood",         "hades_technic:sulfur_lump",   "group:wood"},
+		{"hades_technic:lead_ingot", "homedecor:oil_extract", "hades_technic:lead_ingot"},
+		{"group:wood",         "hades_technic:sulfur_lump",   "group:wood"},
 	}
 })
+--]]
 -- With sulfur dust:
 -- With water:
 minetest.register_craft({
-	output = "technic:battery",
+	output = "hades_technic:battery_lead",
 	recipe = {
-		{"group:wood",         "technic:sulfur_dust", "group:wood"},
-		{"technic:lead_ingot", "bucket:bucket_water", "technic:lead_ingot"},
-		{"group:wood",         "technic:sulfur_dust", "group:wood"},
+		{"group:wood",         "hades_technic:sulfur_dust", "group:wood"},
+		{"hades_technic:lead_ingot", "bucket:bucket_water", "hades_technic:lead_ingot"},
+		{"group:wood",         "hades_technic:sulfur_dust", "group:wood"},
 	},
 	replacements = {
 		{"bucket:bucket_water", "bucket:bucket_empty"}
@@ -60,27 +66,47 @@ minetest.register_craft({
 })
 -- With oil extract:
 minetest.register_craft({
-	output = "technic:battery",
+	output = "hades_technic:battery_lead",
 	recipe = {
-		{"group:wood",         "technic:sulfur_dust",   "group:wood"},
-		{"technic:lead_ingot", "homedecor:oil_extract", "technic:lead_ingot"},
-		{"group:wood",         "technic:sulfur_dust",   "group:wood"},
+		{"group:wood",         "hades_technic:sulfur_dust",   "group:wood"},
+		{"hades_technic:lead_ingot", "homedecor:oil_extract", "hades_technic:lead_ingot"},
+		{"group:wood",         "hades_technic:sulfur_dust",   "group:wood"},
+	}
+})--]]
+-- zinc
+minetest.register_craft({
+	output = "hades_technic:battery_zinc",
+	recipe = {
+		{"hades_technic:zinc_ingot", "hades_technic:zinc_ingot",   "hades_technic:zinc_ingot"},
+		{"hades_technic:graphite", "hades_technic:zinc_ingot", "hades_technic:graphite"},
+		{"hades_technic:zinc_ingot", "hades_technic:zinc_ingot",   "hades_technic:zinc_ingot"},
+	}
+})
+-- lithium
+minetest.register_craft({
+	output = "hades_technic:battery_lithium",
+	recipe = {
+		{"hades_technic:zinc_ingot", "hades_technic:graphite",   "hades_technic:zinc_ingot"},
+		{"hades_technic:lead_ingot", "hades_extraores:lithium_ingot", "hades_technic:lead_ingot"},
+		{"hades_technic:zinc_ingot", "hades_extraores:lithium_ingot",   "hades_technic:zinc_ingot"},
 	}
 })
 
-minetest.register_tool("technic:battery", {
-	description = S("RE Battery"),
-	inventory_image = "technic_battery.png",
-	wear_represents = "technic_RE_charge",
-	on_refill = technic.refill_RE_charge,
-	tool_capabilities = {
-		charge = 0,
-		max_drop_level = 0,
-		groupcaps = {
-			fleshy = {times={}, uses=10000, maxlevel=0}
-		}
-	}
-})
+for key, data in pairs(technic.battery_types) do
+  minetest.register_tool("hades_technic:battery_"..data.name, {
+    description = S("RE "..data.desc.." Battery"),
+    inventory_image = "technic_battery.png",
+    wear_represents = "technic_RE_charge",
+    on_refill = technic.refill_RE_charge,
+    tool_capabilities = {
+      charge = 0,
+      max_drop_level = 0,
+      groupcaps = {
+        fleshy = {times={}, uses=data.max_charge, maxlevel=0}
+      }
+    }
+  })
+end
 
 -- x+2 + (z+2)*2
 local dirtab = {
@@ -159,6 +185,15 @@ end
 function technic.register_battery_box(data)
 	local tier = data.tier
 	local ltier = string.lower(tier)
+  
+  local node_name = data.node_name or "";
+  if (data.node_name) then
+    node_name = "_"..node_name;
+  end
+  local node_desc = data.node_desc or "";
+  if (data.node_desc) then
+    node_desc = " "..node_desc;
+  end
 
 	local formspec =
 		"size[8,9]"..
@@ -249,13 +284,13 @@ function technic.register_battery_box(data)
 		charge_count = math.max(charge_count, 0)
 		local last_count = meta:get_float("last_side_shown")
 		if charge_count ~= last_count then
-			technic.swap_node(pos,"technic:"..ltier.."_battery_box"..charge_count)
+			technic.swap_node(pos,"hades_technic:"..ltier..node_name.."_battery_box"..charge_count)
 			meta:set_float("last_side_shown", charge_count)
 		end
 
 		local charge_percent = math.floor(current_charge / max_charge * 100)
 		meta:set_string("formspec", formspec..add_on_off_buttons(meta, ltier, charge_percent))
-		local infotext = S("@1 Battery Box: @2 / @3", tier,
+		local infotext = S("@1 Battery Box: @2 / @3", tier..node_desc,
 				technic.EU_string(current_charge),
 				technic.EU_string(max_charge))
 		if eu_input == 0 then
@@ -263,7 +298,7 @@ function technic.register_battery_box(data)
 		end
 		meta:set_string("infotext", infotext)
 	end
-
+  
 	for i = 0, 8 do
 		local groups = {snappy=2, choppy=2, oddly_breakable_by_hand=2,
 				technic_machine=1, ["technic_"..ltier]=1}
@@ -286,9 +321,9 @@ function technic.register_battery_box(data)
 			front_tex = "technic_"..ltier.."_battery_box_side.png^technic_power_meter"..i..".png"
 			side_tex = "technic_"..ltier.."_battery_box_side.png^technic_power_meter"..i..".png"
 		end
-
-		minetest.register_node("technic:"..ltier.."_battery_box"..i, {
-			description = S("%s Battery Box"):format(tier),
+    
+		minetest.register_node("hades_technic:"..ltier..node_name.."_battery_box"..i, {
+			description = S("%s Battery Box"):format(tier..node_desc),
 			tiles = {
 				top_tex,
 				bottom_tex,
@@ -300,8 +335,8 @@ function technic.register_battery_box(data)
 			connect_sides = {"bottom"},
 			tube = data.tube and tube or nil,
 			paramtype2 = "facedir",
-			sounds = default.node_sound_wood_defaults(),
-			drop = "technic:"..ltier.."_battery_box0",
+			sounds = hades_sounds.node_sound_wood_defaults(),
+			drop = "hades_technic:"..ltier..node_name.."_battery_box0",
 			on_construct = function(pos)
 				local meta = minetest.get_meta(pos)
 				local EU_upgrade, tube_upgrade = 0, 0
@@ -336,7 +371,7 @@ function technic.register_battery_box(data)
 				local meta = minetest.get_meta(pos)
 				if fields.edit_channel then
 					minetest.show_formspec(sender:get_player_name(),
-						"technic:battery_box_edit_channel"..minetest.pos_to_string(pos),
+						"hades_technic:battery_box_edit_channel"..minetest.pos_to_string(pos),
 						"field[channel;Digiline Channel;"..meta:get_string("channel").."]")
 				elseif fields["fs_helpers_cycling:0:split_src_stacks"]
 				  or   fields["fs_helpers_cycling:0:split_dst_stacks"]
@@ -387,14 +422,14 @@ function technic.register_battery_box(data)
 	-- Register as a battery type
 	-- Battery type machines function as power reservoirs and can both receive and give back power
 	for i = 0, 8 do
-		technic.register_machine(tier, "technic:"..ltier.."_battery_box"..i, technic.battery)
+		technic.register_machine(tier, "hades_technic:"..ltier..node_name.."_battery_box"..i, technic.battery)
 	end
 
 end -- End registration
 
 minetest.register_on_player_receive_fields(
 	function(player, formname, fields)
-		if formname:sub(1, 32) ~= "technic:battery_box_edit_channel" or
+		if formname:sub(1, 32) ~= "hades_technic:battery_box_edit_channel" or
 				not fields.channel then
 			return
 		end

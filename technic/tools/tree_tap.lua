@@ -2,7 +2,7 @@
 local S = technic.getter
 local mesecons_materials = minetest.get_modpath("mesecons_materials")
 
-minetest.register_tool("technic:treetap", {
+minetest.register_tool("hades_technic:treetap", {
 	description = S("Tree Tap"),
 	inventory_image = "technic_tree_tap.png",
 	on_use = function(itemstack, user, pointed_thing)
@@ -21,7 +21,7 @@ minetest.register_tool("technic:treetap", {
 		end
 		node.name = "moretrees:rubber_tree_trunk_empty"
 		minetest.swap_node(pos, node)
-		minetest.handle_node_drops(pointed_thing.above, {"technic:raw_latex"}, user)
+		minetest.handle_node_drops(pointed_thing.above, {"hades_technic:raw_latex"}, user)
 		if not technic.creative_mode then
 			local item_wear = tonumber(itemstack:get_wear())
 			item_wear = item_wear + 819
@@ -36,14 +36,14 @@ minetest.register_tool("technic:treetap", {
 })
 
 minetest.register_craft({
-	output = "technic:treetap",
+	output = "hades_technic:treetap",
 	recipe = {
-		{"pipeworks:tube_1", "group:wood",    "default:stick"},
-		{"",               "default:stick", "default:stick"}
+		{"pipeworks:tube_1", "group:wood",    "group:stick"},
+		{"",               "group:stick", "group:stick"}
 	},
 })
 
-minetest.register_craftitem("technic:raw_latex", {
+minetest.register_craftitem("hades_technic:raw_latex", {
 	description = S("Raw Latex"),
 	inventory_image = "technic_raw_latex.png",
 })
@@ -51,12 +51,12 @@ minetest.register_craftitem("technic:raw_latex", {
 if mesecons_materials then
 	minetest.register_craft({
 		type = "cooking",
-		recipe = "technic:raw_latex",
+		recipe = "hades_technic:raw_latex",
 		output = "mesecons_materials:glue",
 	})
 end
 
-minetest.register_craftitem("technic:rubber", {
+minetest.register_craftitem("hades_technic:rubber", {
 	description = S("Rubber Fiber"),
 	inventory_image = "technic_rubber.png",
 })

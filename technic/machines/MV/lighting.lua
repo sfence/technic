@@ -81,7 +81,7 @@ local technic_homedecor_rotate_and_place = function(itemstack, placer, pointed_t
 end
 
 -- Yellow -- Half node
-minetest.register_node('technic:homedecor_glowlight_half_yellow', {
+minetest.register_node('hades_technic:homedecor_glowlight_half_yellow', {
 	description = S("Yellow Glowlight (thick)"),
 	drawtype = "nodebox",
 	tiles = {
@@ -105,7 +105,7 @@ minetest.register_node('technic:homedecor_glowlight_half_yellow', {
 	paramtype = "light",
 	paramtype2 = "facedir",
 	walkable = true,
-	sounds = default.node_sound_wood_defaults(),
+	sounds = hades_sounds.node_sound_wood_defaults(),
 
 	groups = { snappy = 3 },
 	on_place = function(itemstack, placer, pointed_thing)
@@ -116,11 +116,11 @@ minetest.register_node('technic:homedecor_glowlight_half_yellow', {
 			  technic.inductive_on_construct(pos, 100, "Yellow Glowlight (thick)")
 		       end,
 	on_punch = function(pos, node, puncher)
-		      technic.inductive_on_punch_off(pos, 100, "technic:homedecor_glowlight_half_yellow_active")
+		      technic.inductive_on_punch_off(pos, 100, "hades_technic:homedecor_glowlight_half_yellow_active")
 		   end
 })
 
-minetest.register_node('technic:homedecor_glowlight_half_yellow_active', {
+minetest.register_node('hades_technic:homedecor_glowlight_half_yellow_active', {
 	description = S("Yellow Glowlight (thick)"),
 	drawtype = "nodebox",
 	tiles = {
@@ -145,10 +145,10 @@ minetest.register_node('technic:homedecor_glowlight_half_yellow_active', {
 	paramtype2 = "facedir",
 	walkable = true,
 	light_source = minetest.LIGHT_MAX,
-	sounds = default.node_sound_wood_defaults(),
+	sounds = hades_sounds.node_sound_wood_defaults(),
 
 	groups = { snappy = 3, not_in_creative_inventory=1},
-	drop="technic:homedecor_glowlight_half_yellow",
+	drop="hades_technic:homedecor_glowlight_half_yellow",
 	on_place = function(itemstack, placer, pointed_thing)
 		technic_homedecor_rotate_and_place(itemstack, placer, pointed_thing)
 		return itemstack
@@ -157,12 +157,12 @@ minetest.register_node('technic:homedecor_glowlight_half_yellow_active', {
 			  technic.inductive_on_construct(pos, 100, "Yellow Glowlight (thick)")
 		       end,
 	on_punch = function(pos, node, puncher)
-		      technic.inductive_on_punch_on(pos, 0, "technic:homedecor_glowlight_half_yellow")
+		      technic.inductive_on_punch_on(pos, 0, "hades_technic:homedecor_glowlight_half_yellow")
 		   end
 })
 
 -- Yellow -- Quarter node
-minetest.register_node('technic:homedecor_glowlight_quarter_yellow', {
+minetest.register_node('hades_technic:homedecor_glowlight_quarter_yellow', {
 	description = S("Yellow Glowlight (thin)"),
 	drawtype = "nodebox",
 	tiles = {
@@ -186,7 +186,7 @@ minetest.register_node('technic:homedecor_glowlight_quarter_yellow', {
 	paramtype = "light",
 	paramtype2 = "facedir",
 	walkable = true,
-	sounds = default.node_sound_wood_defaults(),
+	sounds = hades_sounds.node_sound_wood_defaults(),
 
 	groups = { snappy = 3 },
 	on_place = function(itemstack, placer, pointed_thing)
@@ -197,11 +197,11 @@ minetest.register_node('technic:homedecor_glowlight_quarter_yellow', {
 			  technic.inductive_on_construct(pos, 100, "Yellow Glowlight (thin)")
 		       end,
 	on_punch = function(pos, node, puncher)
-		      technic.inductive_on_punch_off(pos, 100, "technic:homedecor_glowlight_quarter_yellow_active")
+		      technic.inductive_on_punch_off(pos, 100, "hades_technic:homedecor_glowlight_quarter_yellow_active")
 		   end
 })
 
-minetest.register_node('technic:homedecor_glowlight_quarter_yellow_active', {
+minetest.register_node('hades_technic:homedecor_glowlight_quarter_yellow_active', {
 	description = S("Yellow Glowlight (thin)"),
 	drawtype = "nodebox",
 	tiles = {
@@ -226,10 +226,10 @@ minetest.register_node('technic:homedecor_glowlight_quarter_yellow_active', {
 	paramtype2 = "facedir",
 	walkable = true,
 	light_source = minetest.LIGHT_MAX-1,
-	sounds = default.node_sound_wood_defaults(),
+	sounds = hades_sounds.node_sound_wood_defaults(),
 
 	groups = { snappy = 3, not_in_creative_inventory=1},
-	drop="technic:homedecor_glowlight_quarter_yellow",
+	drop="hades_technic:homedecor_glowlight_quarter_yellow",
 	on_place = function(itemstack, placer, pointed_thing)
 		technic_homedecor_rotate_and_place(itemstack, placer, pointed_thing)
 		return itemstack
@@ -238,13 +238,13 @@ minetest.register_node('technic:homedecor_glowlight_quarter_yellow_active', {
 			  technic.inductive_on_construct(pos, 100, "Yellow Glowlight (thin)")
 		       end,
 	on_punch = function(pos, node, puncher)
-		      technic.inductive_on_punch_on(pos, 0, "technic:homedecor_glowlight_quarter_yellow")
+		      technic.inductive_on_punch_on(pos, 0, "hades_technic:homedecor_glowlight_quarter_yellow")
 		   end
 })
 
 
 -- White -- half node
-minetest.register_node('technic:homedecor_glowlight_half_white', {
+minetest.register_node('hades_technic:homedecor_glowlight_half_white', {
 	description = S("White Glowlight (thick)"),
 	drawtype = "nodebox",
 	tiles = {
@@ -268,7 +268,7 @@ minetest.register_node('technic:homedecor_glowlight_half_white', {
 	paramtype = "light",
 	paramtype2 = "facedir",
 	walkable = true,
-	sounds = default.node_sound_wood_defaults(),
+	sounds = hades_sounds.node_sound_wood_defaults(),
 
 	groups = { snappy = 3 },
 	on_place = function(itemstack, placer, pointed_thing)
@@ -279,11 +279,11 @@ minetest.register_node('technic:homedecor_glowlight_half_white', {
 			  technic.inductive_on_construct(pos, 100, "White Glowlight (thick)")
 		       end,
 	on_punch = function(pos, node, puncher)
-		      technic.inductive_on_punch_off(pos, 100, "technic:homedecor_glowlight_half_white_active")
+		      technic.inductive_on_punch_off(pos, 100, "hades_technic:homedecor_glowlight_half_white_active")
 		   end
 })
 
-minetest.register_node('technic:homedecor_glowlight_half_white_active', {
+minetest.register_node('hades_technic:homedecor_glowlight_half_white_active', {
 	description = S("White Glowlight (thick)"),
 	drawtype = "nodebox",
 	tiles = {
@@ -308,10 +308,10 @@ minetest.register_node('technic:homedecor_glowlight_half_white_active', {
 	paramtype2 = "facedir",
 	walkable = true,
 	light_source = minetest.LIGHT_MAX,
-	sounds = default.node_sound_wood_defaults(),
+	sounds = hades_sounds.node_sound_wood_defaults(),
 
 	groups = { snappy = 3, not_in_creative_inventory=1},
-	drop="technic:homedecor_glowlight_half_white",
+	drop="hades_technic:homedecor_glowlight_half_white",
 	on_place = function(itemstack, placer, pointed_thing)
 		technic_homedecor_rotate_and_place(itemstack, placer, pointed_thing)
 		return itemstack
@@ -320,12 +320,12 @@ minetest.register_node('technic:homedecor_glowlight_half_white_active', {
 			  technic.inductive_on_construct(pos, 100, "White Glowlight (thick)")
 		       end,
 	on_punch = function(pos, node, puncher)
-		      technic.inductive_on_punch_on(pos, 0, "technic:homedecor_glowlight_half_white")
+		      technic.inductive_on_punch_on(pos, 0, "hades_technic:homedecor_glowlight_half_white")
 		   end
 })
 
 -- White -- Quarter node
-minetest.register_node('technic:homedecor_glowlight_quarter_white', {
+minetest.register_node('hades_technic:homedecor_glowlight_quarter_white', {
 	description = S("White Glowlight (thin)"),
 	drawtype = "nodebox",
 	tiles = {
@@ -349,7 +349,7 @@ minetest.register_node('technic:homedecor_glowlight_quarter_white', {
 	paramtype = "light",
 	paramtype2 = "facedir",
 	walkable = true,
-	sounds = default.node_sound_wood_defaults(),
+	sounds = hades_sounds.node_sound_wood_defaults(),
 
 	groups = { snappy = 3 },
 	on_place = function(itemstack, placer, pointed_thing)
@@ -360,11 +360,11 @@ minetest.register_node('technic:homedecor_glowlight_quarter_white', {
 			  technic.inductive_on_construct(pos, 100, "White Glowlight (thin)")
 		       end,
 	on_punch = function(pos, node, puncher)
-		      technic.inductive_on_punch_off(pos, 100, "technic:homedecor_glowlight_quarter_white_active")
+		      technic.inductive_on_punch_off(pos, 100, "hades_technic:homedecor_glowlight_quarter_white_active")
 		   end
 })
 
-minetest.register_node('technic:homedecor_glowlight_quarter_white_active', {
+minetest.register_node('hades_technic:homedecor_glowlight_quarter_white_active', {
 	description = S("White Glowlight (thin)"),
 	drawtype = "nodebox",
 	tiles = {
@@ -389,10 +389,10 @@ minetest.register_node('technic:homedecor_glowlight_quarter_white_active', {
 	paramtype2 = "facedir",
 	walkable = true,
 	light_source = minetest.LIGHT_MAX-1,
-	sounds = default.node_sound_wood_defaults(),
+	sounds = hades_sounds.node_sound_wood_defaults(),
 
 	groups = { snappy = 3, not_in_creative_inventory=1},
-	drop="technic:homedecor_glowlight_quarter_white",
+	drop="hades_technic:homedecor_glowlight_quarter_white",
 	on_place = function(itemstack, placer, pointed_thing)
 		technic_homedecor_rotate_and_place(itemstack, placer, pointed_thing)
 		return itemstack
@@ -401,12 +401,12 @@ minetest.register_node('technic:homedecor_glowlight_quarter_white_active', {
 			  technic.inductive_on_construct(pos, 100, "White Glowlight (thin)")
 		       end,
 	on_punch = function(pos, node, puncher)
-		      technic.inductive_on_punch_on(pos, 0, "technic:homedecor_glowlight_quarter_white")
+		      technic.inductive_on_punch_on(pos, 0, "hades_technic:homedecor_glowlight_quarter_white")
 		   end
 })
 
 -- Glowlight "cubes" - yellow
-minetest.register_node('technic:homedecor_glowlight_small_cube_yellow', {
+minetest.register_node('hades_technic:homedecor_glowlight_small_cube_yellow', {
 	description = S("Yellow Glowlight (small cube)"),
 	drawtype = "nodebox",
 	tiles = {
@@ -430,7 +430,7 @@ minetest.register_node('technic:homedecor_glowlight_small_cube_yellow', {
 	paramtype = "light",
 	paramtype2 = "facedir",
 	walkable = true,
-	sounds = default.node_sound_wood_defaults(),
+	sounds = hades_sounds.node_sound_wood_defaults(),
 
 	groups = { snappy = 3 },
 	on_place = function(itemstack, placer, pointed_thing)
@@ -441,11 +441,11 @@ minetest.register_node('technic:homedecor_glowlight_small_cube_yellow', {
 			  technic.inductive_on_construct(pos, 50, "Yellow Glowlight (small cube)")
 		       end,
 	on_punch = function(pos, node, puncher)
-		      technic.inductive_on_punch_off(pos, 50, "technic:homedecor_glowlight_small_cube_yellow_active")
+		      technic.inductive_on_punch_off(pos, 50, "hades_technic:homedecor_glowlight_small_cube_yellow_active")
 		   end
 })
 
-minetest.register_node('technic:homedecor_glowlight_small_cube_yellow_active', {
+minetest.register_node('hades_technic:homedecor_glowlight_small_cube_yellow_active', {
 	description = S("Yellow Glowlight (small cube)"),
 	drawtype = "nodebox",
 	tiles = {
@@ -470,10 +470,10 @@ minetest.register_node('technic:homedecor_glowlight_small_cube_yellow_active', {
 	paramtype2 = "facedir",
 	walkable = true,
 	light_source = minetest.LIGHT_MAX-1,
-	sounds = default.node_sound_wood_defaults(),
+	sounds = hades_sounds.node_sound_wood_defaults(),
 
 	groups = { snappy = 3, not_in_creative_inventory=1},
-	drop="technic:homedecor_glowlight_small_cube_yellow",
+	drop="hades_technic:homedecor_glowlight_small_cube_yellow",
 	on_place = function(itemstack, placer, pointed_thing)
 		technic_homedecor_rotate_and_place(itemstack, placer, pointed_thing)
 		return itemstack
@@ -482,12 +482,12 @@ minetest.register_node('technic:homedecor_glowlight_small_cube_yellow_active', {
 			  technic.inductive_on_construct(pos, 50, "Yellow Glowlight (small cube)")
 		       end,
 	on_punch = function(pos, node, puncher)
-		      technic.inductive_on_punch_on(pos, 0, "technic:homedecor_glowlight_small_cube_yellow")
+		      technic.inductive_on_punch_on(pos, 0, "hades_technic:homedecor_glowlight_small_cube_yellow")
 		   end
 })
 
 -- Glowlight "cubes" - white
-minetest.register_node('technic:homedecor_glowlight_small_cube_white', {
+minetest.register_node('hades_technic:homedecor_glowlight_small_cube_white', {
 	description = S("White Glowlight (small cube)"),
 	drawtype = "nodebox",
 	tiles = {
@@ -511,7 +511,7 @@ minetest.register_node('technic:homedecor_glowlight_small_cube_white', {
 	paramtype = "light",
 	paramtype2 = "facedir",
 	walkable = true,
-	sounds = default.node_sound_wood_defaults(),
+	sounds = hades_sounds.node_sound_wood_defaults(),
 
 	groups = { snappy = 3 },
 	on_place = function(itemstack, placer, pointed_thing)
@@ -522,11 +522,11 @@ minetest.register_node('technic:homedecor_glowlight_small_cube_white', {
 			  technic.inductive_on_construct(pos, 50, "White Glowlight (small cube)")
 		       end,
 	on_punch = function(pos, node, puncher)
-		      technic.inductive_on_punch_off(pos, 50, "technic:homedecor_glowlight_small_cube_white_active")
+		      technic.inductive_on_punch_off(pos, 50, "hades_technic:homedecor_glowlight_small_cube_white_active")
 		   end
 })
 
-minetest.register_node('technic:homedecor_glowlight_small_cube_white_active', {
+minetest.register_node('hades_technic:homedecor_glowlight_small_cube_white_active', {
 	description = S("White Glowlight (small cube)"),
 	drawtype = "nodebox",
 	tiles = {
@@ -551,10 +551,10 @@ minetest.register_node('technic:homedecor_glowlight_small_cube_white_active', {
 	paramtype2 = "facedir",
 	walkable = true,
 	light_source = minetest.LIGHT_MAX-1,
-	sounds = default.node_sound_wood_defaults(),
+	sounds = hades_sounds.node_sound_wood_defaults(),
 
 	groups = { snappy = 3, not_in_creative_inventory=1},
-	drop="technic:homedecor_glowlight_small_cube_white",
+	drop="hades_technic:homedecor_glowlight_small_cube_white",
 	on_place = function(itemstack, placer, pointed_thing)
 		technic_homedecor_rotate_and_place(itemstack, placer, pointed_thing)
 		return itemstack
@@ -563,13 +563,13 @@ minetest.register_node('technic:homedecor_glowlight_small_cube_white_active', {
 			  technic.inductive_on_construct(pos, 50, "White Glowlight (small cube)")
 		       end,
 	on_punch = function(pos, node, puncher)
-		      technic.inductive_on_punch_on(pos, 0, "technic:homedecor_glowlight_small_cube_white")
+		      technic.inductive_on_punch_on(pos, 0, "hades_technic:homedecor_glowlight_small_cube_white")
 		   end
 })
 
-technic.register_inductive_machine("technic:homedecor_glowlight_half_yellow")
-technic.register_inductive_machine("technic:homedecor_glowlight_half_white")
-technic.register_inductive_machine("technic:homedecor_glowlight_quarter_yellow")
-technic.register_inductive_machine("technic:homedecor_glowlight_quarter_white")
-technic.register_inductive_machine("technic:homedecor_glowlight_small_cube_yellow")
-technic.register_inductive_machine("technic:homedecor_glowlight_small_cube_white")
+technic.register_inductive_machine("hades_technic:homedecor_glowlight_half_yellow")
+technic.register_inductive_machine("hades_technic:homedecor_glowlight_half_white")
+technic.register_inductive_machine("hades_technic:homedecor_glowlight_quarter_yellow")
+technic.register_inductive_machine("hades_technic:homedecor_glowlight_quarter_white")
+technic.register_inductive_machine("hades_technic:homedecor_glowlight_small_cube_yellow")
+technic.register_inductive_machine("hades_technic:homedecor_glowlight_small_cube_white")

@@ -1,6 +1,6 @@
 local S = technic.getter
 
-technic.register_power_tool("technic:prospector", 300000)
+technic.register_power_tool("hades_technic:prospector", 300000)
 
 local function get_metadata(toolstack)
 	local m = minetest.deserialize(toolstack:get_metadata())
@@ -12,7 +12,7 @@ local function get_metadata(toolstack)
 	return m
 end
 
-minetest.register_tool("technic:prospector", {
+minetest.register_tool("hades_technic:prospector", {
 	description = S("Prospector"),
 	inventory_image = "technic_prospector.png",
 	wear_represents = "technic_RE_charge",
@@ -63,7 +63,7 @@ minetest.register_tool("technic:prospector", {
 			end
 		end
 		local look_diameter = toolmeta.look_radius * 2 + 1
-		minetest.show_formspec(user:get_player_name(), "technic:prospector_control",
+		minetest.show_formspec(user:get_player_name(), "hades_technic:prospector_control",
 			"size[7,8.5]"..
 			"item_image[0,0;1,1;"..toolstack:get_name().."]"..
 			"label[1,0;"..minetest.formspec_escape(toolstack:get_definition().description).."]"..
@@ -97,10 +97,10 @@ minetest.register_tool("technic:prospector", {
 })
 
 minetest.register_on_player_receive_fields(function(user, formname, fields)
-        if formname ~= "technic:prospector_control" then return false end
+        if formname ~= "hades_technic:prospector_control" then return false end
 	if not user or not user:is_player() or user.is_fake_player then return end
 	local toolstack = user:get_wielded_item()
-	if toolstack:get_name() ~= "technic:prospector" then return true end
+	if toolstack:get_name() ~= "hades_technic:prospector" then return true end
 	local toolmeta = get_metadata(toolstack)
 	for field, value in pairs(fields) do
 		if field:sub(1, 7) == "target_" then
@@ -119,10 +119,10 @@ minetest.register_on_player_receive_fields(function(user, formname, fields)
 end)
 
 minetest.register_craft({
-	output = "technic:prospector",
+	output = "hades_technic:prospector",
 	recipe = {
-		{"moreores:pick_silver", "moreores:mithril_block", "pipeworks:teleport_tube_1"},
-		{"basic_materials:brass_ingot", "technic:control_logic_unit", "basic_materials:brass_ingot"},
-		{"", "technic:blue_energy_crystal", ""},
+		{"moreores:pick_silver", "hades_extraores:titan_block", "pipeworks:teleport_tube_1"},
+		{"hades_extramaterials:brass_ingot", "hades_technic:control_logic_unit", "hades_extramaterials:brass_ingot"},
+		{"", "hades_technic:blue_energy_crystal", ""},
 	}
 })

@@ -10,36 +10,37 @@ end
 
 local recipes = {
 	-- Dusts
-	{"default:coal_lump",          "technic:coal_dust 2"},
-	{"default:copper_lump",        "technic:copper_dust 2"},
-	{"default:desert_stone",       "default:desert_sand"},
-	{"default:gold_lump",          "technic:gold_dust 2"},
-	{"default:iron_lump",          "technic:wrought_iron_dust 2"},
-	{"default:tin_lump",           "technic:tin_dust 2"},
-	{"technic:chromium_lump",      "technic:chromium_dust 2"},
-	{"technic:uranium_lump",       "technic:uranium_dust 2"},
-	{"technic:zinc_lump",          "technic:zinc_dust 2"},
-	{"technic:lead_lump",          "technic:lead_dust 2"},
-	{"technic:sulfur_lump",        "technic:sulfur_dust 2"},
-	{"default:stone",              "technic:stone_dust"},
-	{"default:sand",               "technic:stone_dust"},
+	{"hades_core:coal_lump",          "hades_technic:coal_dust 2"},
+	{"hades_core:copper_lump",        "hades_technic:copper_dust 2"},
+	--{"hades_core:burned_stone",       "default:desert_sand"},
+	{"hades_core:gold_lump",          "hades_technic:gold_dust 2"},
+	{"hades_core:iron_lump",          "hades_technic:wrought_iron_dust 2"},
+	{"hades_core:tin_lump",           "hades_technic:tin_dust 2"},
+	{"hades_technic:chromium_lump",      "hades_technic:chromium_dust 2"},
+	{"hades_technic:uranium_lump",       "hades_technic:uranium_dust 2"},
+	{"hades_technic:zinc_lump",          "hades_technic:zinc_dust 2"},
+	{"hades_technic:lead_lump",          "hades_technic:lead_dust 2"},
+	{"hades_technic:sulfur_lump",        "hades_technic:sulfur_dust 2"},
+	{"hades_core:stone",              "hades_technic:stone_dust"},
+	--{"hades_core:fertile_sand",               "hades_technic:stone_dust"},
 
 	-- Other
-	{"default:cobble",           "default:gravel"},
-	{"default:gravel",           "default:sand"},
-	{"default:sandstone",        "default:sand 2"}, -- reverse recipe can be found in the compressor
-	{"default:desert_sandstone", "default:desert_sand 2"}, -- reverse recipe can be found in the compressor
-	{"default:silver_sandstone", "default:silver_sand 2"}, -- reverse recipe can be found in the compressor
+	{"hades_core:cobble",           "hades_core:gravel"},
+	--{"hades_core:gravel",           "hades_core:sand"},
+	{"hades_core:sandstone",        "hades_core:fertile_sand 2"}, -- reverse recipe can be found in the compressor
+	--{"default:desert_sandstone", "default:desert_sand 2"}, -- reverse recipe can be found in the compressor
+	--{"default:silver_sandstone", "default:silver_sand 2"}, -- reverse recipe can be found in the compressor
 
-	{"default:ice",              "default:snowblock"},
+	--{"default:ice",              "default:snowblock"},
 }
 
 -- defuse the sandstone -> 4 sand recipe to avoid infinite sand bugs (also consult the inverse compressor recipe)
 minetest.clear_craft({
 	recipe = {
-		{"default:sandstone"}
+		{"hades_core:sandstone"}
 	},
 })
+--[[
 minetest.clear_craft({
 	recipe = {
 		{"default:desert_sandstone"}
@@ -50,26 +51,27 @@ minetest.clear_craft({
 		{"default:silver_sandstone"}
 	},
 })
+--]]
 
-if minetest.get_modpath("farming") then
-	table.insert(recipes, {"farming:seed_wheat",   "farming:flour 1"})
+if minetest.get_modpath("hades_farming") then
+	table.insert(recipes, {"hades_farming:seed_wheat 9",   "hades_farming:flour 1"})
 end
 
-if minetest.get_modpath("moreores") then
-	table.insert(recipes, {"moreores:mithril_lump",   "technic:mithril_dust 2"})
-	table.insert(recipes, {"moreores:silver_lump",    "technic:silver_dust 2"})
+if minetest.get_modpath("hades_extraores") then
+	table.insert(recipes, {"hades_extraores:titan_lump",   "hades_technic:titan_dust 2"})
+	table.insert(recipes, {"hades_extraores:silver_lump",    "hades_technic:silver_dust 2"})
 end
 
 if minetest.get_modpath("gloopores") or minetest.get_modpath("glooptest") then
-	table.insert(recipes, {"gloopores:alatro_lump",   "technic:alatro_dust 2"})
-	table.insert(recipes, {"gloopores:kalite_lump",   "technic:kalite_dust 2"})
-	table.insert(recipes, {"gloopores:arol_lump",     "technic:arol_dust 2"})
-	table.insert(recipes, {"gloopores:talinite_lump", "technic:talinite_dust 2"})
-	table.insert(recipes, {"gloopores:akalin_lump",   "technic:akalin_dust 2"})
+	table.insert(recipes, {"gloopores:alatro_lump",   "hades_technic:alatro_dust 2"})
+	table.insert(recipes, {"gloopores:kalite_lump",   "hades_technic:kalite_dust 2"})
+	table.insert(recipes, {"gloopores:arol_lump",     "hades_technic:arol_dust 2"})
+	table.insert(recipes, {"gloopores:talinite_lump", "hades_technic:talinite_dust 2"})
+	table.insert(recipes, {"gloopores:akalin_lump",   "hades_technic:akalin_dust 2"})
 end
 
 if minetest.get_modpath("homedecor") then
-	table.insert(recipes, {"home_decor:brass_ingot", "technic:brass_dust 1"})
+	table.insert(recipes, {"home_decor:brass_ingot", "hades_technic:brass_dust 1"})
 end
 
 for _, data in pairs(recipes) do
@@ -80,39 +82,39 @@ end
 local function register_dust(name, ingot)
 	local lname = string.lower(name)
 	lname = string.gsub(lname, ' ', '_')
-	minetest.register_craftitem("technic:"..lname.."_dust", {
+	minetest.register_craftitem("hades_technic:"..lname.."_dust", {
 		description = S("%s Dust"):format(S(name)),
 		inventory_image = "technic_"..lname.."_dust.png",
 	})
 	if ingot then
 		minetest.register_craft({
 			type = "cooking",
-			recipe = "technic:"..lname.."_dust",
+			recipe = "hades_technic:"..lname.."_dust",
 			output = ingot,
 		})
-		technic.register_grinder_recipe({ input = {ingot}, output = "technic:"..lname.."_dust 1" })
+		technic.register_grinder_recipe({ input = {ingot}, output = "hades_technic:"..lname.."_dust 1" })
 	end
 end
 
 -- Sorted alphibeticaly
-register_dust("Brass",           "basic_materials:brass_ingot")
-register_dust("Bronze",          "default:bronze_ingot")
-register_dust("Carbon Steel",    "technic:carbon_steel_ingot")
-register_dust("Cast Iron",       "technic:cast_iron_ingot")
-register_dust("Chernobylite",    "technic:chernobylite_block")
-register_dust("Chromium",        "technic:chromium_ingot")
+register_dust("Brass",           "hades_extramaterials:brass_ingot")
+register_dust("Bronze",          "hades_core:bronze_ingot")
+register_dust("Carbon Steel",    "hades_technic:carbon_steel_ingot")
+register_dust("Cast Iron",       "hades_technic:cast_iron_ingot")
+register_dust("Chernobylite",    "hades_technic:chernobylite_block")
+register_dust("Chromium",        "hades_technic:chromium_ingot")
 register_dust("Coal",            nil)
-register_dust("Copper",          "default:copper_ingot")
-register_dust("Lead",            "technic:lead_ingot")
-register_dust("Gold",            "default:gold_ingot")
-register_dust("Mithril",         "moreores:mithril_ingot")
+register_dust("Copper",          "hades_core:copper_ingot")
+register_dust("Lead",            "hades_technic:lead_ingot")
+register_dust("Gold",            "hades_core:gold_ingot")
+register_dust("Titan",         "hades_extraores:titan_ingot")
 register_dust("Silver",          "moreores:silver_ingot")
-register_dust("Stainless Steel", "technic:stainless_steel_ingot")
-register_dust("Stone",           "default:stone")
+register_dust("Stainless Steel", "hades_technic:stainless_steel_ingot")
+register_dust("Stone",           "hades_core:stone")
 register_dust("Sulfur",          nil)
-register_dust("Tin",             "default:tin_ingot")
-register_dust("Wrought Iron",    "technic:wrought_iron_ingot")
-register_dust("Zinc",            "technic:zinc_ingot")
+register_dust("Tin",             "hades_core:tin_ingot")
+register_dust("Wrought Iron",    "hades_technic:wrought_iron_ingot")
+register_dust("Zinc",            "hades_technic:zinc_ingot")
 if minetest.get_modpath("gloopores") or minetest.get_modpath("glooptest") then
 	register_dust("Akalin",          "glooptest:akalin_ingot")
 	register_dust("Alatro",          "glooptest:alatro_ingot")
@@ -124,8 +126,8 @@ end
 for p = 0, 35 do
 	local nici = (p ~= 0 and p ~= 7 and p ~= 35) and 1 or nil
 	local psuffix = p == 7 and "" or p
-	local ingot = "technic:uranium"..psuffix.."_ingot"
-	local dust = "technic:uranium"..psuffix.."_dust"
+	local ingot = "hades_technic:uranium"..psuffix.."_ingot"
+	local dust = "hades_technic:uranium"..psuffix.."_dust"
 	minetest.register_craftitem(dust, {
 		description = S("%s Dust"):format(string.format(S("%.1f%%-Fissile Uranium"), p/10)),
 		inventory_image = "technic_uranium_dust.png",
@@ -141,7 +143,7 @@ for p = 0, 35 do
 end
 
 local function uranium_dust(p)
-	return "technic:uranium"..(p == 7 and "" or p).."_dust"
+	return "hades_technic:uranium"..(p == 7 and "" or p).."_dust"
 end
 for pa = 0, 34 do
 	for pb = pa+1, 35 do
@@ -158,14 +160,14 @@ end
 
 minetest.register_craft({
 	type = "fuel",
-	recipe = "technic:coal_dust",
+	recipe = "hades_technic:coal_dust",
 	burntime = 50,
 })
 
 if minetest.get_modpath("gloopores") or minetest.get_modpath("glooptest") then
 	minetest.register_craft({
 		type = "fuel",
-		recipe = "technic:kalite_dust",
+		recipe = "hades_technic:kalite_dust",
 		burntime = 37.5,
 	})
 end

@@ -6,12 +6,12 @@ local S = technic.getter
 
 
 minetest.register_craft({
-	output = 'technic:solar_panel',
+	output = 'hades_technic:solar_panel',
 	recipe = {
-		{'technic:doped_silicon_wafer', 'technic:doped_silicon_wafer', 'technic:doped_silicon_wafer'},
-		{'basic_materials:silver_wire',    'technic:lv_cable',            'mesecons_materials:glue'},
+		{'hades_technic:doped_silicon_wafer', 'hades_technic:doped_silicon_wafer', 'hades_technic:doped_silicon_wafer'},
+		{'hades_extramaterials:silver_wire',    'hades_technic:lv_cable',            'mesecons_materials:glue'},
 	},
-	replacements = { {"basic_materials:silver_wire", "basic_materials:empty_spool"}, },
+	replacements = { {"hades_extramaterials:silver_wire", "hades_extramaterials:empty_spool"}, },
 })
 
 
@@ -44,13 +44,13 @@ local run = function(pos, node)
 	end
 end
 
-minetest.register_node("technic:solar_panel", {
+minetest.register_node("hades_technic:solar_panel", {
 	tiles = {"technic_solar_panel_top.png",  "technic_solar_panel_bottom.png", "technic_solar_panel_side.png",
 	         "technic_solar_panel_side.png", "technic_solar_panel_side.png",   "technic_solar_panel_side.png"},
 	groups = {snappy=2, choppy=2, oddly_breakable_by_hand=2,
 		technic_machine=1, technic_lv=1},
 	connect_sides = {"bottom"},
-	sounds = default.node_sound_wood_defaults(),
+	sounds = hades_sounds.node_sound_wood_defaults(),
 	description = S("Small Solar %s Generator"):format("LV"),
 	active = false,
 	drawtype = "nodebox",
@@ -68,5 +68,5 @@ minetest.register_node("technic:solar_panel", {
 	technic_run = run,
 })
 
-technic.register_machine("LV", "technic:solar_panel", technic.producer)
+technic.register_machine("LV", "hades_technic:solar_panel", technic.producer)
 

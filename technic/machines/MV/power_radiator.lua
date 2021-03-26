@@ -14,11 +14,11 @@ local power_radius = 12
 
 
 minetest.register_craft({
-	output = 'technic:power_radiator 1',
+	output = 'hades_technic:power_radiator 1',
 	recipe = {
-		{'technic:stainless_steel_ingot', 'technic:mv_transformer', 'technic:stainless_steel_ingot'},
-		{'technic:copper_coil',           'technic:machine_casing', 'technic:copper_coil'},
-		{'technic:rubber',                'technic:mv_cable',       'technic:rubber'},
+		{'hades_technic:stainless_steel_ingot', 'hades_technic:mv_transformer', 'hades_technic:stainless_steel_ingot'},
+		{'hades_technic:copper_coil',           'hades_technic:machine_casing', 'hades_technic:copper_coil'},
+		{'hades_technic:rubber',                'hades_technic:mv_cable',       'hades_technic:rubber'},
 	}
 })
 
@@ -117,12 +117,12 @@ local toggle_on_off_inductive_appliances = function(pos, node, puncher)
 	end
 end
 
-minetest.register_node("technic:power_radiator", {
+minetest.register_node("hades_technic:power_radiator", {
 	description = "MV Power Radiator",
 	tiles  = {"technic_lv_cable.png", "technic_lv_cable.png", "technic_lv_cable.png",
 	          "technic_lv_cable.png", "technic_lv_cable.png", "technic_lv_cable.png"},
 	groups = {snappy=2, choppy=2, oddly_breakable_by_hand=2},
-	sounds = default.node_sound_wood_defaults(),
+	sounds = hades_sounds.node_sound_wood_defaults(),
 	drawtype = "nodebox",
 	paramtype = "light",
 	is_ground_content = true,
@@ -147,7 +147,7 @@ minetest.register_node("technic:power_radiator", {
 
 minetest.register_abm({
 	label = "Machines: run power radiator",
-	nodenames = {"technic:power_radiator"},
+	nodenames = {"hades_technic:power_radiator"},
 	interval   = 1,
 	chance     = 1,
 	action = function(pos, node, active_object_count, active_object_count_wider)
@@ -216,5 +216,5 @@ minetest.register_abm({
 	end,
 })
 
-technic.register_machine("MV", "technic:power_radiator", technic.receiver)
+technic.register_machine("MV", "hades_technic:power_radiator", technic.receiver)
 

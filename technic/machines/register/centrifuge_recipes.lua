@@ -11,15 +11,15 @@ function technic.register_separating_recipe(data)
 end
 
 local recipes = {
-	{ "technic:bronze_dust 8",             "technic:copper_dust 7",       "technic:tin_dust"      },
-	{ "technic:stainless_steel_dust 5",    "technic:wrought_iron_dust 4", "technic:chromium_dust" },
-	{ "technic:brass_dust 3",              "technic:copper_dust 2",       "technic:zinc_dust"     },
-	{ "technic:chernobylite_dust",         "default:sand",                "technic:uranium3_dust" },
+	{ "hades_technic:bronze_dust 8",             "hades_technic:copper_dust 7",       "hades_technic:tin_dust"      },
+	{ "hades_technic:stainless_steel_dust 5",    "hades_technic:wrought_iron_dust 4", "hades_technic:chromium_dust" },
+	{ "hades_technic:brass_dust 3",              "hades_technic:copper_dust 2",       "hades_technic:zinc_dust"     },
+	{ "hades_technic:chernobylite_dust",         "default:sand",                "hades_technic:uranium3_dust" },
 	{ "default:dirt 4",                    "default:sand",                "default:gravel",       "default:clay_lump 2"     },
 }
 
 local function uranium_dust(p)
-	return "technic:uranium"..(p == 7 and "" or p).."_dust"
+	return "hades_technic:uranium"..(p == 7 and "" or p).."_dust"
 end
 for p = 1, 34 do
 	table.insert(recipes, { uranium_dust(p).." 2", uranium_dust(p-1), uranium_dust(p+1) })
@@ -27,7 +27,7 @@ end
 
 if minetest.get_modpath("bushes_classic") then
 	for _, berry in ipairs({ "blackberry", "blueberry", "gooseberry", "raspberry", "strawberry" }) do
-		table.insert(recipes, { "bushes:"..berry.."_bush", "default:stick 20", "bushes:"..berry.." 4" })
+		table.insert(recipes, { "bushes:"..berry.."_bush", "group:stick 20", "bushes:"..berry.." 4" })
 	end
 end
 

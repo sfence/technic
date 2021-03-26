@@ -84,7 +84,7 @@ for name, info in pairs(wrench.registered_nodes) do
 	end
 end
 
-minetest.register_tool("wrench:wrench", {
+minetest.register_tool("hades_wrench:wrench", {
 	description = S("Wrench"),
 	inventory_image = "technic_wrench.png",
 	tool_capabilities = {

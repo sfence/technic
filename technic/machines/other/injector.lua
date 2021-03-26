@@ -44,9 +44,9 @@ local function inject_items (pos)
 end
 
 minetest.register_craft({
-	output = 'technic:injector 1',
+	output = 'hades_technic:injector 1',
 	recipe = {
-		{'', 'technic:control_logic_unit',''},
+		{'', 'hades_technic:control_logic_unit',''},
 		{'', 'default:chest',''},
 		{'', 'pipeworks:tube_1',''},
 	}
@@ -56,7 +56,7 @@ local function set_injector_formspec(meta)
 	local is_stack = meta:get_string("mode") == "whole stacks"
 	meta:set_string("formspec",
 		"size[8,9;]"..
-		"item_image[0,0;1,1;technic:injector]"..
+		"item_image[0,0;1,1;hades_technic:injector]"..
 		"label[1,0;"..S("Self-Contained Injector").."]"..
 		(is_stack and
 			"button[0,1;2,1;mode_item;"..S("Stackwise").."]" or
@@ -76,7 +76,7 @@ local function set_injector_formspec(meta)
 	)
 end
 
-minetest.register_node("technic:injector", {
+minetest.register_node("hades_technic:injector", {
 	description = S("Self-Contained Injector"),
 	tiles = {
 		"technic_injector_top.png"..tube_entry,
@@ -102,7 +102,7 @@ minetest.register_node("technic:injector", {
 		end,
 		connect_sides = {left=1, right=1, back=1, top=1, bottom=1},
 	},
-	sounds = default.node_sound_wood_defaults(),
+	sounds = hades_sounds.node_sound_wood_defaults(),
 	on_construct = function(pos)
 		local meta = minetest.get_meta(pos)
 		meta:set_string("infotext", S("Self-Contained Injector"))
@@ -139,7 +139,7 @@ minetest.register_node("technic:injector", {
 
 minetest.register_abm({
 	label = "Machines: run injector",
-	nodenames = {"technic:injector"},
+	nodenames = {"hades_technic:injector"},
 	interval = 1,
 	chance = 1,
 	action = function(pos, node, active_object_count, active_object_count_wider)

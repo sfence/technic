@@ -3,7 +3,7 @@ local moretrees = minetest.get_modpath("moretrees")
 local dye = minetest.get_modpath("dye")
 
 -- sawdust, the finest wood/tree grinding
-local sawdust = "technic:sawdust"
+local sawdust = "hades_technic:sawdust"
 minetest.register_craftitem(sawdust, {
 	description = S("Sawdust"),
 	inventory_image = "technic_sawdust.png",
@@ -15,7 +15,7 @@ technic.register_compressor_recipe({ input = {sawdust .. " 4"}, output = "defaul
 local function register_tree_grinding(name, tree, wood, extract, grinding_color)
 	local lname = string.lower(name)
 	lname = string.gsub(lname, ' ', '_')
-	local grindings_name = "technic:"..lname.."_grindings"
+	local grindings_name = "hades_technic:"..lname.."_grindings"
 	local inventory_image = "technic_"..lname.."_grindings.png"
 	if grinding_color then
 		inventory_image = inventory_image .. "^[colorize:" .. grinding_color
@@ -48,7 +48,7 @@ local default_extract = dye and "dye:brown 2"
 
 local grinding_recipes = {
 	{"Common Tree",	"group:tree",	 			"group:wood",		default_extract },
-	{"Rubber Tree",	"moretrees:rubber_tree_trunk",  	rubber_tree_planks, 	"technic:raw_latex"}
+	{"Rubber Tree",	"moretrees:rubber_tree_trunk",  	rubber_tree_planks, 	"hades_technic:raw_latex"}
 }
 
 for _, data in pairs(grinding_recipes) do

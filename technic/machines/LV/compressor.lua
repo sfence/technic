@@ -1,16 +1,16 @@
 
-minetest.register_alias("compressor", "technic:lv_compressor")
+minetest.register_alias("compressor", "hades_technic:lv_compressor")
 
 minetest.register_craft({
-	output = 'technic:lv_compressor',
+	output = 'hades_technic:lv_compressor',
 	recipe = {
-		{'default:stone',            'basic_materials:motor',          'default:stone'},
-		{'mesecons:piston',          'technic:machine_casing', 'mesecons:piston'},
-		{'basic_materials:silver_wire', 'technic:lv_cable',       'basic_materials:silver_wire'},
+		{'hades_core:stone',            'hades_extramaterials:motor',          'hades_core:stone'},
+		{'mesecons:piston',          'hades_technic:machine_casing', 'mesecons:piston'},
+		{'hades_extramaterials:silver_wire', 'hades_technic:lv_cable',       'hades_extramaterials:silver_wire'},
 	},
 	replacements = {
-		{"basic_materials:silver_wire", "basic_materials:empty_spool"},
-		{"basic_materials:silver_wire", "basic_materials:empty_spool"}
+		{"hades_extramaterials:silver_wire", "hades_extramaterials:empty_spool"},
+		{"hades_extramaterials:silver_wire", "hades_extramaterials:empty_spool"}
 	},
 })
 

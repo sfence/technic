@@ -4,11 +4,11 @@
 local S = technic.getter
 
 minetest.register_craft({
-	output = 'technic:coal_alloy_furnace',
+	output = 'hades_technic:coal_alloy_furnace',
 	recipe = {
-		{'default:brick', 'default:brick', 'default:brick'},
-		{'default:brick', '',              'default:brick'},
-		{'default:brick', 'default:brick', 'default:brick'},
+		{'hades_core:brick', 'hades_core:brick', 'hades_core:brick'},
+		{'hades_core:brick', '',              'hades_core:brick'},
+		{'hades_core:brick', 'hades_core:brick', 'hades_core:brick'},
 	}
 })
 
@@ -28,7 +28,7 @@ local formspec =
 	"listring[current_name;fuel]"..
 	"listring[current_player;main]"
 
-minetest.register_node("technic:coal_alloy_furnace", {
+minetest.register_node("hades_technic:coal_alloy_furnace", {
 	description = machine_name,
 	tiles = {"technic_coal_alloy_furnace_top.png",  "technic_coal_alloy_furnace_bottom.png",
 	         "technic_coal_alloy_furnace_side.png", "technic_coal_alloy_furnace_side.png",
@@ -36,7 +36,7 @@ minetest.register_node("technic:coal_alloy_furnace", {
 	paramtype2 = "facedir",
 	groups = {cracky=2},
 	legacy_facedir_simple = true,
-	sounds = default.node_sound_stone_defaults(),
+	sounds = hades_sounds.node_sound_stone_defaults(),
 	on_construct = function(pos)
 		local meta = minetest.get_meta(pos)
 		meta:set_string("formspec", formspec)
@@ -52,17 +52,17 @@ minetest.register_node("technic:coal_alloy_furnace", {
 	allow_metadata_inventory_move = technic.machine_inventory_move,
 })
 
-minetest.register_node("technic:coal_alloy_furnace_active", {
+minetest.register_node("hades_technic:coal_alloy_furnace_active", {
 	description = machine_name,
 	tiles = {"technic_coal_alloy_furnace_top.png",  "technic_coal_alloy_furnace_bottom.png",
 	         "technic_coal_alloy_furnace_side.png", "technic_coal_alloy_furnace_side.png",
 	         "technic_coal_alloy_furnace_side.png", "technic_coal_alloy_furnace_front_active.png"},
 	paramtype2 = "facedir",
 	light_source = 8,
-	drop = "technic:coal_alloy_furnace",
+	drop = "hades_technic:coal_alloy_furnace",
 	groups = {cracky=2, not_in_creative_inventory=1},
 	legacy_facedir_simple = true,
-	sounds = default.node_sound_stone_defaults(),
+	sounds = hades_sounds.node_sound_stone_defaults(),
 	can_dig = technic.machine_can_dig,
 	allow_metadata_inventory_put = technic.machine_inventory_put,
 	allow_metadata_inventory_take = technic.machine_inventory_take,
@@ -71,7 +71,7 @@ minetest.register_node("technic:coal_alloy_furnace_active", {
 
 minetest.register_abm({
 	label = "Machines: run coal alloy furnace",
-	nodenames = {"technic:coal_alloy_furnace", "technic:coal_alloy_furnace_active"},
+	nodenames = {"hades_technic:coal_alloy_furnace", "hades_technic:coal_alloy_furnace_active"},
 	interval = 1,
 	chance = 1,
 	action = function(pos, node, active_object_count, active_object_count_wider)
@@ -121,7 +121,7 @@ minetest.register_abm({
 			local percent = math.floor(meta:get_float("fuel_time") /
 					meta:get_float("fuel_totaltime") * 100)
 			meta:set_string("infotext", S("%s Active"):format(machine_name).." ("..percent.."%)")
-			technic.swap_node(pos, "technic:coal_alloy_furnace_active")
+			technic.swap_node(pos, "hades_technic:coal_alloy_furnace_active")
 			meta:set_string("formspec",
 					"size[8,9]"..
 					"label[0,0;"..machine_name.."]"..
@@ -145,7 +145,7 @@ minetest.register_abm({
 		if not recipe then
 			if was_active then
 				meta:set_string("infotext", S("%s is empty"):format(machine_name))
-				technic.swap_node(pos, "technic:coal_alloy_furnace")
+				technic.swap_node(pos, "hades_technic:coal_alloy_furnace")
 				meta:set_string("formspec", formspec)
 			end
 			return
@@ -162,7 +162,7 @@ minetest.register_abm({
 
 		if fuel.time <= 0 then
 			meta:set_string("infotext", S("%s Out Of Fuel"):format(machine_name))
-			technic.swap_node(pos, "technic:coal_alloy_furnace")
+			technic.swap_node(pos, "hades_technic:coal_alloy_furnace")
 			meta:set_string("formspec", formspec)
 			return
 		end

@@ -5,14 +5,14 @@ local S = technic.getter
 
 local cable_entry = "^technic_cable_connection_overlay.png"
 
-minetest.register_alias("hydro_turbine", "technic:hydro_turbine")
+minetest.register_alias("hydro_turbine", "hades_technic:hydro_turbine")
 
 minetest.register_craft({
-	output = 'technic:hydro_turbine',
+	output = 'hades_technic:hydro_turbine',
 	recipe = {
-		{'technic:stainless_steel_ingot', 'technic:water_mill', 'technic:stainless_steel_ingot'},
-		{'technic:water_mill', 'technic:mv_transformer', 'technic:water_mill'},
-		{'technic:stainless_steel_ingot', 'technic:mv_cable', 'technic:stainless_steel_ingot'},
+		{'hades_technic:stainless_steel_ingot', 'hades_technic:water_mill', 'hades_technic:stainless_steel_ingot'},
+		{'hades_technic:water_mill', 'hades_technic:mv_transformer', 'hades_technic:water_mill'},
+		{'hades_technic:stainless_steel_ingot', 'hades_technic:mv_cable', 'hades_technic:stainless_steel_ingot'},
 	}
 })
 
@@ -53,17 +53,17 @@ local run = function(pos, node)
 	meta:set_string("infotext",
 	S("Hydro %s Generator"):format("MV").." ("..production_level.."%)")
 	if production_level > 0 and
-		minetest.get_node(pos).name == "technic:hydro_turbine" then
-		technic.swap_node(pos, "technic:hydro_turbine_active")
+		minetest.get_node(pos).name == "hades_technic:hydro_turbine" then
+		technic.swap_node(pos, "hades_technic:hydro_turbine_active")
 		meta:set_int("MV_EU_supply", 0)
 		return
 	end
 	if production_level == 0 then
-		technic.swap_node(pos, "technic:hydro_turbine")
+		technic.swap_node(pos, "hades_technic:hydro_turbine")
 	end
 end
 
-minetest.register_node("technic:hydro_turbine", {
+minetest.register_node("hades_technic:hydro_turbine", {
 	description = S("Hydro %s Generator"):format("MV"),
 	tiles = {
 		"technic_hydro_turbine_top.png",
@@ -77,7 +77,7 @@ minetest.register_node("technic:hydro_turbine", {
 	groups = {snappy=2, choppy=2, oddly_breakable_by_hand=2,
 	technic_machine=1, technic_mv=1},
 	legacy_facedir_simple = true,
-	sounds = default.node_sound_wood_defaults(),
+	sounds = hades_sounds.node_sound_wood_defaults(),
 	on_construct = function(pos)
 		local meta = minetest.get_meta(pos)
 		meta:set_string("infotext", S("Hydro %s Generator"):format("MV"))
@@ -86,7 +86,7 @@ minetest.register_node("technic:hydro_turbine", {
 	technic_run = run,
 })
 
-minetest.register_node("technic:hydro_turbine_active", {
+minetest.register_node("hades_technic:hydro_turbine_active", {
 	description = S("Hydro %s Generator"):format("MV"),
 	tiles = {"technic_hydro_turbine_top_active.png", "technic_machine_bottom.png",
 			"technic_hydro_turbine_side.png", "technic_hydro_turbine_side.png",
@@ -95,11 +95,11 @@ minetest.register_node("technic:hydro_turbine_active", {
 	groups = {snappy=2, choppy=2, oddly_breakable_by_hand=2,
 			technic_machine=1, technic_mv=1, not_in_creative_inventory=1},
 	legacy_facedir_simple = true,
-	sounds = default.node_sound_wood_defaults(),
-	drop = "technic:hydro_turbine",
+	sounds = hades_sounds.node_sound_wood_defaults(),
+	drop = "hades_technic:hydro_turbine",
 	technic_run = run,
-	technic_disabled_machine_name = "technic:hydro_turbine",
+	technic_disabled_machine_name = "hades_technic:hydro_turbine",
 })
 
-technic.register_machine("MV", "technic:hydro_turbine",        technic.producer)
-technic.register_machine("MV", "technic:hydro_turbine_active", technic.producer)
+technic.register_machine("MV", "hades_technic:hydro_turbine",        technic.producer)
+technic.register_machine("MV", "hades_technic:hydro_turbine_active", technic.producer)

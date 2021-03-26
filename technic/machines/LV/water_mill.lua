@@ -6,14 +6,14 @@ local S = technic.getter
 
 local cable_entry = "^technic_cable_connection_overlay.png"
 
-minetest.register_alias("water_mill", "technic:water_mill")
+minetest.register_alias("water_mill", "hades_technic:water_mill")
 
 minetest.register_craft({
-	output = 'technic:water_mill',
+	output = 'hades_technic:water_mill',
 	recipe = {
-		{'technic:marble', 'default:diamond',        'technic:marble'},
-		{'group:wood',     'technic:machine_casing', 'group:wood'},
-		{'technic:marble', 'technic:lv_cable',       'technic:marble'},
+		{'hades_technic:marble', 'default:diamond',        'hades_technic:marble'},
+		{'group:wood',     'hades_technic:machine_casing', 'group:wood'},
+		{'hades_technic:marble', 'hades_technic:lv_cable',       'hades_technic:marble'},
 	}
 })
 
@@ -56,17 +56,17 @@ local run = function(pos, node)
 		S("Hydro %s Generator"):format("LV").." ("..production_level.."%)")
 
 	if production_level > 0 and
-	   minetest.get_node(pos).name == "technic:water_mill" then
-		technic.swap_node (pos, "technic:water_mill_active")
+	   minetest.get_node(pos).name == "hades_technic:water_mill" then
+		technic.swap_node (pos, "hades_technic:water_mill_active")
 		meta:set_int("LV_EU_supply", 0)
 		return
 	end
 	if production_level == 0 then
-		technic.swap_node(pos, "technic:water_mill")
+		technic.swap_node(pos, "hades_technic:water_mill")
 	end
 end
 
-minetest.register_node("technic:water_mill", {
+minetest.register_node("hades_technic:water_mill", {
 	description = S("Hydro %s Generator"):format("LV"),
 	tiles = {
 		"technic_water_mill_top.png",
@@ -80,7 +80,7 @@ minetest.register_node("technic:water_mill", {
 	groups = {snappy=2, choppy=2, oddly_breakable_by_hand=2,
 		technic_machine=1, technic_lv=1},
 	legacy_facedir_simple = true,
-	sounds = default.node_sound_wood_defaults(),
+	sounds = hades_sounds.node_sound_wood_defaults(),
 	on_construct = function(pos)
 		local meta = minetest.get_meta(pos)
 		meta:set_string("infotext", S("Hydro %s Generator"):format("LV"))
@@ -89,7 +89,7 @@ minetest.register_node("technic:water_mill", {
 	technic_run = run,
 })
 
-minetest.register_node("technic:water_mill_active", {
+minetest.register_node("hades_technic:water_mill_active", {
 	description = S("Hydro %s Generator"):format("LV"),
 	tiles = {"technic_water_mill_top_active.png", "technic_machine_bottom.png",
 	         "technic_water_mill_side.png",       "technic_water_mill_side.png",
@@ -98,12 +98,12 @@ minetest.register_node("technic:water_mill_active", {
 	groups = {snappy=2, choppy=2, oddly_breakable_by_hand=2,
 		technic_machine=1, technic_lv=1, not_in_creative_inventory=1},
 	legacy_facedir_simple = true,
-	sounds = default.node_sound_wood_defaults(),
-	drop = "technic:water_mill",
+	sounds = hades_sounds.node_sound_wood_defaults(),
+	drop = "hades_technic:water_mill",
 	technic_run = run,
-	technic_disabled_machine_name = "technic:water_mill",
+	technic_disabled_machine_name = "hades_technic:water_mill",
 })
 
-technic.register_machine("LV", "technic:water_mill",        technic.producer)
-technic.register_machine("LV", "technic:water_mill_active", technic.producer)
+technic.register_machine("LV", "hades_technic:water_mill",        technic.producer)
+technic.register_machine("LV", "hades_technic:water_mill_active", technic.producer)
 

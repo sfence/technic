@@ -39,6 +39,7 @@ function technic.register_base_machine(data)
 	local tier = data.tier
 	local ltier = string.lower(tier)
 
+	data.texname = data.texname or data.modname or "technic"
 	data.modname = data.modname or minetest.get_current_modname()
 
 	local groups = {cracky = 2, technic_machine = 1, ["technic_"..ltier] = 1}
@@ -162,19 +163,19 @@ function technic.register_base_machine(data)
 	minetest.register_node(data.modname..":"..ltier.."_"..machine_name, {
 		description = machine_desc:format(tier),
 		tiles = {
-			data.modname.."_"..ltier.."_"..machine_name.."_top.png"..tentry,
-			data.modname.."_"..ltier.."_"..machine_name.."_bottom.png"..tentry,
-			data.modname.."_"..ltier.."_"..machine_name.."_side.png"..tentry,
-			data.modname.."_"..ltier.."_"..machine_name.."_side.png"..tentry,
-			data.modname.."_"..ltier.."_"..machine_name.."_side.png"..tentry,
-			data.modname.."_"..ltier.."_"..machine_name.."_front.png"
+			data.texname.."_"..ltier.."_"..machine_name.."_top.png"..tentry,
+			data.texname.."_"..ltier.."_"..machine_name.."_bottom.png"..tentry,
+			data.texname.."_"..ltier.."_"..machine_name.."_side.png"..tentry,
+			data.texname.."_"..ltier.."_"..machine_name.."_side.png"..tentry,
+			data.texname.."_"..ltier.."_"..machine_name.."_side.png"..tentry,
+			data.texname.."_"..ltier.."_"..machine_name.."_front.png"
 		},
 		paramtype2 = "facedir",
 		groups = groups,
 		tube = data.tube and tube or nil,
 		connect_sides = data.connect_sides or connect_default,
 		legacy_facedir_simple = true,
-		sounds = default.node_sound_wood_defaults(),
+		sounds = hades_sounds.node_sound_wood_defaults(),
 		on_construct = function(pos)
 			local node = minetest.get_node(pos)
 			local meta = minetest.get_meta(pos)
@@ -233,19 +234,19 @@ function technic.register_base_machine(data)
 	minetest.register_node(data.modname..":"..ltier.."_"..machine_name.."_active",{
 		description = machine_desc:format(tier),
 		tiles = {
-			data.modname.."_"..ltier.."_"..machine_name.."_top.png"..tentry,
-			data.modname.."_"..ltier.."_"..machine_name.."_bottom.png"..tentry,
-			data.modname.."_"..ltier.."_"..machine_name.."_side.png"..tentry,
-			data.modname.."_"..ltier.."_"..machine_name.."_side.png"..tentry,
-			data.modname.."_"..ltier.."_"..machine_name.."_side.png"..tentry,
-			data.modname.."_"..ltier.."_"..machine_name.."_front_active.png"
+			data.texname.."_"..ltier.."_"..machine_name.."_top.png"..tentry,
+			data.texname.."_"..ltier.."_"..machine_name.."_bottom.png"..tentry,
+			data.texname.."_"..ltier.."_"..machine_name.."_side.png"..tentry,
+			data.texname.."_"..ltier.."_"..machine_name.."_side.png"..tentry,
+			data.texname.."_"..ltier.."_"..machine_name.."_side.png"..tentry,
+			data.texname.."_"..ltier.."_"..machine_name.."_front_active.png"
 		},
 		paramtype2 = "facedir",
 		drop = data.modname..":"..ltier.."_"..machine_name,
 		groups = active_groups,
 		connect_sides = data.connect_sides or connect_default,
 		legacy_facedir_simple = true,
-		sounds = default.node_sound_wood_defaults(),
+		sounds = hades_sounds.node_sound_wood_defaults(),
 		tube = data.tube and tube or nil,
 		can_dig = technic.machine_can_dig,
 		allow_metadata_inventory_put = technic.machine_inventory_put,

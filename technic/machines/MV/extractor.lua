@@ -1,11 +1,11 @@
 -- MV extractor
 
 minetest.register_craft({
-	output = 'technic:mv_extractor',
+	output = 'hades_technic:mv_extractor',
 	recipe = {
-		{'technic:stainless_steel_ingot', 'technic:lv_extractor',   'technic:stainless_steel_ingot'},
-		{'pipeworks:tube_1',              'technic:mv_transformer', 'pipeworks:tube_1'},
-		{'technic:stainless_steel_ingot', 'technic:mv_cable',       'technic:stainless_steel_ingot'},
+		{'hades_technic:stainless_steel_ingot', 'hades_technic:lv_extractor',   'hades_technic:stainless_steel_ingot'},
+		{'pipeworks:tube_1',              'hades_technic:mv_transformer', 'pipeworks:tube_1'},
+		{'hades_technic:stainless_steel_ingot', 'hades_technic:mv_cable',       'hades_technic:stainless_steel_ingot'},
 	}
 })
 

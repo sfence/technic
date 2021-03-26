@@ -1,8 +1,8 @@
-local modpath = minetest.get_modpath("technic_cnc")
+local modpath = minetest.get_modpath(minetest.get_current_modname())
 
 technic_cnc = {}
 
-technic_cnc.technic_modpath = minetest.get_modpath("technic")
+technic_cnc.technic_modpath = minetest.get_modpath("hades_technic")
 
 technic_cnc.use_technic = technic_cnc.technic_modpath
                           and minetest.settings:get_bool("technic_cnc_use_technic") ~= false

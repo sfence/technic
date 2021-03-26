@@ -31,30 +31,30 @@ Fractional resistance values are permitted.
 local S = technic.getter
 
 local rad_resistance_node = {
-	["default:brick"] = 13,
-	["default:bronzeblock"] = 45,
-	["default:clay"] = 15,
-	["default:coalblock"] = 9.6,
-	["default:cobble"] = 15,
-	["default:copperblock"] = 46,
-	["default:desert_cobble"] = 15,
-	["default:desert_sand"] = 10,
-	["default:desert_stone"] = 17,
-	["default:desert_stonebrick"] = 17,
-	["default:diamondblock"] = 24,
-	["default:dirt"] = 8.2,
-	["default:dirt_with_grass"] = 8.2,
-	["default:dirt_with_grass_footsteps"] = 8.2,
-	["default:dirt_with_snow"] = 8.2,
-	["default:glass"] = 17,
-	["default:goldblock"] = 170,
-	["default:gravel"] = 10,
-	["default:ice"] = 5.6,
-	["default:lava_flowing"] = 8.5,
-	["default:lava_source"] = 17,
-	["default:mese"] = 21,
-	["default:mossycobble"] = 15,
-	["default:tinblock"] = 37,
+	["hades_core:brick"] = 13,
+	["hades_core:bronzeblock"] = 45,
+	["hades_core:clay"] = 15,
+	["hades_core:coalblock"] = 9.6,
+	["hades_core:cobble"] = 15,
+	["hades_core:copperblock"] = 46,
+	["hades_core:cobble_baked"] = 15,
+	["hades_core:desert_sand"] = 10,
+	["hades_core:stone_baked"] = 17,
+	["hades_core:stonebrick_baked"] = 17,
+	["hades_core:diamondblock"] = 24,
+	["hades_core:dirt"] = 8.2,
+	["hades_core:dirt_with_grass"] = 8.2,
+	["hades_core:dirt_with_grass_footsteps"] = 8.2,
+	["hades_core:dirt_with_snow"] = 8.2,
+	["hades_core:glass"] = 17,
+	["hades_core:goldblock"] = 170,
+	["hades_core:gravel"] = 10,
+	["hades_core:ice"] = 5.6,
+	["hades_core:lava_flowing"] = 8.5,
+	["hades_core:lava_source"] = 17,
+	["hades_core:mese"] = 21,
+	["hades_core:mossycobble"] = 15,
+	["hades_core:tinblock"] = 37,
 	["pbj_pup:pbj_pup"] = 10000,
 	["pbj_pup:pbj_pup_candies"] = 10000,
 	["gloopblocks:rainbow_block_diagonal"] = 5000,
@@ -63,24 +63,24 @@ local rad_resistance_node = {
 	["default:nyancat_rainbow"] = 10000,
 	["nyancat:nyancat"] = 10000,
 	["nyancat:nyancat_rainbow"] = 10000,
-	["default:obsidian"] = 18,
-	["default:obsidian_glass"] = 18,
-	["default:sand"] = 10,
-	["default:sandstone"] = 15,
-	["default:sandstonebrick"] = 15,
-	["default:snowblock"] = 1.7,
-	["default:steelblock"] = 40,
-	["default:stone"] = 17,
-	["default:stone_with_coal"] = 16,
-	["default:stone_with_copper"] = 20,
-	["default:stone_with_diamond"] = 18,
-	["default:stone_with_gold"] = 34,
-	["default:stone_with_iron"] = 20,
-	["default:stone_with_mese"] = 17,
-	["default:stone_with_tin"] = 19,
-	["default:stonebrick"] = 17,
-	["default:water_flowing"] = 2.8,
-	["default:water_source"] = 5.6,
+	["hades_core:obsidian"] = 18,
+	["hades_core:obsidian_glass"] = 18,
+	["hades_core:fertile_sand"] = 10,
+	["hades_core:sandstone"] = 15,
+	["hades_core:sandstonebrick"] = 15,
+	["hades_core:snowblock"] = 1.7,
+	["hades_core:steelblock"] = 40,
+	["hades_core:stone"] = 17,
+	["hades_core:stone_with_coal"] = 16,
+	["hades_core:stone_with_copper"] = 20,
+	["hades_core:stone_with_diamond"] = 18,
+	["hades_core:stone_with_gold"] = 34,
+	["hades_core:stone_with_iron"] = 20,
+	["hades_core:stone_with_mese"] = 17,
+	["hades_core:stone_with_tin"] = 19,
+	["hades_core:stonebrick"] = 17,
+	["hades_core:water_flowing"] = 2.8,
+	["hades_core:water_source"] = 5.6,
 	["farming:desert_sand_soil"] = 10,
 	["farming:desert_sand_soil_wet"] = 10,
 	["farming:soil"] = 8.2,
@@ -146,22 +146,22 @@ local rad_resistance_node = {
 	["moreores:mithril_block"] = 26,
 	["moreores:silver_block"] = 53,
 	["snow:snow_brick"] = 2.8,
-	["basic_materials:brass_block"] = 43,
-	["technic:carbon_steel_block"] = 40,
-	["technic:cast_iron_block"] = 40,
-	["technic:chernobylite_block"] = 40,
-	["technic:chromium_block"] = 37,
-	["technic:corium_flowing"] = 40,
-	["technic:corium_source"] = 80,
-	["technic:granite"] = 18,
-	["technic:lead_block"] = 80,
-	["technic:marble"] = 18,
-	["technic:marble_bricks"] = 18,
-	["technic:mineral_chromium"] = 19,
-	["technic:mineral_uranium"] = 71,
-	["technic:mineral_zinc"] = 19,
-	["technic:stainless_steel_block"] = 40,
-	["technic:zinc_block"] = 36,
+	["hades_extramaterials:brass_block"] = 43,
+	["hades_technic:carbon_steel_block"] = 40,
+	["hades_technic:cast_iron_block"] = 40,
+	["hades_technic:chernobylite_block"] = 40,
+	["hades_technic:chromium_block"] = 37,
+	["hades_technic:corium_flowing"] = 40,
+	["hades_technic:corium_source"] = 80,
+	["hades_technic:granite"] = 18,
+	["hades_technic:lead_block"] = 80,
+	["hades_technic:marble"] = 18,
+	["hades_technic:marble_bricks"] = 18,
+	["hades_technic:mineral_chromium"] = 19,
+	["hades_technic:mineral_uranium"] = 71,
+	["hades_technic:mineral_zinc"] = 19,
+	["hades_technic:stainless_steel_block"] = 40,
+	["hades_technic:zinc_block"] = 36,
 	["tnt:tnt"] = 11,
 	["tnt:tnt_burning"] = 11,
 }
@@ -382,7 +382,7 @@ end
 local griefing = technic.config:get_bool("enable_corium_griefing")
 
 for _, state in pairs({"flowing", "source"}) do
-	minetest.register_node("technic:corium_"..state, {
+	minetest.register_node("hades_technic:corium_"..state, {
 		description = S(state == "source" and "Corium Source" or "Flowing Corium"),
 		drawtype = (state == "source" and "liquid" or "flowingliquid"),
 		tiles = {{
@@ -426,9 +426,9 @@ for _, state in pairs({"flowing", "source"}) do
 		drop = "",
 		drowning = 1,
 		liquidtype = state,
-		liquid_alternative_flowing = "technic:corium_flowing",
-		liquid_alternative_source = "technic:corium_source",
-		liquid_viscosity = LAVA_VISC,
+		liquid_alternative_flowing = "hades_technic:corium_flowing",
+		liquid_alternative_source = "hades_technic:corium_source",
+		liquid_viscosity = minetest.registered_nodes["hades_core:lava_source"].liquid_viscosity,
 		liquid_renewable = false,
 		damage_per_second = 6,
 		post_effect_color = {a=192, r=80, g=160, b=80},
@@ -444,27 +444,27 @@ end
 
 if rawget(_G, "bucket") and bucket.register_liquid then
 	bucket.register_liquid(
-		"technic:corium_source",
-		"technic:corium_flowing",
-		"technic:bucket_corium",
+		"hades_technic:corium_source",
+		"hades_technic:corium_flowing",
+		"hades_technic:bucket_corium",
 		"technic_bucket_corium.png",
 		"Corium Bucket"
 	)
 end
 
-minetest.register_node("technic:chernobylite_block", {
+minetest.register_node("hades_technic:chernobylite_block", {
         description = S("Chernobylite Block"),
 	tiles = {"technic_chernobylite_block.png"},
 	is_ground_content = true,
 	groups = {cracky=1, radioactive=4, level=2},
-	sounds = default.node_sound_stone_defaults(),
+	sounds = hades_sounds.node_sound_stone_defaults(),
 	light_source = 2,
 })
 
 minetest.register_abm({
 	label = "Corium: boil-off water (sources)",
 	nodenames = {"group:water"},
-	neighbors = {"technic:corium_source"},
+	neighbors = {"hades_technic:corium_source"},
 	interval = 1,
 	chance = 1,
 	action = function(pos, node)
@@ -474,29 +474,29 @@ minetest.register_abm({
 
 minetest.register_abm({
 	label = "Corium: boil-off water (flowing)",
-	nodenames = {"technic:corium_flowing"},
+	nodenames = {"hades_technic:corium_flowing"},
 	neighbors = {"group:water"},
 	interval = 1,
 	chance = 1,
 	action = function(pos, node)
-		minetest.set_node(pos, {name="technic:chernobylite_block"})
+		minetest.set_node(pos, {name="hades_technic:chernobylite_block"})
 	end,
 })
 
 minetest.register_abm({
 	label = "Corium: become chernobylite",
-	nodenames = {"technic:corium_flowing"},
+	nodenames = {"hades_technic:corium_flowing"},
 	interval = 5,
 	chance = (griefing and 10 or 1),
 	action = function(pos, node)
-		minetest.set_node(pos, {name="technic:chernobylite_block"})
+		minetest.set_node(pos, {name="hades_technic:chernobylite_block"})
 	end,
 })
 
 if griefing then
 	minetest.register_abm({
 		label = "Corium: griefing",
-		nodenames = {"technic:corium_source", "technic:corium_flowing"},
+		nodenames = {"hades_technic:corium_source", "hades_technic:corium_flowing"},
 		interval = 4,
 		chance = 4,
 		action = function(pos, node)

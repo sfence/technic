@@ -127,7 +127,7 @@ local run = function(pos, node, run_stage)
 	local enabled       = meta:get_string("enabled")
 	if enabled == "" then
 		-- Backwards compatibility
-		minetest.registered_nodes["technic:supply_converter"].on_construct(pos)
+		minetest.registered_nodes["hades_technic:supply_converter"].on_construct(pos)
 		enabled = true
 	else
 		enabled = enabled == "1"
@@ -165,7 +165,7 @@ local run = function(pos, node, run_stage)
 
 end
 
-minetest.register_node("technic:supply_converter", {
+minetest.register_node("hades_technic:supply_converter", {
 	description = S("Supply Converter"),
 	tiles  = {
 		"technic_supply_converter_tb.png"..cable_entry,
@@ -178,7 +178,7 @@ minetest.register_node("technic:supply_converter", {
 	groups = {snappy=2, choppy=2, oddly_breakable_by_hand=2,
 		technic_machine=1, technic_all_tiers=1},
 	connect_sides = {"top", "bottom"},
-	sounds = default.node_sound_wood_defaults(),
+	sounds = hades_sounds.node_sound_wood_defaults(),
 	on_receive_fields = supply_converter_receive_fields,
 	on_construct = function(pos)
 		local meta = minetest.get_meta(pos)
@@ -199,16 +199,16 @@ minetest.register_node("technic:supply_converter", {
 })
 
 minetest.register_craft({
-	output = 'technic:supply_converter 1',
+	output = 'hades_technic:supply_converter 1',
 	recipe = {
-		{'basic_materials:gold_wire', 'technic:rubber',         'technic:doped_silicon_wafer'},
-		{'technic:mv_transformer', 'technic:machine_casing', 'technic:lv_transformer'},
-		{'technic:mv_cable',       'technic:rubber',         'technic:lv_cable'},
+		{'hades_extramaterials:gold_wire', 'hades_technic:rubber',         'hades_technic:doped_silicon_wafer'},
+		{'hades_technic:mv_transformer', 'hades_technic:machine_casing', 'hades_technic:lv_transformer'},
+		{'hades_technic:mv_cable',       'hades_technic:rubber',         'hades_technic:lv_cable'},
 	},
-	replacements = { {"basic_materials:gold_wire", "basic_materials:empty_spool"}, },
+	replacements = { {"hades_extramaterials:gold_wire", "hades_extramaterials:empty_spool"}, },
 })
 
 for tier, machines in pairs(technic.machines) do
-	technic.register_machine(tier, "technic:supply_converter", technic.producer_receiver)
+	technic.register_machine(tier, "hades_technic:supply_converter", technic.producer_receiver)
 end
 

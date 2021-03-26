@@ -5,64 +5,64 @@ local S = technic_cnc.getter
 
 -- DIRT
 -------
-technic_cnc.register_all("default:dirt",
+technic_cnc.register_all("hades_core:dirt",
                 {snappy=2,choppy=2,oddly_breakable_by_hand=3,not_in_creative_inventory=1},
                 {"default_dirt.png"},
                 S("Dirt"))
 -- (DIRT WITH) GRASS
 --------------------
-technic_cnc.register_all("default:dirt_with_grass",
+technic_cnc.register_all("hades_core:dirt_with_grass",
                 {snappy=2,choppy=2,oddly_breakable_by_hand=3,not_in_creative_inventory=1},
                 {"default_grass.png"},
                 S("Grassy dirt"))
 -- WOOD
 -------
-technic_cnc.register_all("default:wood",
+technic_cnc.register_all("hades_trees:wood",
                 {snappy=2, choppy=2, oddly_breakable_by_hand=2, not_in_creative_inventory=1},
                 {"default_wood.png"},
                 S("Wooden"))
 -- STONE
 --------
-technic_cnc.register_all("default:stone",
+technic_cnc.register_all("hades_core:stone",
                 {cracky=3, not_in_creative_inventory=1},
                 {"default_stone.png"},
                 S("Stone"))
 -- COBBLE
 ---------
-technic_cnc.register_all("default:cobble",
+technic_cnc.register_all("hades_core:cobble",
                 {cracky=3, not_in_creative_inventory=1},
                 {"default_cobble.png"},
                 S("Cobble"))
 -- BRICK
 --------
-technic_cnc.register_all("default:brick",
+technic_cnc.register_all("hades_core:brick",
                 {cracky=3, not_in_creative_inventory=1},
                 {"default_brick.png"},
                 S("Brick"))
 
 -- SANDSTONE
 ------------
-technic_cnc.register_all("default:sandstone",
+technic_cnc.register_all("hades_stone:sandstone",
                 {crumbly=2, cracky=3, not_in_creative_inventory=1},
                 {"default_sandstone.png"},
                 S("Sandstone"))
 
 -- LEAVES
 ---------
-technic_cnc.register_all("default:leaves",
+technic_cnc.register_all("hades_trees:leaves",
                 {snappy=2, choppy=2, oddly_breakable_by_hand=3, not_in_creative_inventory=1},
                 {"default_leaves.png"},
                 S("Leaves"))
 -- TREE
 -------
-technic_cnc.register_all("default:tree",
+technic_cnc.register_all("hades_trees:tree",
                 {snappy=1, choppy=2, oddly_breakable_by_hand=2, flammable=3, wood=1, not_in_creative_inventory=1},
                 {"default_tree.png"},
                 S("Tree"))
 
 -- Bronze
 --------
-technic_cnc.register_all("default:bronzeblock",
+technic_cnc.register_all("hades_core:bronzeblock",
                 {cracky=1, level=2, not_in_creative_inventory=1},
                 {"default_bronze_block.png"},
                 S("Bronze"))
@@ -107,7 +107,7 @@ end
 
 -- STEEL
 ---------------
-technic_cnc.register_all("default:steelblock",
+technic_cnc.register_all("hades_core:steelblock",
 				{cracky=1, level=2, not_in_creative_inventory=1},
 				{steeltex},
 				S(steelname))
@@ -115,17 +115,17 @@ technic_cnc.register_all("default:steelblock",
 -- CONCRETE AND CEMENT
 ----------------------
 
-technic_cnc.register_all("basic_materials:concrete_block",
+technic_cnc.register_all("hades_extramaterials:concrete_block",
 				{cracky=2, level=2, not_in_creative_inventory=1},
 				{"basic_materials_concrete_block.png"},
 				S("Concrete"))
 
-technic_cnc.register_all("basic_materials:cement_block",
+technic_cnc.register_all("hades_extramaterials:cement_block",
 				{cracky=2, level=2, not_in_creative_inventory=1},
 				{"basic_materials_cement_block.png"},
 				S("Cement"))
 
-technic_cnc.register_all("basic_materials:brass_block",
+technic_cnc.register_all("hades_extramaterials:brass_block",
 				{cracky=1, level=2, not_in_creative_inventory=1},
 				{"basic_materials_brass_block.png"},
 				S("Brass block"))

@@ -9,27 +9,27 @@ local allow_entire_discharging = true
 local S = technic.getter
 
 minetest.register_craft({
-	output = "technic:laser_mk1",
+	output = "hades_technic:laser_mk1",
 	recipe = {
-		{"default:diamond", "basic_materials:brass_ingot",        "default:obsidian_glass"},
-		{"",                "basic_materials:brass_ingot",        "technic:red_energy_crystal"},
-		{"",                "",                           "default:copper_ingot"},
+		{"hades_core:diamond", "hades_extramaterials:brass_ingot",        "hades_core:obsidian_glass"},
+		{"",                "hades_extramaterials:brass_ingot",        "hades_technic:red_energy_crystal"},
+		{"",                "",                           "hades_core:copper_ingot"},
 	}
 })
 minetest.register_craft({
-	output = "technic:laser_mk2",
+	output = "hades_technic:laser_mk2",
 	recipe = {
-		{"default:diamond", "technic:carbon_steel_ingot", "technic:laser_mk1"},
-		{"",                "technic:carbon_steel_ingot", "technic:green_energy_crystal"},
-		{"",                "",                           "default:copper_ingot"},
+		{"hades_core:diamond", "hades_technic:carbon_steel_ingot", "hades_technic:laser_mk1"},
+		{"",                "hades_technic:carbon_steel_ingot", "hades_technic:green_energy_crystal"},
+		{"",                "",                           "hades_core:copper_ingot"},
 	}
 })
 minetest.register_craft({
-	output = "technic:laser_mk3",
+	output = "hades_technic:laser_mk3",
 	recipe = {
-		{"default:diamond", "technic:carbon_steel_ingot", "technic:laser_mk2"},
-		{"",                "technic:carbon_steel_ingot", "technic:blue_energy_crystal"},
-		{"",                "",                           "default:copper_ingot"},
+		{"hades_core:diamond", "hades_technic:carbon_steel_ingot", "hades_technic:laser_mk2"},
+		{"",                "hades_technic:carbon_steel_ingot", "hades_technic:blue_energy_crystal"},
+		{"",                "",                           "hades_core:copper_ingot"},
 	}
 })
 
@@ -92,8 +92,8 @@ local function laser_shoot(player, range, particle_texture, sound)
 end
 
 for _, m in pairs(mining_lasers_list) do
-	technic.register_power_tool("technic:laser_mk"..m[1], m[3])
-	minetest.register_tool("technic:laser_mk"..m[1], {
+	technic.register_power_tool("hades_technic:laser_mk"..m[1], m[3])
+	minetest.register_tool("hades_technic:laser_mk"..m[1], {
 		description = S("Mining Laser Mk%d"):format(m[1]),
 		inventory_image = "technic_mining_laser_mk"..m[1]..".png",
 		range = 0,

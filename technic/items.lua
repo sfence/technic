@@ -1,27 +1,27 @@
 
 local S = technic.getter
 
-minetest.register_craftitem("technic:silicon_wafer", {
+minetest.register_craftitem("hades_technic:silicon_wafer", {
 	description = S("Silicon Wafer"),
 	inventory_image = "technic_silicon_wafer.png",
 })
 
-minetest.register_craftitem( "technic:doped_silicon_wafer", {
+minetest.register_craftitem( "hades_technic:doped_silicon_wafer", {
 	description = S("Doped Silicon Wafer"),
 	inventory_image = "technic_doped_silicon_wafer.png",
 })
 
-minetest.register_craftitem("technic:uranium_fuel", {
+minetest.register_craftitem("hades_technic:uranium_fuel", {
 	description = S("Uranium Fuel"),
 	inventory_image = "technic_uranium_fuel.png",
 })
 
-minetest.register_craftitem( "technic:diamond_drill_head", {
+minetest.register_craftitem( "hades_technic:diamond_drill_head", {
 	description = S("Diamond Drill Head"),
 	inventory_image = "technic_diamond_drill_head.png",
 })
 
-minetest.register_tool("technic:blue_energy_crystal", {
+minetest.register_tool("hades_technic:blue_energy_crystal", {
 	description = S("Blue Energy Crystal"),
 	inventory_image = minetest.inventorycube(
 		"technic_diamond_block_blue.png",
@@ -37,7 +37,7 @@ minetest.register_tool("technic:blue_energy_crystal", {
 	}
 })
 
-minetest.register_tool("technic:green_energy_crystal", {
+minetest.register_tool("hades_technic:green_energy_crystal", {
 	description = S("Green Energy Crystal"),
 	inventory_image = minetest.inventorycube(
 		"technic_diamond_block_green.png",
@@ -53,7 +53,7 @@ minetest.register_tool("technic:green_energy_crystal", {
 	}
 })
 
-minetest.register_tool("technic:red_energy_crystal", {
+minetest.register_tool("hades_technic:red_energy_crystal", {
 	description = S("Red Energy Crystal"),
 	inventory_image = minetest.inventorycube(
 		"technic_diamond_block_red.png",
@@ -69,76 +69,76 @@ minetest.register_tool("technic:red_energy_crystal", {
 	}
 })
 
-minetest.register_craftitem("technic:copper_coil", {
+minetest.register_craftitem("hades_technic:copper_coil", {
 	description = S("Copper Coil"),
 	inventory_image = "technic_copper_coil.png",
 })
 
-minetest.register_craftitem("technic:lv_transformer", {
+minetest.register_craftitem("hades_technic:lv_transformer", {
 	description = S("Low Voltage Transformer"),
 	inventory_image = "technic_lv_transformer.png",
 })
 
-minetest.register_craftitem("technic:mv_transformer", {
+minetest.register_craftitem("hades_technic:mv_transformer", {
 	description = S("Medium Voltage Transformer"),
 	inventory_image = "technic_mv_transformer.png",
 })
 
-minetest.register_craftitem( "technic:hv_transformer", {
+minetest.register_craftitem( "hades_technic:hv_transformer", {
 	description = S("High Voltage Transformer"),
 	inventory_image = "technic_hv_transformer.png",
 })
 
-minetest.register_craftitem( "technic:control_logic_unit", {
+minetest.register_craftitem( "hades_technic:control_logic_unit", {
 	description = S("Control Logic Unit"),
 	inventory_image = "technic_control_logic_unit.png",
 })
 
-minetest.register_craftitem("technic:mixed_metal_ingot", {
+minetest.register_craftitem("hades_technic:mixed_metal_ingot", {
 	description = S("Mixed Metal Ingot"),
 	inventory_image = "technic_mixed_metal_ingot.png",
 })
 
-minetest.register_craftitem("technic:composite_plate", {
+minetest.register_craftitem("hades_technic:composite_plate", {
 	description = S("Composite Plate"),
 	inventory_image = "technic_composite_plate.png",
 })
 
-minetest.register_craftitem("technic:copper_plate", {
+minetest.register_craftitem("hades_technic:copper_plate", {
 	description = S("Copper Plate"),
 	inventory_image = "technic_copper_plate.png",
 })
 
-minetest.register_craftitem("technic:carbon_plate", {
+minetest.register_craftitem("hades_technic:carbon_plate", {
 	description = S("Carbon Plate"),
 	inventory_image = "technic_carbon_plate.png",
 })
 
-minetest.register_craftitem("technic:graphite", {
+minetest.register_craftitem("hades_technic:graphite", {
 	description = S("Graphite"),
 	inventory_image = "technic_graphite.png",
 })
 
-minetest.register_craftitem("technic:carbon_cloth", {
+minetest.register_craftitem("hades_technic:carbon_cloth", {
 	description = S("Carbon Cloth"),
 	inventory_image = "technic_carbon_cloth.png",
 })
 
-minetest.register_node("technic:machine_casing", {
+minetest.register_node("hades_technic:machine_casing", {
 	description = S("Machine Casing"),
 	groups = {cracky=2},
 	sunlight_propagates = true,
 	paramtype = "light",
 	drawtype = "allfaces",
 	tiles = {"technic_machine_casing.png"},
-	sounds = default.node_sound_stone_defaults(),
+	sounds = hades_sounds.node_sound_stone_defaults(),
 })
 
 for p = 0, 35 do
 	local nici = (p ~= 0 and p ~= 7 and p ~= 35) and 1 or nil
 	local psuffix = p == 7 and "" or p
-	local ingot = "technic:uranium"..psuffix.."_ingot"
-	local block = "technic:uranium"..psuffix.."_block"
+	local ingot = "hades_technic:uranium"..psuffix.."_ingot"
+	local block = "hades_technic:uranium"..psuffix.."_block"
 	local ov = p == 7 and minetest.override_item or nil;
 	(ov or minetest.register_craftitem)(ingot, {
 		description = string.format(S("%.1f%%-Fissile Uranium Ingot"), p/10),
@@ -183,7 +183,7 @@ for p = 0, 35 do
 		is_ground_content = true,
 		groups = {uranium_block=1, not_in_creative_inventory=nici,
 			cracky=1, level=2, radioactive=radioactivity},
-		sounds = default.node_sound_stone_defaults(),
+		sounds = hades_sounds.node_sound_stone_defaults(),
 	});
 	if not ov then
 		minetest.register_craft({

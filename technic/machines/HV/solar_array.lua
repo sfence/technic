@@ -2,11 +2,11 @@
 -- Solar arrays are not able to store large amounts of energy.
 
 minetest.register_craft({
-	output = 'technic:solar_array_hv 1',
+	output = 'hades_technic:solar_array_hv 1',
 	recipe = {
-		{'technic:solar_array_mv',     'technic:solar_array_mv', 'technic:solar_array_mv'},
-		{'technic:carbon_plate',       'technic:hv_transformer', 'technic:composite_plate'},
-		{'',                           'technic:hv_cable',       ''},
+		{'hades_technic:solar_array_mv',     'hades_technic:solar_array_mv', 'hades_technic:solar_array_mv'},
+		{'hades_technic:carbon_plate',       'hades_technic:hv_transformer', 'hades_technic:composite_plate'},
+		{'',                           'hades_technic:hv_cable',       ''},
 	}
 })
 

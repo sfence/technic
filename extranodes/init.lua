@@ -3,7 +3,7 @@
 -- Boilerplate to support localized strings if intllib mod is installed.
 local S = rawget(_G, "intllib") and intllib.Getter() or function(s) return s end
 
-if minetest.get_modpath("moreblocks") then
+if minetest.get_modpath("hades_moreblocks") then
 
 	-- register stairsplus/circular_saw nodes
 	-- we skip blast resistant concrete and uranium intentionally
@@ -103,7 +103,7 @@ local iclip_def = {
 	tiles = {"technic_insulator_clip.png"},
 	is_ground_content = false,
 	groups = {choppy=1, snappy=1, oddly_breakable_by_hand=1 },
-	sounds = default.node_sound_stone_defaults(),
+	sounds = hades_sounds.node_sound_stone_defaults(),
 }
 
 local iclipfence_def = {
@@ -137,7 +137,7 @@ local iclipfence_def = {
 	},
 	connects_to = {"group:fence", "group:wood", "group:tree"},
 	groups = {fence=1, choppy=1, snappy=1, oddly_breakable_by_hand=1 },
-	sounds = default.node_sound_stone_defaults(),
+	sounds = hades_sounds.node_sound_stone_defaults(),
 }
 
 local sclip_tex = {
@@ -165,7 +165,7 @@ local sclip_def = {
 	paramtype = "light",
 	paramtype2 = "wallmounted",
 	is_ground_content = false,
-	sounds = default.node_sound_stone_defaults(),
+	sounds = hades_sounds.node_sound_stone_defaults(),
 	groups = { choppy=1, cracky=1 },
 	backface_culling = false
 }
@@ -202,7 +202,7 @@ minetest.register_craft({
 	recipe = {
 		{ "", "dye:white", ""},
 		{ "", "technic:raw_latex", ""},
-		{ "technic:raw_latex", "default:stone", "technic:raw_latex"},
+		{ "technic:raw_latex", "hades_core:stone", "technic:raw_latex"},
 	}
 })
 
@@ -211,7 +211,7 @@ minetest.register_craft({
 	recipe = {
 		{ "", "dye:white", ""},
 		{ "", "technic:raw_latex", ""},
-		{ "technic:raw_latex", "default:fence_wood", "technic:raw_latex"},
+		{ "technic:raw_latex", "hades_fences:fence_wood", "technic:raw_latex"},
 	}
 })
 
@@ -233,7 +233,7 @@ if streetsmod or steelmod then
 			output = "technic:steel_strut_with_insulator_clip",
 			recipe = {
 				{"technic:insulator_clip_fencepost", ""                    },
-				{"steel:strut",                      "default:steel_ingot" },
+				{"steel:strut",                      "hades_core:steel_ingot" },
 			}
 		})
 
@@ -242,7 +242,7 @@ if streetsmod or steelmod then
 			output = "technic:steel_strut_with_insulator_clip",
 			recipe = {
 				{"technic:insulator_clip_fencepost", ""                   },
-				{"streets:steel_support",           "default:steel_ingot" },
+				{"streets:steel_support",           "hades_core:steel_ingot" },
 			}
 		})
 	end
@@ -302,7 +302,7 @@ if minetest.get_modpath("unifieddyes") then
 			neutral_node = "technic:steel_strut_with_insulator_clip",
 			recipe = {
 				{ "technic:insulator_clip_fencepost", "MAIN_DYE"            },
-				{ "streets:steel_support",            "default:steel_ingot" },
+				{ "streets:steel_support",            "hades_core:steel_ingot" },
 			}
 		})
 	end

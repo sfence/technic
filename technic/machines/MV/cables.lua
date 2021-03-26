@@ -1,12 +1,12 @@
 
-minetest.register_alias("mv_cable", "technic:mv_cable")
+minetest.register_alias("mv_cable", "hades_technic:mv_cable")
 
 minetest.register_craft({
-	output = 'technic:mv_cable 3',
+	output = 'hades_technic:mv_cable 3',
 	recipe ={
-		{'technic:rubber',   'technic:rubber',   'technic:rubber'},
-		{'technic:lv_cable', 'technic:lv_cable', 'technic:lv_cable'},
-		{'technic:rubber',   'technic:rubber',   'technic:rubber'},
+		{'hades_technic:rubber',   'hades_technic:rubber',   'hades_technic:rubber'},
+		{'hades_technic:lv_cable', 'hades_technic:lv_cable', 'hades_technic:lv_cable'},
+		{'hades_technic:rubber',   'hades_technic:rubber',   'hades_technic:rubber'},
 	}
 })
 

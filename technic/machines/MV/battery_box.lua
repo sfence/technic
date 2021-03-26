@@ -1,22 +1,27 @@
 -- MV Battery box
 
-minetest.register_craft({
-	output = 'technic:mv_battery_box0',
-	recipe = {
-		{'technic:lv_battery_box0', 'technic:lv_battery_box0', 'technic:lv_battery_box0'},
-		{'technic:lv_battery_box0', 'technic:mv_transformer',  'technic:lv_battery_box0'},
-		{'',                        'technic:mv_cable',        ''},
-	}
-})
+for key, data in pairs(technic.battery_types) do
+  minetest.register_craft({
+    output = 'hades_technic:mv_'..data.name..'_battery_box0',
+    recipe = {
+      {'hades_technic:lv_'..data.name..'_battery_box0', 'hades_technic:lv_'..data.name..'_battery_box0', 'hades_technic:lv_'..data.name..'_battery_box0'},
+      {'hades_technic:lv_'..data.name..'_battery_box0', 'hades_technic:mv_transformer',  'hades_technic:lv_'..data.name..'_battery_box0'},
+      {'',                        'hades_technic:mv_cable',        ''},
+    }
+  })
 
-technic.register_battery_box({
-	tier           = "MV",
-	max_charge     = 200000,
-	charge_rate    = 20000,
-	discharge_rate = 80000,
-	charge_step    = 2000,
-	discharge_step = 8000,
-	upgrade        = 1,
-	tube           = 1,
-})
+  -- 20 times better then normal battery
+  technic.register_battery_box({
+    tier           = "MV",
+    node_name      = data.name,
+    node_desc      = data.desc,
+    max_charge     = 20*data.max_charge,
+    charge_rate    = 20*data.charge_rate,
+    discharge_rate = 20*data.discharge_rate,
+    charge_step    = 20*data.charge_step,
+    discharge_step = 20*data.discharge_step,
+    upgrade        = 1,
+    tube           = 1,
+  })
+end
 

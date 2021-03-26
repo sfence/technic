@@ -1,12 +1,12 @@
 
-minetest.register_alias("extractor", "technic:lv_extractor")
+minetest.register_alias("extractor", "hades_technic:lv_extractor")
 
 minetest.register_craft({
-	output = 'technic:lv_extractor',
+	output = 'hades_technic:lv_extractor',
 	recipe = {
-		{'technic:treetap', 'basic_materials:motor',          'technic:treetap'},
-		{'technic:treetap', 'technic:machine_casing', 'technic:treetap'},
-		{'',                'technic:lv_cable',       ''},
+		{'hades_technic:treetap', 'hades_extramaterials:motor',          'hades_technic:treetap'},
+		{'hades_technic:treetap', 'hades_technic:machine_casing', 'hades_technic:treetap'},
+		{'',                'hades_technic:lv_cable',       ''},
 	}
 })
 

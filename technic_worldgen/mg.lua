@@ -1,5 +1,5 @@
 mg.register_ore({
-	name = "technic:mineral_uranium",
+	name = "hades_technic:mineral_uranium",
 	wherein = "default:stone",
 	seeddiff = 11,
 	maxvdistance = 10.5,
@@ -17,7 +17,7 @@ mg.register_ore({
 })
 
 mg.register_ore({
-	name = "technic:mineral_chromium",
+	name = "hades_technic:mineral_chromium",
 	wherein = "default:stone",
 	seeddiff = 12,
 	maxvdistance = 10.5,
@@ -34,7 +34,7 @@ mg.register_ore({
 })
 
 mg.register_ore({
-	name = "technic:mineral_zinc",
+	name = "hades_technic:mineral_zinc",
 	wherein = "default:stone",
 	seeddiff = 13,
 	maxvdistance = 10.5,
@@ -49,7 +49,7 @@ mg.register_ore({
 })
 
 mg.register_ore({
-	name = "technic:mineral_lead",
+	name = "hades_technic:mineral_lead",
 	wherein = "default:stone",
 	seeddiff = 14,
 	maxvdistance = 10.5,
@@ -65,7 +65,7 @@ mg.register_ore({
 
 if technic.config:get_bool("enable_granite_generation") then
 	mg.register_ore_sheet({
-		name = "technic:granite",
+		name = "hades_technic:granite",
 		wherein = "default:stone",
 		height_min = -31000,
 		height_max = -150,
@@ -78,7 +78,7 @@ end
 
 if technic.config:get_bool("enable_marble_generation") then
 	mg.register_ore_sheet({
-		name = "technic:marble",
+		name = "hades_technic:marble",
 		wherein = "default:stone",
 		height_min = -31000,
 		height_max = -50,

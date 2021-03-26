@@ -8,7 +8,7 @@ technic = rawget(_G, "technic") or {}
 technic.creative_mode = minetest.settings:get_bool("creative_mode")
 
 
-local modpath = minetest.get_modpath("technic")
+local modpath = minetest.get_modpath(minetest.get_current_modname())
 technic.modpath = modpath
 
 
@@ -22,6 +22,9 @@ local S = technic.getter
 
 -- Read configuration file
 dofile(modpath.."/config.lua")
+
+-- Helper definitions
+dofile(modpath.."/definitions.lua")
 
 -- Helper functions
 dofile(modpath.."/helpers.lua")

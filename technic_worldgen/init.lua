@@ -1,4 +1,4 @@
-local modpath = minetest.get_modpath("technic_worldgen")
+local modpath = minetest.get_modpath(minetest.get_current_modname())
 
 technic = rawget(_G, "technic") or {}
 technic.worldgen = {
@@ -15,8 +15,8 @@ if not minetest.get_modpath("moretrees") then
 	dofile(modpath.."/rubber.lua")
 else
 	-- older versions of technic provided rubber trees regardless
-	minetest.register_alias("technic:rubber_sapling", "moretrees:rubber_tree_sapling")
-	minetest.register_alias("technic:rubber_tree_empty", "moretrees:rubber_tree_trunk_empty")
+	minetest.register_alias("hades_technic:rubber_sapling", "moretrees:rubber_tree_sapling")
+	minetest.register_alias("hades_technic:rubber_tree_empty", "moretrees:rubber_tree_trunk_empty")
 end
 
 -- mg suppport

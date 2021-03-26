@@ -23,16 +23,16 @@ local STRING, FLOAT  =
 	wrench.META_TYPE_FLOAT
 
 wrench.registered_nodes = {
-	["default:chest"] = {
+	["hades_chests:chest"] = {
 		lists = {"main"},
 	},
-	["default:chest_locked"] = {
+	["hades_chests:chest_locked"] = {
 		lists = {"main"},
 		metas = {owner = STRING,
 			infotext = STRING},
 		owned = true,
 	},
-	["default:furnace"] = {
+	["hades_furnaces:furnace"] = {
 		lists = {"fuel", "src", "dst"},
 		metas = {infotext = STRING,
 			fuel_totaltime = FLOAT,
@@ -40,7 +40,7 @@ wrench.registered_nodes = {
 			src_totaltime = FLOAT,
 			src_time = FLOAT},
 	},
-	["default:furnace_active"] = {
+	["hades_furnaces:furnace_active"] = {
 		lists = {"fuel", "src", "dst"},
 		metas = {infotext = STRING,
 			fuel_totaltime = FLOAT,
@@ -49,7 +49,7 @@ wrench.registered_nodes = {
 			src_time = FLOAT},
 		store_meta_always = true,
 	},
-	["default:sign_wall"] = {
+	["hades_core:sign_wall"] = {
 		metas = {infotext = STRING,
 			text = STRING},
 	},

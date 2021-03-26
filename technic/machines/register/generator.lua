@@ -66,17 +66,17 @@ function technic.register_generator(data)
 						items = fuellist})
 				if not fuel or fuel.time == 0 then
 					meta:set_string("infotext", S("%s Out Of Fuel"):format(desc))
-					technic.swap_node(pos, "technic:"..ltier.."_generator")
+					technic.swap_node(pos, "hades_technic:"..ltier.."_generator")
 					meta:set_int(tier.."_EU_supply", 0)
 					return
 				end
 				meta:set_int("burn_time", fuel.time)
 				meta:set_int("burn_totaltime", fuel.time)
 				inv:set_stack("src", 1, afterfuel.items[1])
-				technic.swap_node(pos, "technic:"..ltier.."_generator_active")
+				technic.swap_node(pos, "hades_technic:"..ltier.."_generator_active")
 				meta:set_int(tier.."_EU_supply", data.supply)
 			else
-				technic.swap_node(pos, "technic:"..ltier.."_generator")
+				technic.swap_node(pos, "hades_technic:"..ltier.."_generator")
 				meta:set_int(tier.."_EU_supply", 0)
 			end
 		end
@@ -111,7 +111,7 @@ function technic.register_generator(data)
 	local tentry = tube_entry
 	if ltier == "lv" then tentry = "" end
 
-	minetest.register_node("technic:"..ltier.."_generator", {
+	minetest.register_node("hades_technic:"..ltier.."_generator", {
 		description = desc,
 		tiles = {
 				"technic_"..ltier.."_generator_top.png"..tentry,
@@ -125,7 +125,7 @@ function technic.register_generator(data)
 		groups = groups,
 		connect_sides = {"bottom", "back", "left", "right"},
 		legacy_facedir_simple = true,
-		sounds = default.node_sound_wood_defaults(),
+		sounds = hades_sounds.node_sound_wood_defaults(),
 		tube = data.tube and tube or nil,
 		on_construct = function(pos)
 			local meta = minetest.get_meta(pos)
@@ -178,7 +178,7 @@ function technic.register_generator(data)
 		end,
 	})
 
-	minetest.register_node("technic:"..ltier.."_generator_active", {
+	minetest.register_node("hades_technic:"..ltier.."_generator_active", {
 		description = desc,
 		tiles = {
 			"technic_"..ltier.."_generator_top.png"..tube_entry,
@@ -192,9 +192,9 @@ function technic.register_generator(data)
 		groups = active_groups,
 		connect_sides = {"bottom"},
 		legacy_facedir_simple = true,
-		sounds = default.node_sound_wood_defaults(),
+		sounds = hades_sounds.node_sound_wood_defaults(),
 		tube = data.tube and tube or nil,
-		drop = "technic:"..ltier.."_generator",
+		drop = "hades_technic:"..ltier.."_generator",
 		can_dig = technic.machine_can_dig,
 		after_dig_node = technic.machine_after_dig_node,
 		allow_metadata_inventory_put = technic.machine_inventory_put,
@@ -217,7 +217,7 @@ function technic.register_generator(data)
 			if burn_time <= 0 then
 				meta:set_int(tier.."_EU_supply", 0)
 				meta:set_int("burn_time", 0)
-				technic.swap_node(pos, "technic:"..ltier.."_generator")
+				technic.swap_node(pos, "hades_technic:"..ltier.."_generator")
 				return false
 			end
 
@@ -286,7 +286,7 @@ function technic.register_generator(data)
 		end,
 	})
 
-	technic.register_machine(tier, "technic:"..ltier.."_generator",        technic.producer)
-	technic.register_machine(tier, "technic:"..ltier.."_generator_active", technic.producer)
+	technic.register_machine(tier, "hades_technic:"..ltier.."_generator",        technic.producer)
+	technic.register_machine(tier, "hades_technic:"..ltier.."_generator_active", technic.producer)
 end
 

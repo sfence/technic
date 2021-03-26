@@ -1,11 +1,11 @@
 -- MV compressor
 
 minetest.register_craft({
-	output = 'technic:mv_compressor',
+	output = 'hades_technic:mv_compressor',
 	recipe = {
-		{'technic:stainless_steel_ingot', 'technic:lv_compressor',  'technic:stainless_steel_ingot'},
-		{'pipeworks:tube_1',              'technic:mv_transformer', 'pipeworks:tube_1'},
-		{'technic:stainless_steel_ingot', 'technic:mv_cable',       'technic:stainless_steel_ingot'},
+		{'hades_technic:stainless_steel_ingot', 'hades_technic:lv_compressor',  'hades_technic:stainless_steel_ingot'},
+		{'pipeworks:tube_1',              'hades_technic:mv_transformer', 'pipeworks:tube_1'},
+		{'hades_technic:stainless_steel_ingot', 'hades_technic:mv_cable',       'hades_technic:stainless_steel_ingot'},
 	}
 })
 

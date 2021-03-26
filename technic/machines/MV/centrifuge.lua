@@ -1,9 +1,9 @@
 minetest.register_craft({
-	output = "technic:mv_centrifuge",
+	output = "hades_technic:mv_centrifuge",
 	recipe = {
-		{"basic_materials:motor",          "technic:copper_plate",   "technic:diamond_drill_head"},
-		{"technic:copper_plate",   "technic:machine_casing", "technic:copper_plate"      },
-		{"pipeworks:one_way_tube", "technic:mv_cable",       "pipeworks:mese_filter"     },
+		{"hades_extramaterials:motor",          "hades_technic:copper_plate",   "hades_technic:diamond_drill_head"},
+		{"hades_technic:copper_plate",   "hades_technic:machine_casing", "hades_technic:copper_plate"      },
+		{"pipeworks:one_way_tube", "hades_technic:mv_cable",       "pipeworks:mese_filter"     },
 	}
 })
 

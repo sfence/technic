@@ -18,6 +18,6 @@ dofile(path.."/vacuum.lua")
 
 if minetest.get_modpath("screwdriver") then
 	-- compatibility alias
-	minetest.register_alias("technic:screwdriver", "screwdriver:screwdriver")
+	minetest.register_alias("hades_technic:screwdriver", "screwdriver:screwdriver")
 end
 

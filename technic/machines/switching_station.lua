@@ -12,11 +12,11 @@ local S = technic.getter
 local cable_entry = "^technic_cable_connection_overlay.png"
 
 minetest.register_craft({
-	output = "technic:switching_station",
+	output = "hades_technic:switching_station",
 	recipe = {
-		{"",                     "technic:lv_transformer", ""},
-		{"default:copper_ingot", "technic:machine_casing", "default:copper_ingot"},
-		{"technic:lv_cable",     "technic:lv_cable",       "technic:lv_cable"}
+		{"",                     "hades_technic:lv_transformer", ""},
+		{"hades_core:copper_ingot", "hades_technic:machine_casing", "hades_core:copper_ingot"},
+		{"hades_technic:lv_cable",     "hades_technic:lv_cable",       "hades_technic:lv_cable"}
 	}
 })
 
@@ -27,7 +27,7 @@ if mesecons_path then
 	}}
 end
 
-minetest.register_node("technic:switching_station",{
+minetest.register_node("hades_technic:switching_station",{
 	description = S("Switching Station"),
 	tiles  = {
 		"technic_water_mill_top_active.png",
@@ -38,7 +38,7 @@ minetest.register_node("technic:switching_station",{
 		"technic_water_mill_top_active.png"},
 	groups = {snappy=2, choppy=2, oddly_breakable_by_hand=2, technic_all_tiers=1},
 	connect_sides = {"bottom"},
-	sounds = default.node_sound_wood_defaults(),
+	sounds = hades_sounds.node_sound_wood_defaults(),
 	on_construct = function(pos)
 		local meta = minetest.get_meta(pos)
 		meta:set_string("infotext", S("Switching Station"))
@@ -242,7 +242,7 @@ local function run_nodes(list, run_stage)
 end
 
 minetest.register_abm({
-	nodenames = {"technic:switching_station"},
+	nodenames = {"hades_technic:switching_station"},
 	label = "Switching Station", -- allows the mtt profiler to profile this abm individually
 	interval   = 1,
 	chance     = 1,
@@ -483,7 +483,7 @@ minetest.register_abm({
 --Re-enable disabled switching station if necessary, similar to the timeout above
 minetest.register_abm({
 	label = "Machines: re-enable check",
-	nodenames = {"technic:switching_station"},
+	nodenames = {"hades_technic:switching_station"},
 	interval   = 1,
 	chance     = 1,
 	action = function(pos, node, active_object_count, active_object_count_wider)
@@ -499,6 +499,6 @@ minetest.register_abm({
 
 for tier, machines in pairs(technic.machines) do
 	-- SPECIAL will not be traversed
-	technic.register_machine(tier, "technic:switching_station", "SPECIAL")
+	technic.register_machine(tier, "hades_technic:switching_station", "SPECIAL")
 end
 

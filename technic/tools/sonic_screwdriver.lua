@@ -2,7 +2,9 @@ local sonic_screwdriver_max_charge = 15000
 
 local S = technic.getter
 
-technic.register_power_tool("technic:sonic_screwdriver", sonic_screwdriver_max_charge)
+for key, data in pairs(technic.battery_types) do
+  technic.register_power_tool("hades_technic:sonic_screwdriver_"..data.name, data.max_charge)
+end
 
 -- screwdriver handler code reused from minetest/minetest_game screwdriver @a9ac480
 local ROTATE_FACE = 1
@@ -66,33 +68,37 @@ local function screwdriver_handler(itemstack, user, pointed_thing, mode)
 	if not technic.creative_mode then
 		meta1.charge = meta1.charge - 100
 		itemstack:set_metadata(minetest.serialize(meta1))
-		technic.set_RE_wear(itemstack, meta1.charge, sonic_screwdriver_max_charge)
+    local item_def = itemstack:get_definition();
+		technic.set_RE_wear(itemstack, meta1.charge, item_def._max_charge)
 	end
 
 	return itemstack
 end
 
-minetest.register_tool("technic:sonic_screwdriver", {
-	description = S("Sonic Screwdriver (left-click rotates face, right-click rotates axis)"),
-	inventory_image = "technic_sonic_screwdriver.png",
-	wear_represents = "technic_RE_charge",
-	on_refill = technic.refill_RE_charge,
-	on_use = function(itemstack, user, pointed_thing)
-		screwdriver_handler(itemstack, user, pointed_thing, ROTATE_FACE)
-		return itemstack
-	end,
-	on_place = function(itemstack, user, pointed_thing)
-		screwdriver_handler(itemstack, user, pointed_thing, ROTATE_AXIS)
-		return itemstack
-	end,
-})
+for key, data in pairs(technic.battery_types) do
+  minetest.register_tool("hades_technic:sonic_screwdriver_"..data.name, {
+    description = S("Sonic Screwdriver (left-click rotates face, right-click rotates axis)"),
+    inventory_image = "technic_sonic_screwdriver.png",
+    wear_represents = "technic_RE_charge",
+    _max_charge = data.max_charge,
+    on_refill = technic.refill_RE_charge,
+    on_use = function(itemstack, user, pointed_thing)
+      screwdriver_handler(itemstack, user, pointed_thing, ROTATE_FACE)
+      return itemstack
+    end,
+    on_place = function(itemstack, user, pointed_thing)
+      screwdriver_handler(itemstack, user, pointed_thing, ROTATE_AXIS)
+      return itemstack
+    end,
+  })
 
-minetest.register_craft({
-	output = "technic:sonic_screwdriver",
-	recipe = {
-		{"",                         "default:diamond",        ""},
-		{"mesecons_materials:fiber", "technic:battery",        "mesecons_materials:fiber"},
-		{"mesecons_materials:fiber", "moreores:mithril_ingot", "mesecons_materials:fiber"}
-	}
-})
+  minetest.register_craft({
+    output = "hades_technic:sonic_screwdriver_"..data.name,
+    recipe = {
+      {"",                         "hades_core:diamond",        ""},
+      {"mesecons_materials:fiber", "hades_technic:battery_"..data.name,        "mesecons_materials:fiber"},
+      {"mesecons_materials:fiber", "hades_extraores:titanium_ingot", "mesecons_materials:fiber"}
+    }
+  })
+end
 

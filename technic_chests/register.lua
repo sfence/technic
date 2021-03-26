@@ -282,7 +282,7 @@ function technic.chests:definition(name, data)
 		groups = self.groups,
 		tube = self.tube,
 		legacy_facedir_simple = true,
-		sounds = default.node_sound_wood_defaults(),
+		sounds = hades_sounds.node_sound_wood_defaults(),
 		after_place_node = locked_after_place,
 		after_dig_node = pipeworks.after_dig,
 

@@ -33,6 +33,21 @@ local nodes = {
 	{"default:blueberry_bush_leaves_with_berries", false},
 	{"default:bush_leaves", false},
 	{"default:pine_bush_needles", false},
+  
+  -- Hades Revisited
+  {"hades_trees:apple", true},
+  {"hades_trees:banana_leaves", false},
+  {"hades_trees:birch_leaves", false},
+  {"hades_trees:birch_tree", true},
+  {"hades_trees:cultivated_jungle_leaves", false},
+  {"hades_trees:jungle_leaves", false},
+  {"hades_trees:jungle_tree", true},
+  {"hades_trees:leaves", false},
+  {"hades_trees:olive_leaves", false},
+  {"hades_trees:orange_leaves", false},
+  {"hades_trees:pale_leaves", false},
+  {"hades_trees:pale_tree", true},
+  {"hades_trees:tree", true},
 
 	-- Rubber trees from moretrees or technic_worldgen if moretrees isn't installed
 	{"moretrees:rubber_tree_trunk_empty", true},
@@ -222,7 +237,9 @@ end
 
 local S = technic.getter
 
-technic.register_power_tool("technic:chainsaw", chainsaw_max_charge)
+for key, data in pairs(technic.battery_types) do
+  technic.register_power_tool("hades_technic:chainsaw_"..data.name, 2*data.max_charge)
+end
 
 -- This function checks if the specified node should be sawed
 local function check_if_node_sawed(pos)
@@ -396,51 +413,56 @@ local function chainsaw_dig(pos, current_charge)
 end
 
 
-minetest.register_tool("technic:chainsaw", {
-	description = S("Chainsaw"),
-	inventory_image = "technic_chainsaw.png",
-	stack_max = 1,
-	wear_represents = "technic_RE_charge",
-	on_refill = technic.refill_RE_charge,
-	on_use = function(itemstack, user, pointed_thing)
-		if pointed_thing.type ~= "node" then
-			return itemstack
-		end
+for key, data in pairs(technic.battery_types) do
+  minetest.register_tool("hades_technic:chainsaw_"..data.name, {
+    description = S("Chainsaw"),
+    _tt_help = S("With "..data.desc.." battery."),
+    inventory_image = "technic_chainsaw.png",
+    stack_max = 1,
+    wear_represents = "technic_RE_charge",
+    on_refill = technic.refill_RE_charge,
+    on_use = function(itemstack, user, pointed_thing)
+      if pointed_thing.type ~= "node" then
+        return itemstack
+      end
 
-		local meta = minetest.deserialize(itemstack:get_metadata())
-		if not meta or not meta.charge or
-				meta.charge < chainsaw_charge_per_node then
-			return
-		end
+      local meta = minetest.deserialize(itemstack:get_metadata())
+      if not meta or not meta.charge or
+          meta.charge < chainsaw_charge_per_node then
+        return
+      end
 
-		local name = user:get_player_name()
-		if minetest.is_protected(pointed_thing.under, name) then
-			minetest.record_protection_violation(pointed_thing.under, name)
-			return
-		end
+      local name = user:get_player_name()
+      if minetest.is_protected(pointed_thing.under, name) then
+        minetest.record_protection_violation(pointed_thing.under, name)
+        return
+      end
 
-		-- Send current charge to digging function so that the
-		-- chainsaw will stop after digging a number of nodes
-		meta.charge = chainsaw_dig(pointed_thing.under, meta.charge)
-		if not technic.creative_mode then
-			technic.set_RE_wear(itemstack, meta.charge, chainsaw_max_charge)
-			itemstack:set_metadata(minetest.serialize(meta))
-		end
-		return itemstack
-	end,
-})
+      -- Send current charge to digging function so that the
+      -- chainsaw will stop after digging a number of nodes
+      meta.charge = chainsaw_dig(pointed_thing.under, meta.charge)
+      if not technic.creative_mode then
+        technic.set_RE_wear(itemstack, meta.charge, 2*data.max_charge)
+        itemstack:set_metadata(minetest.serialize(meta))
+      end
+      return itemstack
+    end,
+  })
+end
 
 local mesecons_button = minetest.get_modpath("mesecons_button")
-local trigger = mesecons_button and "mesecons_button:button_off" or "default:mese_crystal_fragment"
+local trigger = mesecons_button and "mesecons_button:button_off" or "hades_core:mese_crystal_fragment"
 
-minetest.register_craft({
-	output = "technic:chainsaw",
-	recipe = {
-		{"technic:stainless_steel_ingot", trigger,                      "technic:battery"},
-		{"basic_materials:copper_wire",      "basic_materials:motor",              "technic:battery"},
-		{"",                              "",                           "technic:stainless_steel_ingot"},
-	},
-	replacements = { {"basic_materials:copper_wire", "basic_materials:empty_spool"}, },
+for key, data in pairs(technic.battery_types) do
+  minetest.register_craft({
+    output = "hades_technic:chainsaw_"..data.name,
+    recipe = {
+      {"hades_technic:stainless_steel_ingot", trigger,                      "hades_technic:battery_"..data.name},
+      {"hades_extramaterials:copper_wire",      "hades_extramaterials:motor",              "hades_technic:battery_"..data.name},
+      {"",                              "",                           "hades_technic:stainless_steel_ingot"},
+    },
+    replacements = { {"hades_extramaterials:copper_wire", "hades_extramaterials:empty_spool"}, },
 
-})
+  })
+end
 

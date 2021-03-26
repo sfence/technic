@@ -2,30 +2,30 @@
 local S = technic.getter
 
 minetest.register_craft({
-	output = 'technic:wind_mill_frame 5',
+	output = 'hades_technic:wind_mill_frame 5',
 	recipe = {
-		{'technic:carbon_steel_ingot', '',                           'technic:carbon_steel_ingot'},
-		{'',                           'technic:carbon_steel_ingot', ''},
-		{'technic:carbon_steel_ingot', '',                           'technic:carbon_steel_ingot'},
+		{'hades_technic:carbon_steel_ingot', '',                           'hades_technic:carbon_steel_ingot'},
+		{'',                           'hades_technic:carbon_steel_ingot', ''},
+		{'hades_technic:carbon_steel_ingot', '',                           'hades_technic:carbon_steel_ingot'},
 	}
 })
 
 minetest.register_craft({
-	output = 'technic:wind_mill',
+	output = 'hades_technic:wind_mill',
 	recipe = {
-		{'',                           'basic_materials:motor',              ''},
-		{'technic:carbon_steel_ingot', 'technic:carbon_steel_block', 'technic:carbon_steel_ingot'},
-		{'',                           'technic:mv_cable',           ''},
+		{'',                           'hades_extramaterials:motor',              ''},
+		{'hades_technic:carbon_steel_ingot', 'hades_technic:carbon_steel_block', 'hades_technic:carbon_steel_ingot'},
+		{'',                           'hades_technic:mv_cable',           ''},
 	}
 })
 
-minetest.register_node("technic:wind_mill_frame", {
+minetest.register_node("hades_technic:wind_mill_frame", {
 	description = S("Wind Mill Frame"),
 	drawtype = "glasslike_framed",
 	tiles = {"technic_carbon_steel_block.png", "default_glass.png"},
 	sunlight_propagates = true,
 	groups = {cracky=3},
-	sounds = default.node_sound_stone_defaults(),
+	sounds = hades_sounds.node_sound_stone_defaults(),
 	paramtype = "light",
 })
 
@@ -42,7 +42,7 @@ local function check_wind_mill(pos)
 			-- as the user will have to load the block to change it
 			return
 		end
-		if node.name ~= "technic:wind_mill_frame" then
+		if node.name ~= "hades_technic:wind_mill_frame" then
 			return false
 		end
 	end
@@ -66,13 +66,13 @@ local run = function(pos, node)
 	-- check == nil: assume nothing has changed
 end
 
-minetest.register_node("technic:wind_mill", {
+minetest.register_node("hades_technic:wind_mill", {
 	description = S("Wind %s Generator"):format("MV"),
 	tiles = {"technic_carbon_steel_block.png"},
 	paramtype2 = "facedir",
 	groups = {cracky=1, technic_machine=1, technic_mv=1},
 	connect_sides = {"top", "bottom", "back", "left", "right"},
-	sounds = default.node_sound_stone_defaults(),
+	sounds = hades_sounds.node_sound_stone_defaults(),
 	drawtype = "nodebox",
 	paramtype = "light",
 	node_box = {
@@ -92,5 +92,5 @@ minetest.register_node("technic:wind_mill", {
 	technic_run = run,
 })
 
-technic.register_machine("MV", "technic:wind_mill", technic.producer)
+technic.register_machine("MV", "hades_technic:wind_mill", technic.producer)
 

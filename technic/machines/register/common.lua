@@ -17,15 +17,15 @@ function technic.handle_machine_upgrades(meta)
 	local EU_upgrade = 0
 	local tube_upgrade = 0
 
-	if upg_item1 == "technic:control_logic_unit" then
+	if upg_item1 == "hades_technic:control_logic_unit" then
 		tube_upgrade = tube_upgrade + 1
-	elseif upg_item1 == "technic:battery" then
+	elseif upg_item1 == "hades_technic:battery" then
 		EU_upgrade = EU_upgrade + 1
 	end
 
-	if upg_item2 == "technic:control_logic_unit" then
+	if upg_item2 == "hades_technic:control_logic_unit" then
 		tube_upgrade = tube_upgrade + 1
-	elseif  upg_item2 == "technic:battery" then
+	elseif  upg_item2 == "hades_technic:battery" then
 		EU_upgrade = EU_upgrade + 1
 	end
 
@@ -38,8 +38,8 @@ local function on_machine_upgrade(meta, stack)
 	if stack_name == "default:chest" then
 		meta:set_int("public", 1)
 		return 1
-	elseif stack_name ~= "technic:control_logic_unit"
-	   and stack_name ~= "technic:battery" then
+	elseif stack_name ~= "hades_technic:control_logic_unit"
+	   and stack_name ~= "hades_technic:battery" then
 		return 0
 	end
 	return 1

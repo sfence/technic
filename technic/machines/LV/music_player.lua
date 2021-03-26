@@ -3,13 +3,13 @@
 
 local S = technic.getter
 
-minetest.register_alias("music_player", "technic:music_player")
+minetest.register_alias("music_player", "hades_technic:music_player")
 minetest.register_craft({
-	output = 'technic:music_player',
+	output = 'hades_technic:music_player',
 	recipe = {
-		{'technic:chromium_ingot', 'default:diamond',        'technic:chromium_ingot'},
-		{'default:diamond',        'technic:machine_casing', 'default:diamond'},
-		{'default:mossycobble',    'technic:lv_cable',       'default:mossycobble'},
+		{'hades_technic:chromium_ingot', 'default:diamond',        'hades_technic:chromium_ingot'},
+		{'default:diamond',        'hades_technic:machine_casing', 'default:diamond'},
+		{'default:mossycobble',    'hades_technic:lv_cable',       'default:mossycobble'},
 	}
 })
 
@@ -71,7 +71,7 @@ end
 local function set_display(meta)
 	meta:set_string("formspec",
 			"size[4,4.5]"..
-			"item_image[0,0;1,1;technic:music_player]"..
+			"item_image[0,0;1,1;hades_technic:music_player]"..
 			"label[1,0;"..S("%s Music Player"):format("LV").."]"..
 			"button[0,1;1,1;track1;1]"..
 			"button[1,1;1,1;track2;2]"..
@@ -89,14 +89,14 @@ local function set_display(meta)
 					S("Current track %s"):format(meta:get_int("current_track"))).."]")
 end
 
-minetest.register_node("technic:music_player", {
+minetest.register_node("hades_technic:music_player", {
 	description = S("%s Music Player"):format("LV"),
 	tiles = {"technic_music_player_top.png", "technic_machine_bottom.png", "technic_music_player_side.png",
 	         "technic_music_player_side.png", "technic_music_player_side.png", "technic_music_player_side.png"},
 	groups = {snappy=2, choppy=2, oddly_breakable_by_hand=2,
 		technic_machine=1, technic_lv=1},
 	connect_sides = {"bottom"},
-	sounds = default.node_sound_wood_defaults(),
+	sounds = hades_sounds.node_sound_wood_defaults(),
 	on_construct = function(pos)
 		local meta = minetest.get_meta(pos)
 		meta:set_string("infotext", S("%s Music Player"):format("LV"))
@@ -127,5 +127,5 @@ minetest.register_node("technic:music_player", {
 	technic_on_disable = stop_player,
 })
 
-technic.register_machine("LV", "technic:music_player", technic.receiver)
+technic.register_machine("LV", "hades_technic:music_player", technic.receiver)
 

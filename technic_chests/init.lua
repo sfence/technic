@@ -2,7 +2,7 @@
 -- namespace: technic
 -- (c) 2012-2013 by RealBadAngel <mk@realbadangel.pl>
 
-local modpath = minetest.get_modpath("technic_chests")
+local modpath = minetest.get_modpath(minetest.get_current_modname())
 
 technic = rawget(_G, "technic") or {}
 technic.chests = {}
@@ -18,28 +18,28 @@ dofile(modpath.."/mithril_chest.lua")
 -- undo all of the locked wooden chest recipes created by default and
 -- moreblocks, and just make them use a padlock.
 
-if minetest.get_modpath("moreblocks") then
+if minetest.get_modpath("hades_moreblocks") then
 	minetest.clear_craft({
 		type = "shapeless",
 		recipe = {
-			"default:chest",
-			"default:gold_ingot",
+			"hades_chests:chest",
+			"hades_core:gold_ingot",
 		}
 	})
 
 	minetest.clear_craft({
 		type = "shapeless",
 		recipe = {
-			"default:chest",
-			"default:bronze_ingot",
+			"hades_chests:chest",
+			"hades_core:bronze_ingot",
 		}
 	})
 
 	minetest.clear_craft({
 		type = "shapeless",
 		recipe = {
-			"default:chest",
-			"default:copper_ingot",
+			"hades_chests:chest",
+			"hades_core:copper_ingot",
 		}
 	})
 end
@@ -47,34 +47,34 @@ end
 minetest.clear_craft({
 	type = "shapeless",
 	recipe = {
-		"default:chest",
-		"default:steel_ingot",
+		"hades_chests:chest",
+		"hades_core:steel_ingot",
 	}
 })
 
-minetest.clear_craft({output = "default:chest_locked"})
+minetest.clear_craft({output = "hades_chests:chest_locked"})
 
 minetest.register_craft({
-	output = "default:chest_locked",
+	output = "hades_chests:chest_locked",
 	recipe = {
 		{ "group:wood", "group:wood", "group:wood" },
-		{ "group:wood", "basic_materials:padlock", "group:wood" },
+		{ "group:wood", "hades_extramaterials:padlock", "group:wood" },
 		{ "group:wood", "group:wood", "group:wood" }
 	}
 })
 
 minetest.register_craft({
-	output = "default:chest_locked",
+	output = "hades_chests:chest_locked",
 	type = "shapeless",
 	recipe = {
-		"default:chest",
-		"basic_materials:padlock"
+		"hades_chests:chest",
+		"hades_extramaterials:padlock"
 	}
 })
 
 minetest.register_lbm({
-	name = "technic_chests:fix_wooden_chests",
-	nodenames = {"default:chest"},
+	name = "hades_technic_chests:fix_wooden_chests",
+	nodenames = {"hades_chests:chest"},
 	action = function(pos, node)
 		local meta = minetest.get_meta(pos)
 		meta:set_string("formspec", "")

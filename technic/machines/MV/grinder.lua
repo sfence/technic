@@ -1,11 +1,11 @@
 -- MV grinder
 
 minetest.register_craft({
-	output = 'technic:mv_grinder',
+	output = 'hades_technic:mv_grinder',
 	recipe = {
-		{'technic:stainless_steel_ingot', 'technic:lv_grinder',     'technic:stainless_steel_ingot'},
-		{'pipeworks:tube_1',              'technic:mv_transformer', 'pipeworks:tube_1'},
-		{'technic:stainless_steel_ingot', 'technic:mv_cable',       'technic:stainless_steel_ingot'},
+		{'hades_technic:stainless_steel_ingot', 'hades_technic:lv_grinder',     'hades_technic:stainless_steel_ingot'},
+		{'pipeworks:tube_1',              'hades_technic:mv_transformer', 'pipeworks:tube_1'},
+		{'hades_technic:stainless_steel_ingot', 'hades_technic:mv_cable',       'hades_technic:stainless_steel_ingot'},
 	}
 })
 

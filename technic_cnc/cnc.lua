@@ -19,8 +19,8 @@ if technic_cnc.use_technic then
 	minetest.register_craft({
 		output = 'technic:cnc',
 		recipe = {
-			{'default:glass',              'technic:diamond_drill_head', 'default:glass'},
-			{'technic:control_logic_unit', 'technic:machine_casing',     'basic_materials:motor'},
+			{'hades_core:glass',              'technic:diamond_drill_head', 'hades_core:glass'},
+			{'technic:control_logic_unit', 'technic:machine_casing',     'hades_extramaterials:motor'},
 			{'technic:carbon_steel_ingot', 'technic:lv_cable',           'technic:carbon_steel_ingot'},
 		},
 	})
@@ -34,9 +34,9 @@ else
 	minetest.register_craft({
 		output = 'technic:cnc',
 		recipe = {
-			{'default:glass',       'default:diamond',    'default:glass'},
-			{'basic_materials:ic',  'default:steelblock', 'basic_materials:motor'},
-			{'default:steel_ingot', 'default:mese',       'default:steel_ingot'},
+			{'hades_core:glass',       'hades_core:diamond',    'hades_core:glass'},
+			{'hades_extramaterials:ic',  'hades_core:steelblock', 'hades_extramaterials:motor'},
+			{'hades_core:steel_ingot', 'hades_core:mese',       'hades_core:steel_ingot'},
 		},
 	})
 

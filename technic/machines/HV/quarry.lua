@@ -6,10 +6,10 @@ local cable_entry = "^technic_cable_connection_overlay.png"
 
 minetest.register_craft({
 	recipe = {
-		{"technic:carbon_plate",       "pipeworks:filter",       "technic:composite_plate"},
-		{"basic_materials:motor",              "technic:machine_casing", "technic:diamond_drill_head"},
-		{"technic:carbon_steel_block", "technic:hv_cable",       "technic:carbon_steel_block"}},
-	output = "technic:quarry",
+		{"hades_technic:carbon_plate",       "pipeworks:filter",       "hades_technic:composite_plate"},
+		{"hades_extramaterials:motor",              "hades_technic:machine_casing", "hades_technic:diamond_drill_head"},
+		{"hades_technic:carbon_steel_block", "hades_technic:hv_cable",       "hades_technic:carbon_steel_block"}},
+	output = "hades_technic:quarry",
 })
 
 local quarry_dig_above_nodes = 3 -- How far above the quarry we will dig nodes
@@ -21,7 +21,7 @@ local function set_quarry_formspec(meta)
 	local radius = meta:get_int("size")
 	local formspec = "size[6,4.3]"..
 		"list[context;cache;0,1;4,3;]"..
-		"item_image[4.8,0;1,1;technic:quarry]"..
+		"item_image[4.8,0;1,1;hades_technic:quarry]"..
 		"label[0,0.2;"..S("%s Quarry"):format("HV").."]"..
 		"field[4.3,3.5;2,1;size;"..S("Radius:")..";"..radius.."]"
 	if meta:get_int("enabled") == 0 then
@@ -214,7 +214,7 @@ local function send_move_error(player)
 	return 0
 end
 
-minetest.register_node("technic:quarry", {
+minetest.register_node("hades_technic:quarry", {
 	description = S("%s Quarry"):format("HV"),
 	tiles = {
 		"technic_carbon_steel_block.png"..tube_entry,
@@ -271,4 +271,4 @@ minetest.register_node("technic:quarry", {
 	end
 })
 
-technic.register_machine("HV", "technic:quarry", technic.receiver)
+technic.register_machine("HV", "hades_technic:quarry", technic.receiver)

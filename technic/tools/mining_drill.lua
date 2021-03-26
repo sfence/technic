@@ -4,36 +4,36 @@ local power_usage_per_node = {200, 500, 800}
 local S = technic.getter
 
 minetest.register_craft({
-	output = 'technic:mining_drill',
+	output = 'hades_technic:mining_drill',
 	recipe = {
-		{'default:tin_ingot',             'technic:diamond_drill_head', 'default:tin_ingot'},
-		{'technic:stainless_steel_ingot', 'basic_materials:motor',              'technic:stainless_steel_ingot'},
-		{'',                              'technic:red_energy_crystal', 'default:copper_ingot'},
+		{'hades_core:tin_ingot',             'hades_technic:diamond_drill_head', 'hades_core:tin_ingot'},
+		{'hades_technic:stainless_steel_ingot', 'hades_extramaterials:motor',              'hades_technic:stainless_steel_ingot'},
+		{'',                              'hades_technic:red_energy_crystal', 'hades_core:copper_ingot'},
 	}
 })
 minetest.register_craft({
-	output = 'technic:mining_drill_mk2',
+	output = 'hades_technic:mining_drill_mk2',
 	recipe = {
-		{'technic:diamond_drill_head',    'technic:diamond_drill_head',   'technic:diamond_drill_head'},
-		{'technic:stainless_steel_ingot', 'technic:mining_drill',         'technic:stainless_steel_ingot'},
-		{'',                              'technic:green_energy_crystal', ''},
+		{'hades_technic:diamond_drill_head',    'hades_technic:diamond_drill_head',   'hades_technic:diamond_drill_head'},
+		{'hades_technic:stainless_steel_ingot', 'hades_technic:mining_drill',         'hades_technic:stainless_steel_ingot'},
+		{'',                              'hades_technic:green_energy_crystal', ''},
 	}
 })
 minetest.register_craft({
-	output = 'technic:mining_drill_mk3',
+	output = 'hades_technic:mining_drill_mk3',
 	recipe = {
-		{'technic:diamond_drill_head',    'technic:diamond_drill_head',  'technic:diamond_drill_head'},
-		{'technic:stainless_steel_ingot', 'technic:mining_drill_mk2',    'technic:stainless_steel_ingot'},
-		{'',                              'technic:blue_energy_crystal', ''},
+		{'hades_technic:diamond_drill_head',    'hades_technic:diamond_drill_head',  'hades_technic:diamond_drill_head'},
+		{'hades_technic:stainless_steel_ingot', 'hades_technic:mining_drill_mk2',    'hades_technic:stainless_steel_ingot'},
+		{'',                              'hades_technic:blue_energy_crystal', ''},
 	}
 })
 for i = 1, 4 do
 	minetest.register_craft({
-		output = 'technic:mining_drill_mk3',
+		output = 'hades_technic:mining_drill_mk3',
 		recipe = {
-			{'technic:diamond_drill_head',    'technic:diamond_drill_head',   'technic:diamond_drill_head'},
-			{'technic:stainless_steel_ingot', 'technic:mining_drill_mk2_'..i, 'technic:stainless_steel_ingot'},
-			{'',                              'technic:blue_energy_crystal',  ''},
+			{'hades_technic:diamond_drill_head',    'hades_technic:diamond_drill_head',   'hades_technic:diamond_drill_head'},
+			{'hades_technic:stainless_steel_ingot', 'hades_technic:mining_drill_mk2_'..i, 'hades_technic:stainless_steel_ingot'},
+			{'',                              'hades_technic:blue_energy_crystal',  ''},
 		}
 	})
 end
@@ -53,10 +53,10 @@ local function drill_dig_it0 (pos,player)
 	end
 	local node = minetest.get_node(pos)
 	if node.name == "air" or node.name == "ignore" then return end
-	if node.name == "default:lava_source" then return end
-	if node.name == "default:lava_flowing" then return end
-	if node.name == "default:water_source" then minetest.remove_node(pos) return end
-	if node.name == "default:water_flowing" then minetest.remove_node(pos) return end
+	if node.name == "hades_core:lava_source" then return end
+	if node.name == "hades_core:lava_flowing" then return end
+	if node.name == "hades_core:water_source" then minetest.remove_node(pos) return end
+	if node.name == "hades_core:water_flowing" then minetest.remove_node(pos) return end
 	local def = minetest.registered_nodes[node.name]
 	if not def then return end
 	def.on_dig(pos, node, player)
@@ -257,7 +257,7 @@ local function mining_drill_mk2_setmode(user,itemstack)
 	mode=mode+1
 	if mode>=5 then mode=1 end
 	minetest.chat_send_player(player_name, S("Mining Drill Mk%d Mode %d"):format(2, mode)..": "..mining_drill_mode_text[mode][1])
-    itemstack:set_name("technic:mining_drill_mk2_"..mode);
+    itemstack:set_name("hades_technic:mining_drill_mk2_"..mode);
 	meta["mode"]=mode
     itemstack:set_metadata(minetest.serialize(meta))
 	return itemstack
@@ -280,7 +280,7 @@ local function mining_drill_mk3_setmode(user,itemstack)
 	mode=mode+1
 	if mode>=6 then mode=1 end
 	minetest.chat_send_player(player_name, S("Mining Drill Mk%d Mode %d"):format(3, mode)..": "..mining_drill_mode_text[mode][1])
-    itemstack:set_name("technic:mining_drill_mk3_"..mode);
+    itemstack:set_name("hades_technic:mining_drill_mk3_"..mode);
 	meta["mode"]=mode
     itemstack:set_metadata(minetest.serialize(meta))
 	return itemstack
@@ -331,9 +331,9 @@ local function mining_drill_mk3_handler(itemstack, user, pointed_thing)
 	return itemstack
 end
 
-technic.register_power_tool("technic:mining_drill", max_charge[1])
+technic.register_power_tool("hades_technic:mining_drill", max_charge[1])
 
-minetest.register_tool("technic:mining_drill", {
+minetest.register_tool("hades_technic:mining_drill", {
 	description = S("Mining Drill Mk%d"):format(1),
 	inventory_image = "technic_mining_drill.png",
 	stack_max = 1,
@@ -361,7 +361,7 @@ minetest.register_tool("technic:mining_drill", {
 	end,
 })
 
-minetest.register_tool("technic:mining_drill_mk2", {
+minetest.register_tool("hades_technic:mining_drill_mk2", {
 	description = S("Mining Drill Mk%d"):format(2),
 	inventory_image = "technic_mining_drill_mk2.png",
 	wear_represents = "technic_RE_charge",
@@ -372,11 +372,11 @@ minetest.register_tool("technic:mining_drill_mk2", {
 	end,
 })
 
-technic.register_power_tool("technic:mining_drill_mk2", max_charge[2])
+technic.register_power_tool("hades_technic:mining_drill_mk2", max_charge[2])
 
 for i = 1, 4 do
-	technic.register_power_tool("technic:mining_drill_mk2_"..i, max_charge[2])
-	minetest.register_tool("technic:mining_drill_mk2_"..i, {
+	technic.register_power_tool("hades_technic:mining_drill_mk2_"..i, max_charge[2])
+	minetest.register_tool("hades_technic:mining_drill_mk2_"..i, {
 		description = S("Mining Drill Mk%d Mode %d"):format(2, i),
 		inventory_image = "technic_mining_drill_mk2.png^technic_tool_mode"..i..".png",
 		wield_image = "technic_mining_drill_mk2.png",
@@ -390,7 +390,7 @@ for i = 1, 4 do
 	})
 end
 
-minetest.register_tool("technic:mining_drill_mk3", {
+minetest.register_tool("hades_technic:mining_drill_mk3", {
 	description = S("Mining Drill Mk%d"):format(3),
 	inventory_image = "technic_mining_drill_mk3.png",
 	wear_represents = "technic_RE_charge",
@@ -401,11 +401,11 @@ minetest.register_tool("technic:mining_drill_mk3", {
 	end,
 })
 
-technic.register_power_tool("technic:mining_drill_mk3", max_charge[3])
+technic.register_power_tool("hades_technic:mining_drill_mk3", max_charge[3])
 
 for i=1,5,1 do
-	technic.register_power_tool("technic:mining_drill_mk3_"..i, max_charge[3])
-	minetest.register_tool("technic:mining_drill_mk3_"..i, {
+	technic.register_power_tool("hades_technic:mining_drill_mk3_"..i, max_charge[3])
+	minetest.register_tool("hades_technic:mining_drill_mk3_"..i, {
 		description = S("Mining Drill Mk%d Mode %d"):format(3, i),
 		inventory_image = "technic_mining_drill_mk3.png^technic_tool_mode"..i..".png",
 		wield_image = "technic_mining_drill_mk3.png",

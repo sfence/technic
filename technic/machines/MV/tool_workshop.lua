@@ -1,18 +1,18 @@
 -- Tool workshop
 -- This machine repairs tools.
 
-minetest.register_alias("tool_workshop", "technic:tool_workshop")
+minetest.register_alias("tool_workshop", "hades_technic:tool_workshop")
 
 local S = technic.getter
 
 local tube_entry = "^pipeworks_tube_connection_wooden.png"
 
 minetest.register_craft({
-	output = 'technic:tool_workshop',
+	output = 'hades_technic:tool_workshop',
 	recipe = {
 		{'group:wood',                         'default:diamond',        'group:wood'},
-		{'mesecons_pistons:piston_sticky_off', 'technic:machine_casing', 'technic:carbon_cloth'},
-		{'default:obsidian',                   'technic:mv_cable',       'default:obsidian'},
+		{'mesecons_pistons:piston_sticky_off', 'hades_technic:machine_casing', 'hades_technic:carbon_cloth'},
+		{'hades_core:obsidian',                   'hades_technic:mv_cable',       'hades_core:obsidian'},
 	}
 })
 
@@ -81,7 +81,7 @@ local run = function(pos, node)
 	meta:set_int("MV_EU_demand", workshop_demand[EU_upgrade+1])
 end
 
-minetest.register_node("technic:tool_workshop", {
+minetest.register_node("hades_technic:tool_workshop", {
 	description = S("%s Tool Workshop"):format("MV"),
 	paramtype2 = "facedir",
 	tiles = {
@@ -95,7 +95,7 @@ minetest.register_node("technic:tool_workshop", {
 	groups = {snappy=2, choppy=2, oddly_breakable_by_hand=2,
 		technic_machine=1, technic_mv=1, tubedevice=1, tubedevice_receiver=1},
 	connect_sides = {"bottom", "back", "left", "right"},
-	sounds = default.node_sound_wood_defaults(),
+	sounds = hades_sounds.node_sound_wood_defaults(),
 	on_construct = function(pos)
 		local meta = minetest.get_meta(pos)
 		meta:set_string("infotext", S("%s Tool Workshop"):format("MV"))
@@ -122,5 +122,5 @@ minetest.register_node("technic:tool_workshop", {
 	after_dig_node = technic.machine_after_dig_node
 })
 
-technic.register_machine("MV", "technic:tool_workshop", technic.receiver)
+technic.register_machine("MV", "hades_technic:tool_workshop", technic.receiver)
 

@@ -39,13 +39,13 @@ function technic.register_solar_array(data)
 		end
 	end
 
-	minetest.register_node("technic:solar_array_"..ltier, {
+	minetest.register_node("hades_technic:solar_array_"..ltier, {
 		tiles = {"technic_"..ltier.."_solar_array_top.png",  "technic_"..ltier.."_solar_array_bottom.png",
 			 "technic_"..ltier.."_solar_array_side.png", "technic_"..ltier.."_solar_array_side.png",
 			 "technic_"..ltier.."_solar_array_side.png", "technic_"..ltier.."_solar_array_side.png"},
 		groups = {snappy=2, choppy=2, oddly_breakable_by_hand=2, technic_machine=1, ["technic_"..ltier]=1},
 		connect_sides = {"bottom"},
-		sounds = default.node_sound_wood_defaults(),
+		sounds = hades_sounds.node_sound_wood_defaults(),
 		description = S("Arrayed Solar %s Generator"):format(tier),
 		active = false,
 		drawtype = "nodebox",
@@ -61,6 +61,6 @@ function technic.register_solar_array(data)
 		technic_run = run,
 	})
 
-	technic.register_machine(tier, "technic:solar_array_"..ltier, technic.producer)
+	technic.register_machine(tier, "hades_technic:solar_array_"..ltier, technic.producer)
 end
 

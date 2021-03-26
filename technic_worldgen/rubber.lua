@@ -11,7 +11,7 @@ minetest.register_node(":moretrees:rubber_tree_sapling", {
 	paramtype = "light",
 	walkable = false,
 	groups = {dig_immediate=3, flammable=2, sapling=1},
-	sounds = default.node_sound_defaults(),
+	sounds = hades_sounds.node_sound_defaults(),
 })
 
 minetest.register_craft({
@@ -26,7 +26,7 @@ minetest.register_node(":moretrees:rubber_tree_trunk", {
 		"technic_rubber_tree_full.png"},
 	groups = {tree=1, snappy=1, choppy=2, oddly_breakable_by_hand=1,
 		flammable=2},
-	sounds = default.node_sound_wood_defaults(),
+	sounds = hades_sounds.node_sound_wood_defaults(),
 })
 
 minetest.register_node(":moretrees:rubber_tree_trunk_empty", {
@@ -35,7 +35,7 @@ minetest.register_node(":moretrees:rubber_tree_trunk_empty", {
 		"technic_rubber_tree_empty.png"},
 	groups = {tree=1, snappy=1, choppy=2, oddly_breakable_by_hand=1,
 			flammable=2, not_in_creative_inventory=1},
-	sounds = default.node_sound_wood_defaults(),
+	sounds = hades_sounds.node_sound_wood_defaults(),
 })
 
 minetest.register_node(":moretrees:rubber_tree_leaves", {
@@ -55,7 +55,7 @@ minetest.register_node(":moretrees:rubber_tree_leaves", {
 		}
 		}
 	},
-	sounds = default.node_sound_leaves_defaults(),
+	sounds = hades_sounds.node_sound_leaves_defaults(),
 })
 
 technic.rubber_tree_model={
@@ -92,7 +92,7 @@ if technic.config:get_bool("enable_rubber_tree_generation") then
 				y = (maxp.y - minp.y) / 2 + minp.y,
 				z = (maxp.z - minp.z) / 2 + minp.z}
 		local pos = minetest.find_node_near(tmp, maxp.x - minp.x,
-				{"default:dirt_with_grass"})
+				{"hades_core:dirt_with_grass"})
 		if pos ~= nil then
 			minetest.spawn_tree({x=pos.x, y=pos.y+1, z=pos.z}, technic.rubber_tree_model)
 		end

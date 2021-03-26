@@ -3,14 +3,14 @@
 -- Inefficient and expensive in fuel (200EU per tick)
 -- Also only allows for LV machinery to run.
 
-minetest.register_alias("lv_generator", "technic:lv_generator")
+minetest.register_alias("lv_generator", "hades_technic:lv_generator")
 
 minetest.register_craft({
-	output = 'technic:lv_generator',
+	output = 'hades_technic:lv_generator',
 	recipe = {
 		{'default:stone', 'default:furnace',        'default:stone'},
-		{'default:stone', 'technic:machine_casing', 'default:stone'},
-		{'default:stone', 'technic:lv_cable',       'default:stone'},
+		{'default:stone', 'hades_technic:machine_casing', 'default:stone'},
+		{'default:stone', 'hades_technic:lv_cable',       'default:stone'},
 	}
 })
 
