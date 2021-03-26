@@ -188,3 +188,26 @@ minetest.register_craft({
 	},
 })
 --]]
+
+minetest.register_craft({
+	output = "hades_technic:rubber_goo",
+	type = "shapeless",
+	recipe = {
+		"hades_technic:raw_latex",
+		"hades_core:coal_lump",
+		"hades_core:coal_lump",
+		"hades_core:coal_lump",
+		"hades_core:coal_lump",
+		"hades_core:coal_lump",
+		"hades_core:coal_lump",
+		"hades_core:coal_lump",
+		"hades_core:coal_lump",
+	},
+})
+
+minetest.register_craft({
+	output = "hades_technic:rubber",
+	type = "cooking",
+	recipe = "hades_technic:rubber_goo",
+})
+
