@@ -13,7 +13,7 @@ end
 
 local recipes = {
 	{"hades_technic:copper_dust 7",         "hades_technic:tin_dust",           "hades_technic:bronze_dust 8", 12},
-	{"hades_core:copper_ingot 7",        "hades_core:tin_ingot",          "default:bronze_ingot 8", 12},
+	{"hades_core:copper_ingot 7",        "hades_core:tin_ingot",          "hades_core:bronze_ingot 8", 12},
 	{"hades_technic:wrought_iron_dust 2",   "hades_technic:coal_dust",          "hades_technic:carbon_steel_dust 2", 6},
 	{"hades_technic:wrought_iron_ingot 2",  "hades_technic:coal_dust",          "hades_technic:carbon_steel_ingot 2", 6},
 	{"hades_technic:carbon_steel_dust 2",   "hades_technic:coal_dust",          "hades_technic:cast_iron_dust 2", 6},
