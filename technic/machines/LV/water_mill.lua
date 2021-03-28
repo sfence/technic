@@ -11,7 +11,7 @@ minetest.register_alias("water_mill", "hades_technic:water_mill")
 minetest.register_craft({
 	output = 'hades_technic:water_mill',
 	recipe = {
-		{'hades_technic:marble', 'default:diamond',        'hades_technic:marble'},
+		{'hades_technic:marble', 'hades_core:diamond',        'hades_technic:marble'},
 		{'group:wood',     'hades_technic:machine_casing', 'group:wood'},
 		{'hades_technic:marble', 'hades_technic:lv_cable',       'hades_technic:marble'},
 	}
@@ -19,8 +19,8 @@ minetest.register_craft({
 
 local function check_node_around_mill(pos)
 	local node = minetest.get_node(pos)
-	if node.name == "default:water_flowing"
-	  or node.name == "default:river_water_flowing" then
+	if node.name == "hades_core:water_flowing"
+	  or node.name == "hades_core:river_water_flowing" then
 		return node.param2 -- returns approx. water flow, if any
 	end
 	return false
@@ -31,7 +31,8 @@ local run = function(pos, node)
 	local water_flow       = 0
 	local production_level
 	local eu_supply
-	local max_output       = 4 * 45 -- keeping it around 180, little more than previous 150 :)
+	--local max_output       = 4 * 45 -- keeping it around 180, little more than previous 150 :)
+  local max_output       = 4 * 60 -- so, if you will be able to have flowing water on all sides, you get more power then 180
 
 	local positions = {
 		{x=pos.x+1, y=pos.y, z=pos.z},

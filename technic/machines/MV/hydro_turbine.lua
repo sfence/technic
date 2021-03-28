@@ -32,7 +32,8 @@ local run = function(pos, node)
 	local water_flow       = 0
 	local production_level
 	local eu_supply
-	local max_output       = 40 * 45 -- Generates 1800EU/s
+	--local max_output       = 40 * 45 -- Generates 1800EU/s
+	local max_output       = 4 * 600 -- Generates 2400EU/s
 
 	local positions = {
 		{x=pos.x+1, y=pos.y, z=pos.z},
