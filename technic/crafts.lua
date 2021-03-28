@@ -71,27 +71,27 @@ minetest.register_craft({
 minetest.register_craft({
 	output = 'hades_technic:green_energy_crystal',
 	recipe = {
-		{'hades_core:gold_ingot', 'hades_technic:battery', 'dye:green'},
-		{'hades_technic:battery', 'hades_technic:red_energy_crystal', 'hades_technic:battery'},
-		{'dye:green', 'hades_technic:battery', 'hades_core:gold_ingot'},
+		{'hades_core:gold_ingot', 'hades_technic:battery_lithium', 'dye:green'},
+		{'hades_technic:battery_lithium', 'hades_technic:red_energy_crystal', 'hades_technic:battery_lithium'},
+		{'dye:green', 'hades_technic:battery_lithium', 'hades_core:gold_ingot'},
 	}
 })
 
 minetest.register_craft({
 	output = 'hades_technic:blue_energy_crystal',
 	recipe = {
-		{'hades_extraores:titanium_ingot', 'hades_technic:battery', 'dye:blue'},
-		{'hades_technic:battery', 'hades_technic:green_energy_crystal', 'hades_technic:battery'},
-		{'dye:blue', 'hades_technic:battery', 'hades_extraores:titanium_ingot'},
+		{'hades_extraores:titanium_ingot', 'hades_technic:battery_lithium', 'dye:blue'},
+		{'hades_technic:battery_lithium', 'hades_technic:green_energy_crystal', 'hades_technic:battery_lithium'},
+		{'dye:blue', 'hades_technic:battery_lithium', 'hades_extraores:titanium_ingot'},
 	}
 })
 
 minetest.register_craft({
 	output = 'hades_technic:red_energy_crystal',
 	recipe = {
-		{'hades_extraores:silver_ingot', 'hades_technic:battery', 'dye:red'},
-		{'hades_technic:battery', 'hades_extramaterials:energy_crystal_simple', 'hades_technic:battery'},
-		{'dye:red', 'hades_technic:battery', 'hades_extraores:silver_ingot'},
+		{'hades_extraores:silver_ingot', 'hades_technic:battery_lithium', 'dye:red'},
+		{'hades_technic:battery_lithium', 'hades_extramaterials:energy_crystal_simple', 'hades_technic:battery_lithium'},
+		{'dye:red', 'hades_technic:battery_lithium', 'hades_extraores:silver_ingot'},
 	}
 })
 

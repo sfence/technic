@@ -5,10 +5,10 @@ local function deploy_node(inv, slot_name, pos, node, machine_node)
 	if node.param2 > 3 then return end
 	if node.name ~= "air" then
 		if node.name == "ignore" or
-		   node.name == "default:lava_source" or
-		   node.name == "default:lava_flowing" or
-		   node.name == "default:water_source" or
-		   node.name == "default:water_flowing" then
+		   node.name == "hades_core:lava_source" or
+		   node.name == "hades_core:lava_flowing" or
+		   node.name == "hades_core:water_source" or
+		   node.name == "hades_core:water_flowing" then
 			return
 		end
 		local drops = minetest.get_node_drops(node.name, "")
@@ -68,7 +68,7 @@ end
 minetest.register_craft({
 	type = "shapeless",
 	output = 'hades_technic:constructor_mk1_off 1',
-	recipe = {'hades_technic:nodebreaker_off', 'hades_technic:deployer_off'},
+	recipe = {'pipeworks:nodebreaker_off', 'pipeworks:deployer_off'},
 
 })
 minetest.register_craft({

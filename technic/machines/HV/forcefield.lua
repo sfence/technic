@@ -18,7 +18,7 @@ minetest.register_craft({
 	output = "hades_technic:forcefield_emitter_off",
 	recipe = {
 		{"hades_core:mese",         "hades_extramaterials:motor",          "hades_core:mese"        },
-		{"hades_technic:deployer_off", "hades_technic:machine_casing", "hades_technic:deployer_off"},
+		{"pipeworks:deployer_off", "hades_technic:machine_casing", "pipeworks:deployer_off"},
 		{"hades_core:mese",         "hades_technic:hv_cable",       "hades_core:mese"        },
 	}
 })

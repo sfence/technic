@@ -22,7 +22,7 @@ local recipes = {
 	{"hades_technic:carbon_steel_ingot 4",  "hades_technic:chromium_ingot",     "hades_technic:stainless_steel_ingot 5", 7.5},
 	{"hades_technic:copper_dust 2",         "hades_technic:zinc_dust",          "hades_technic:brass_dust 3"},
 	{"hades_core:copper_ingot 2",        "hades_technic:zinc_ingot",         "hades_extramaterials:brass_ingot 3"},
-	{"default:sand 2",                "hades_technic:coal_dust 2",        "hades_technic:silicon_wafer"},
+	{"hades_core:fertile_sand 2",                "hades_technic:coal_dust 2",        "hades_technic:silicon_wafer"},
 	{"hades_technic:silicon_wafer",         "hades_technic:gold_dust",          "hades_technic:doped_silicon_wafer"},
 	-- from https://en.wikipedia.org/wiki/Carbon_black
 	-- The highest volume use of carbon black is as a reinforcing filler in rubber products, especially tires.

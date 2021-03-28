@@ -7,9 +7,9 @@ minetest.register_alias("music_player", "hades_technic:music_player")
 minetest.register_craft({
 	output = 'hades_technic:music_player',
 	recipe = {
-		{'hades_technic:chromium_ingot', 'default:diamond',        'hades_technic:chromium_ingot'},
-		{'default:diamond',        'hades_technic:machine_casing', 'default:diamond'},
-		{'default:mossycobble',    'hades_technic:lv_cable',       'default:mossycobble'},
+		{'hades_technic:chromium_ingot', 'hades_core:diamond',        'hades_technic:chromium_ingot'},
+		{'hades_core:diamond',        'hades_technic:machine_casing', 'hades_core:diamond'},
+		{'hades_core:mossycobble',    'hades_technic:lv_cable',       'hades_core:mossycobble'},
 	}
 })
 

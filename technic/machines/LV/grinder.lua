@@ -3,8 +3,8 @@ minetest.register_alias("grinder", "hades_technic:lv_grinder")
 minetest.register_craft({
 	output = 'hades_technic:lv_grinder',
 	recipe = {
-		{'default:desert_stone', 'default:diamond',        'default:desert_stone'},
-		{'default:desert_stone', 'hades_technic:machine_casing', 'default:desert_stone'},
+		{'hades_core:stone_baked', 'hades_core:diamond',        'hades_core:stone_baked'},
+		{'hades_core:stone_baked', 'hades_technic:machine_casing', 'hades_core:stone_baked'},
 		{'hades_technic:granite',      'hades_technic:lv_cable',       'hades_technic:granite'},
 	}
 })

@@ -5,9 +5,9 @@
 minetest.register_craft({
 	output = 'hades_technic:electric_furnace',
 	recipe = {
-		{'default:cobble', 'default:cobble',         'default:cobble'},
-		{'default:cobble', 'hades_technic:machine_casing', 'default:cobble'},
-		{'default:cobble', 'hades_technic:lv_cable',       'default:cobble'},
+		{'hades_core:cobble', 'hades_core:cobble',         'hades_core:cobble'},
+		{'hades_core:cobble', 'hades_technic:machine_casing', 'hades_core:cobble'},
+		{'hades_core:cobble', 'hades_technic:lv_cable',       'hades_core:cobble'},
 	}
 })
 

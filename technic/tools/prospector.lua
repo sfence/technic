@@ -121,7 +121,7 @@ end)
 minetest.register_craft({
 	output = "hades_technic:prospector",
 	recipe = {
-		{"moreores:pick_silver", "hades_extraores:titan_block", "pipeworks:teleport_tube_1"},
+		{"moreores:pick_silver", "hades_extraores:titanium_block", "pipeworks:teleport_tube_1"},
 		{"hades_extramaterials:brass_ingot", "hades_technic:control_logic_unit", "hades_extramaterials:brass_ingot"},
 		{"", "hades_technic:blue_energy_crystal", ""},
 	}
