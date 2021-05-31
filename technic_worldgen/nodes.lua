@@ -54,14 +54,16 @@ minetest.register_node( ":hades_technic:granite", {
 	sounds = hades_sounds.node_sound_stone_defaults(),
 })
 
-minetest.register_alias("hades_technic:marble", "hades_core:marble")
---[[
+--minetest.register_alias("hades_technic:marble", "hades_core:marble")
 minetest.register_node( ":hades_technic:marble", {
 	description = S("Marble"),
 	tiles = { "technic_marble.png" },
 	is_ground_content = true,
 	groups = {cracky=3, marble=1},
 	sounds = hades_sounds.node_sound_stone_defaults(),
+})
+minetest.override_item("hades_core:marble", {
+  groups = {cracky=3, stone=1, porous=1, marble=1},
 })
 
 minetest.register_node( ":hades_technic:marble_bricks", {
@@ -71,7 +73,6 @@ minetest.register_node( ":hades_technic:marble_bricks", {
 	groups = {cracky=3},
 	sounds = hades_sounds.node_sound_stone_defaults(),
 })
---]]
 
 minetest.register_node(":hades_technic:uranium_block", {
 	description = S("Uranium Block"),
@@ -136,7 +137,6 @@ minetest.register_node(":hades_technic:stainless_steel_block", {
 	sounds = hades_sounds.node_sound_stone_defaults()
 })
 
---[[
 minetest.register_craft({
 	output = 'hades_technic:marble_bricks 4',
 	recipe = {
@@ -144,7 +144,6 @@ minetest.register_craft({
 		{'hades_technic:marble','hades_technic:marble'}
 	}
 })
---]]
 
 minetest.register_alias("hades_technic:diamond_block", "hades_core:diamondblock")
 minetest.register_alias("hades_technic:diamond", "hades_core:diamond")

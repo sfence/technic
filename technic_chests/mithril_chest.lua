@@ -1,19 +1,19 @@
-if minetest.get_modpath("moreores") then
+if minetest.get_modpath("hades_extraores") then
 	minetest.register_craft({
 		output = 'technic:mithril_chest 1',
 		recipe = {
-			{'moreores:mithril_ingot','moreores:mithril_ingot','moreores:mithril_ingot'},
-			{'moreores:mithril_ingot','technic:gold_chest','moreores:mithril_ingot'},
-			{'moreores:mithril_ingot','moreores:mithril_ingot','moreores:mithril_ingot'},
+			{'hades_extraores:titanium_ingot','hades_extraores:titanium_ingot','hades_extraores:titanium_ingot'},
+			{'hades_extraores:titanium_ingot','technic:gold_chest','hades_extraores:titanium_ingot'},
+			{'hades_extraores:titanium_ingot','hades_extraores:titanium_ingot','hades_extraores:titanium_ingot'},
 		}
 	})
 
 	minetest.register_craft({
 		output = 'technic:mithril_locked_chest 1',
 		recipe = {
-			{'moreores:mithril_ingot','moreores:mithril_ingot','moreores:mithril_ingot'},
-			{'moreores:mithril_ingot','technic:gold_locked_chest','moreores:mithril_ingot'},
-			{'moreores:mithril_ingot','moreores:mithril_ingot','moreores:mithril_ingot'},
+			{'hades_extraores:titanium_ingot','hades_extraores:titanium_ingot','hades_extraores:titanium_ingot'},
+			{'hades_extraores:titanium_ingot','technic:gold_locked_chest','hades_extraores:titanium_ingot'},
+			{'hades_extraores:titanium_ingot','hades_extraores:titanium_ingot','hades_extraores:titanium_ingot'},
 		}
 	})
 end
@@ -22,7 +22,7 @@ minetest.register_craft({
 	output = 'technic:mithril_locked_chest 1',
 	type = "shapeless",
 	recipe = {
-		'basic_materials:padlock',
+		'hades_extramaterials:padlock',
 		'technic:mithril_chest',
 	}
 })

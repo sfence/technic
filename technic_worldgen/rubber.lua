@@ -43,7 +43,7 @@ minetest.register_node(":moretrees:rubber_tree_leaves", {
 	description = S("Rubber Tree Leaves"),
 	tiles = {"technic_rubber_leaves.png"},
 	paramtype = "light",
-	groups = {snappy=3, leafdecay=3, flammable=2, leaves=1},
+	groups = {snappy=3, leafdecay=3, flammable=2, leaves=1, ash_fertilizer=4},
 	drop = {
 		max_items = 1,
 		items = {{

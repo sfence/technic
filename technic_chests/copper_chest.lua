@@ -1,18 +1,18 @@
 minetest.register_craft({
 	output = 'technic:copper_chest 1',
 	recipe = {
-		{'default:copper_ingot','default:copper_ingot','default:copper_ingot'},
-		{'default:copper_ingot','technic:iron_chest','default:copper_ingot'},
-		{'default:copper_ingot','default:copper_ingot','default:copper_ingot'},
+		{'hades_core:copper_ingot','hades_core:copper_ingot','hades_core:copper_ingot'},
+		{'hades_core:copper_ingot','technic:iron_chest','hades_core:copper_ingot'},
+		{'hades_core:copper_ingot','hades_core:copper_ingot','hades_core:copper_ingot'},
 	}
 })
 
 minetest.register_craft({
 	output = 'technic:copper_locked_chest 1',
 	recipe = {
-		{'default:copper_ingot','default:copper_ingot','default:copper_ingot'},
-		{'default:copper_ingot','technic:iron_locked_chest','default:copper_ingot'},
-		{'default:copper_ingot','default:copper_ingot','default:copper_ingot'},
+		{'hades_core:copper_ingot','hades_core:copper_ingot','hades_core:copper_ingot'},
+		{'hades_core:copper_ingot','technic:iron_locked_chest','hades_core:copper_ingot'},
+		{'hades_core:copper_ingot','hades_core:copper_ingot','hades_core:copper_ingot'},
 	}
 })
 
@@ -20,7 +20,7 @@ minetest.register_craft({
 	output = 'technic:copper_locked_chest 1',
 	type = "shapeless",
 	recipe = {
-		'basic_materials:padlock',
+		'hades_extramaterials:padlock',
 		'technic:copper_chest',
 	}
 })

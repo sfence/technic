@@ -11,9 +11,9 @@ minetest.register_alias("water_mill", "hades_technic:water_mill")
 minetest.register_craft({
 	output = 'hades_technic:water_mill',
 	recipe = {
-		{'hades_technic:marble', 'hades_core:diamond',        'hades_technic:marble'},
+		{'group:marble', 'hades_core:diamond',        'group:marble'},
 		{'group:wood',     'hades_technic:machine_casing', 'group:wood'},
-		{'hades_technic:marble', 'hades_technic:lv_cable',       'hades_technic:marble'},
+		{'group:marble', 'hades_technic:lv_cable',       'group:marble'},
 	}
 })
 

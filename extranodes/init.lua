@@ -9,49 +9,49 @@ if minetest.get_modpath("hades_moreblocks") then
 	-- we skip blast resistant concrete and uranium intentionally
 	-- chrome seems to be too hard of a metal to be actually sawable
 
-	stairsplus:register_all("technic", "marble", "technic:marble", {
+	stairsplus:register_all("technic", "marble", "hades_technic:marble", {
 		description=S("Marble"),
 		groups={cracky=3, not_in_creative_inventory=1},
 		tiles={"technic_marble.png"},
 	})
 
-	stairsplus:register_all("technic", "marble_bricks", "technic:marble_bricks", {
+	stairsplus:register_all("technic", "marble_bricks", "hades_technic:marble_bricks", {
 		description=S("Marble Bricks"),
 		groups={cracky=3, not_in_creative_inventory=1},
 		tiles={"technic_marble_bricks.png"},
 	})
 
-	stairsplus:register_all("technic", "granite", "technic:granite", {
+	stairsplus:register_all("technic", "granite", "hades_technic:granite", {
 		description=S("Granite"),
 		groups={cracky=1, not_in_creative_inventory=1},
 		tiles={"technic_granite.png"},
 	})
 
-	stairsplus:register_all("technic", "concrete", "technic:concrete", {
+	stairsplus:register_all("technic", "concrete", "hades_technic:concrete", {
 		description=S("Concrete"),
 		groups={cracky=3, not_in_creative_inventory=1},
 		tiles={"basic_materials_concrete_block.png"},
 	})
 
-	stairsplus:register_all("technic", "zinc_block", "technic:zinc_block", {
+	stairsplus:register_all("technic", "zinc_block", "hades_technic:zinc_block", {
 		description=S("Zinc Block"),
 		groups={cracky=1, not_in_creative_inventory=1},
 		tiles={"technic_zinc_block.png"},
 	})
 
-	stairsplus:register_all("technic", "cast_iron_block", "technic:cast_iron_block", {
+	stairsplus:register_all("technic", "cast_iron_block", "hades_technic:cast_iron_block", {
 		description=S("Cast Iron Block"),
 		groups={cracky=1, not_in_creative_inventory=1},
 		tiles={"technic_cast_iron_block.png"},
 	})
 
-	stairsplus:register_all("technic", "carbon_steel_block", "technic:carbon_steel_block", {
+	stairsplus:register_all("technic", "carbon_steel_block", "hades_technic:carbon_steel_block", {
 		description=S("Carbon Steel Block"),
 		groups={cracky=1, not_in_creative_inventory=1},
 		tiles={"technic_carbon_steel_block.png"},
 	})
 
-	stairsplus:register_all("technic", "stainless_steel_block", "technic:stainless_steel_block", {
+	stairsplus:register_all("technic", "stainless_steel_block", "hades_technic:stainless_steel_block", {
 		description=S("Stainless Steel Block"),
 		groups={cracky=1, not_in_creative_inventory=1},
 		tiles={"technic_stainless_steel_block.png"},
@@ -194,54 +194,54 @@ if minetest.get_modpath("unifieddyes") then
 	sclip_def.groups = {choppy=1, cracky=1, ud_param2_colorable = 1}
 end
 
-minetest.register_node(":technic:insulator_clip", iclip_def)
-minetest.register_node(":technic:insulator_clip_fencepost", iclipfence_def)
+minetest.register_node(":hades_technic:insulator_clip", iclip_def)
+minetest.register_node(":hades_technic:insulator_clip_fencepost", iclipfence_def)
 
 minetest.register_craft({
-	output = "technic:insulator_clip",
+	output = "hades_technic:insulator_clip",
 	recipe = {
 		{ "", "dye:white", ""},
-		{ "", "technic:raw_latex", ""},
-		{ "technic:raw_latex", "hades_core:stone", "technic:raw_latex"},
+		{ "", "hades_technic:raw_latex", ""},
+		{ "hades_technic:raw_latex", "hades_core:stone", "hades_technic:raw_latex"},
 	}
 })
 
 minetest.register_craft({
-	output = "technic:insulator_clip_fencepost 2",
+	output = "hades_technic:insulator_clip_fencepost 2",
 	recipe = {
 		{ "", "dye:white", ""},
-		{ "", "technic:raw_latex", ""},
-		{ "technic:raw_latex", "hades_fences:fence_wood", "technic:raw_latex"},
+		{ "", "hades_technic:raw_latex", ""},
+		{ "hades_technic:raw_latex", "hades_fences:fence_wood", "hades_technic:raw_latex"},
 	}
 })
 
 local steelmod = minetest.get_modpath("steel")
 
 if streetsmod or steelmod then
-	minetest.register_node(":technic:steel_strut_with_insulator_clip", sclip_def)
+	minetest.register_node(":hades_technic:steel_strut_with_insulator_clip", sclip_def)
 
 	if steelmod then
 		minetest.register_craft({
-			output = "technic:steel_strut_with_insulator_clip",
+			output = "hades_technic:steel_strut_with_insulator_clip",
 			recipe = {
-				{"technic:insulator_clip_fencepost"},
+				{"hades_technic:insulator_clip_fencepost"},
 				{"steel:strut_mount"}
 			}
 		})
 
 		minetest.register_craft({
-			output = "technic:steel_strut_with_insulator_clip",
+			output = "hades_technic:steel_strut_with_insulator_clip",
 			recipe = {
-				{"technic:insulator_clip_fencepost", ""                    },
+				{"hades_technic:insulator_clip_fencepost", ""                    },
 				{"steel:strut",                      "hades_core:steel_ingot" },
 			}
 		})
 
 	elseif streetsmod then
 		minetest.register_craft({
-			output = "technic:steel_strut_with_insulator_clip",
+			output = "hades_technic:steel_strut_with_insulator_clip",
 			recipe = {
-				{"technic:insulator_clip_fencepost", ""                   },
+				{"hades_technic:insulator_clip_fencepost", ""                   },
 				{"streets:steel_support",           "hades_core:steel_ingot" },
 			}
 		})
@@ -251,10 +251,10 @@ end
 if minetest.get_modpath("unifieddyes") then
 
 	unifieddyes.register_color_craft({
-		output = "technic:insulator_clip_fencepost",
+		output = "hades_technic:insulator_clip_fencepost",
 		palette = "extended",
 		type = "shapeless",
-		neutral_node = "technic:insulator_clip_fencepost",
+		neutral_node = "hades_technic:insulator_clip_fencepost",
 		recipe = {
 			"NEUTRAL_NODE",
 			"MAIN_DYE"
@@ -262,10 +262,10 @@ if minetest.get_modpath("unifieddyes") then
 	})
 
 	unifieddyes.register_color_craft({
-		output = "technic:insulator_clip",
+		output = "hades_technic:insulator_clip",
 		palette = "wallmounted",
 		type = "shapeless",
-		neutral_node = "technic:insulator_clip",
+		neutral_node = "hades_technic:insulator_clip",
 		recipe = {
 			"NEUTRAL_NODE",
 			"MAIN_DYE"
@@ -273,23 +273,23 @@ if minetest.get_modpath("unifieddyes") then
 	})
 
 	unifieddyes.register_color_craft({
-		output = "technic:steel_strut_with_insulator_clip",
+		output = "hades_technic:steel_strut_with_insulator_clip",
 		palette = "wallmounted",
 		type = "shapeless",
 		neutral_node = "",
 		recipe = {
-			"technic:steel_strut_with_insulator_clip",
+			"hades_technic:steel_strut_with_insulator_clip",
 			"MAIN_DYE"
 		}
 	})
 
 	if steelmod then
 		unifieddyes.register_color_craft({
-			output = "technic:steel_strut_with_insulator_clip",
+			output = "hades_technic:steel_strut_with_insulator_clip",
 			palette = "wallmounted",
 			neutral_node = "",
 			recipe = {
-				{ "technic:insulator_clip_fencepost", "MAIN_DYE" },
+				{ "hades_technic:insulator_clip_fencepost", "MAIN_DYE" },
 				{ "steel:strut_mount",                ""         },
 			}
 		})
@@ -297,11 +297,11 @@ if minetest.get_modpath("unifieddyes") then
 
 	if streetsmod then
 		unifieddyes.register_color_craft({
-			output = "technic:steel_strut_with_insulator_clip",
+			output = "hades_technic:steel_strut_with_insulator_clip",
 			palette = "wallmounted",
-			neutral_node = "technic:steel_strut_with_insulator_clip",
+			neutral_node = "hades_technic:steel_strut_with_insulator_clip",
 			recipe = {
-				{ "technic:insulator_clip_fencepost", "MAIN_DYE"            },
+				{ "hades_technic:insulator_clip_fencepost", "MAIN_DYE"            },
 				{ "streets:steel_support",            "hades_core:steel_ingot" },
 			}
 		})

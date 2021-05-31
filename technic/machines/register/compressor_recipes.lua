@@ -10,7 +10,7 @@ end
 
 local recipes = {
 	--{"default:snowblock",          "default:ice"},
-	{"hades_core:fetile_sand 2",             "hades_core:sandstone"},
+	{"hades_core:fertile_sand 2",             "hades_core:sandstone"},
 	--{"default:desert_sand 2",      "default:desert_sandstone"},
 	--{"default:silver_sand 2",      "default:silver_sandstone"},
 	--{"default:desert_sand",        "default:desert_stone"},
